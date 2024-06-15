@@ -14,18 +14,17 @@ func printHi(_ name: String) -> String {
 }
     printHi("Misha")
 
-
 //- Будет принимать аргумент имя и возвращать строку приветствия “Hello! имя”.
-
 
 func sayHello(legend: String) -> String {
     return "Hello " + legend + "!"
-   
 }
 print (sayHello (legend: "Maradona") )
 
-//2. Написать функцию, которая принимает две строки и возвращает сумму количества символов двух строк.
 
+
+
+//2. Написать функцию, которая принимает две строки и возвращает сумму количества символов двух строк.
 
 
 func sum (numberA: Int, numberB: Int) -> Int {
@@ -33,6 +32,18 @@ func sum (numberA: Int, numberB: Int) -> Int {
 }
 sum (numberA: 12, numberB: 21)
 print (sum(numberA: 6, numberB: 123))
+
+
+// 2.1 Перепрочитал задание. Выполняю правильный вариант.
+
+func sumWord(word1: String, word2: String) -> Int {
+    return word1.count + word2.count
+}
+sumWord(word1: "United", word2: "Kingdom")
+
+print(sumWord(word1: "Bart", word2: "Simpson"))
+
+
 
 
 //3. Написать функцию, которая выводит в консоль квадрат переданного числа.
