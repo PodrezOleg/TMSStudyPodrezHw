@@ -47,11 +47,16 @@ print(sumWord(word1: "Bart", word2: "Simpson"))
 
 
 //3. Написать функцию, которая выводит в консоль квадрат переданного числа.
-func squaer (number: Int) {
-    let square = number * number
-    print("Square of number \(number) is \(square) ")
+func square (x: Int) {
+    print("Square of number \(x) is \(x * x) ")
 }
-squaer(number: 10)
+square(x: 8)
+
+// 3.1
+func square (_ x: Int) {
+    print("Square of number \(x) is \(x * x) ")
+}
+square(8)
 
 //4. Создать функции, которые будут суммировать, вычитать, умножать и делить числа sum(num1:num2:).
 
