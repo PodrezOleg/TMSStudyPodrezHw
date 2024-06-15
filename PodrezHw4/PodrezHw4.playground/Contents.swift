@@ -60,3 +60,39 @@ square(8)
 
 //4. Создать функции, которые будут суммировать, вычитать, умножать и делить числа sum(num1:num2:).
 
+func plusNumbers(_ number1: Int, _ number2:Int) -> Int {
+    return (number1 + number2)
+}
+
+print("Adding numbers results \(plusNumbers(4, 296))")
+
+
+func minusNumbers(_ number1: Int, _ number2:Int) -> Int {
+    return (number1 - number2)
+}
+print("Substracting numbers results \(minusNumbers(674, 374))")
+
+func multiplyNumbers(_ number1: Int, _ number2:Int) -> Int {
+    return (number1 * number2)
+}
+print("Multiplying numbers results \(multiplyNumbers(100, 3))")
+
+
+func divideNumbers(_ number1: Int, _ number2:Int) -> Int {
+    return (number1 / number2)
+}
+print("Dividing numbers results \(divideNumbers(7200, 24))")
+
+
+
+// 4.1 Короткий
+func mathFunc(a: Int, b: Int, mathMatch: (Int, Int) -> Int) {
+    let result = mathMatch(a,b)
+    print(result)
+}
+    mathFunc(a: 9, b: 5, mathMatch: { $0 - $1 })
+    mathFunc(a: 10, b: 5, mathMatch: { $0 + $1 })
+    mathFunc(a: 9, b: 5, mathMatch: { $0 * $1 })
+    mathFunc(a: 60, b: 5, mathMatch: { $0 / $1 })
+
+
