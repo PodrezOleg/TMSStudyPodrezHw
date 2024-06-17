@@ -95,4 +95,17 @@ func mathFunc(a: Int, b: Int, mathMatch: (Int, Int) -> Int) {
     mathFunc(a: 9, b: 5, mathMatch: { $0 * $1 })
     mathFunc(a: 60, b: 5, mathMatch: { $0 / $1 })
 
+//5. Создать функцию, которая принимает параметры и вычисляет площадь круга.
+
+
+func calculateAreaCircle(radius: Int, pi: Double = 3.14) -> Double {
+    let area: Double = pi * Double(radius)
+    return area
+}
+calculateAreaCircle(radius: 79)
+
+
+
+
+ 
 
