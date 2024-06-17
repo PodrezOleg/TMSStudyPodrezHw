@@ -87,7 +87,7 @@ print("Dividing numbers results \(divideNumbers(7200, 24))")
 
 // 4.1 Короткий
 func mathFunc(a: Int, b: Int, mathMatch: (Int, Int) -> Int) {
-    let result = mathMatch(a,b)
+    var result = mathMatch(a,b)
     print(result)
 }
     mathFunc(a: 9, b: 5, mathMatch: { $0 - $1 })
@@ -102,10 +102,27 @@ func calculateAreaCircle(radius: Int, pi: Double = 3.14) -> Double {
     let area: Double = pi * Double(radius)
     return area
 }
-calculateAreaCircle(radius: 79)
+var result = calculateAreaCircle(radius: 7)
+
+print(result)
+
+//6. Создать функцию, которая принимает логический тип “ночь ли сегодня” и возвращает строку с описанием времени суток.
+
+func isItNight(isNight: Bool) -> String {
+    if isNight {
+        return "It is Dark"
+    } else {
+        return "It is Light"
+    }
+}
+print(isItNight(isNight: true))
+
+//6.1
+func isItDay(itsDay: Bool) -> String {
+    let dayTime: String = itsDay ? "It is light" : "It is Dark"
+    return dayTime
+}
+print(isItDay(itsDay: true))
 
 
-
-
- 
 
