@@ -124,5 +124,52 @@ func isItDay(itsDay: Bool) -> String {
 }
 print(isItDay(itsDay: true))
 
+//7. Создать функцию, принимающую 1 аргумент — число от 0 до 100, и возвращающую true, если оно простое, и false, если сложное.
 
+func numbersTest (number: Int) -> Bool {
+    if number <= 0 || number >= 100 {
+        print("ERROR")
+        return false
+    }
+    
+    if number < 4 {
+        return true
+    }
+    for x in 2...Int(Double(number).squareRoot()) {
+        if number % x == 0 {
+            return false
+        }
+    }
+    return true
+}
+    
+print(numbersTest(number: 60))
 
+//8. Создать функцию, принимающую 1 аргумент — номер месяца (от 1 до 12), и возвращающую время года, которому этот месяц принадлежит (зима, весна, лето или осень).
+
+func quarter (month: Int) -> String {
+    switch month {
+    case 12, 1, 2:
+    return "Winter"
+    case 3, 4, 5:
+    return "Spring"
+    case 6, 7, 8:
+    return "Summer"
+    case 9, 10, 11:
+    return "Fall"
+    default:
+    return "wrong quarter"
+}
+}
+print(quarter(month: 7))
+
+//9*. Создать функцию, которая считает факториал введённого числа.
+
+func factorial(number: Int ) -> Int {
+    if number == 0 {
+       return 1
+    } else {
+        return (number * factorial(number: -1))
+    }
+}
+print(factorial(number: 3))
