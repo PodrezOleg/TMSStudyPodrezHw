@@ -169,7 +169,23 @@ func factorial(number: Int ) -> Int {
     if number == 0 {
        return 1
     } else {
-        return (number * factorial(number: -1))
+        return (number * factorial(number: number - 1))
     }
 }
-print(factorial(number: 3))
+factorial(number: 10)
+
+
+//10. Создать функцию, которая выводит все числа последовательности Фибоначчи до введённого индекса. Например fib(n:6) -> 0, 1, 1, 2, 3, 5, 8
+
+func fib(n: Int) -> Int {
+    if n == 0 {
+        return 0
+    } else if n == 1 {
+        return 1
+    }
+    return fib(n: n - 1) + fib(n: n - 2)
+}
+print(fib(n: 10))
+
+
+//
