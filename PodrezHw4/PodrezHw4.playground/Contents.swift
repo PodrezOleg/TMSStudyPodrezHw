@@ -190,7 +190,16 @@ print(fib(n: 10))
 
 //11*. Создать функцию, которая считает сумму цифр четырехзначного числа, переданного в параметры функции
 
-func calculate(m: Int) -> Int {
-    
-    
+
+
+
+func calculate(_ numNum: Int) -> Int {
+    if numNum < 1000 || numNum > 9999 {
+        print("Enter 4 only digits")
+        return -1
+    } else {
+        return String(numNum).compactMap { Int(String($0)) }.reduce(0, +)
+        
+    }
 }
+print(calculate(11321))
