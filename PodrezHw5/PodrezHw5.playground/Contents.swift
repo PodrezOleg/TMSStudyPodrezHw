@@ -27,3 +27,6 @@ func matchSeason (month: Int) -> String {
 }
 print(matchSeason(month: 9))
 
+
+//3. Написать метод, который принимает variadic parameter String?. Метод возвращает количество nil объектов и печатает в консоль одну строку всех объединенных не nil объектов.
+
