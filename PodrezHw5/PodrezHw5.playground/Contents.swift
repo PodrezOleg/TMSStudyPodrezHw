@@ -2,16 +2,19 @@ import SwiftUI
 
 //1. Создать enum с временами года.
 
-enum seasons {
-    case winter 
-    case spring
-    case summer
-    case fall
+enum Seasons: String {
+    case winter = "Зима"
+    case spring = "Весна"
+    case summer = "Лето"
+    case fall = "Осень"
 }
+var a: Seasons = .fall
+print(a.rawValue)
+
 
 //2. Написать функцию, которая будет принимать номер месяца (Int) и возвращать enum с временем года этого месяца.
 
-func matchSeasons(month:Int) -> seasons? {
+func matchSeasons(month:Int) -> Seasons? {
     switch month {
     case 12, 1, 2:
         return.winter
@@ -25,8 +28,11 @@ func matchSeasons(month:Int) -> seasons? {
         return nil
     }
 }
-print(matchSeasons(month: 15) ?? "Wrong number of month")
+print(matchSeasons(month: 9) ?? "Wrong number of month")
 
 
+      
+      
+      
 //3. Написать метод, который принимает variadic parameter String?. Метод возвращает количество nil объектов и печатает в консоль одну строку всех объединенных не nil объектов.
 
