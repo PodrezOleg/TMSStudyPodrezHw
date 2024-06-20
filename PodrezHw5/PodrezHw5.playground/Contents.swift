@@ -52,3 +52,69 @@ func varidicParameterString (arrString: String?...) -> Int {
 //print(varidicParameterString(arrString: "Balu", "Maugli", nil, "Sharhan", nil, "Baghira", nil, "Tabaki"))
 print("Количество Nil составило \(varidicParameterString(arrString: "Maugli", nil, "Sharhan", "Tabaki", nil, nil)) шт.")
 
+
+
+//4 Написать мини конспект по работе с optional и зачем он нужен. Конспект должен содержать все способы извлечения опционала со своими примерами.
+// Optional - что это и засем он?
+//Опционалы это значение переменых, которые имеют значение( в String это стороки и символы, пишуться через "", в Int это целое числло, обозначается через (1,2,3...),  либо нет (nil)
+
+//Как раскрыть опционалы?
+
+//1. Принулительно извлечение ( саоме опасное) через !
+//      Может ( скорее всего обязательно) приведет к критической ошибки
+
+
+let name: String = "Plunder and Flee Inc."
+    var employees: Int?
+ 
+print(name)
+//print(income!)
+
+// 1.1. Сразу распакованный опционал
+
+var field: String! = "АйТи"
+var income: Double!
+
+print(field)
+print(income)
+
+
+// 2. Извлечение через if. Используем его для сравнения опционала с nil ( есть ли у него значение, если нету выдаем nilб если есть, выдем значение)
+
+var budget: Int?
+if budget != nil {
+    print ("We have some money \(budget)")
+} else {
+        print("Call your parents")
+}
+
+
+// 2.1. Извлечение через if let. Почти такое же, как и в извлечение через if, только тут мы используем временную переменную для хранения.
+
+var budget2: Int?
+budget2 = 19
+if let bank = budget2 {
+    print("We have some money \(bank)")
+} else {
+    print("Call your parents")
+}
+
+// 3. извлечение опционала через guard
+func anualBudget() {
+var budget3: Int? = 854
+guard let bank = budget3 else {
+    return
+}
+print("We have some money \(bank)")
+}
+
+anualBudget()
+
+
+// 4. Оператор ??  Очень простое и приятное решение.
+
+var budget3:Int?
+let sendMoney = 1
+let budgetToSpend:Int = budget3 ?? sendMoney
+print(budgetToSpend)
+
