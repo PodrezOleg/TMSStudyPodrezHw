@@ -27,4 +27,8 @@ print(ArrArray)
 
 //2. Создать функцию, которая принимает массив int. Возвести все Int в квадрат. Возвратить новый массив.
 
-func intSquare
+func intSquare( _ num: [Int]) -> [Int] {
+    return num.map { $0 * $0 }
+}
+let ArrArr = intSquare([1, 2, 3])
+print(ArrArr)
