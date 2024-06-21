@@ -2,28 +2,28 @@ import SwiftUI
 
 //1. Создать enum с временами года.
 
-enum Seasons: String {
+enum Season: String {
     case winter = "Зима"
     case spring = "Весна"
     case summer = "Лето"
     case fall = "Осень"
 }
-var a: Seasons = .fall
+var a: Season = .fall
 print(a.rawValue)
 
 
 //2. Написать функцию, которая будет принимать номер месяца (Int) и возвращать enum с временем года этого месяца.
 
-func matchSeasons(month:Int) -> Seasons? {
+func matchSeasons(month:Int) -> Season? {
     switch month {
     case 12, 1, 2:
-        return.winter
+        return .winter
     case 3, 4, 5:
-        return.spring
+        return .spring
     case 6, 7, 8:
-        return.summer
+        return .summer
     case 9, 10, 11:
-        return.fall
+        return .fall
     default:
         return nil
     }
@@ -83,7 +83,7 @@ print(income)
 
 var budget: Int?
 if budget != nil {
-    print ("We have some money \(budget)")
+    print("We have some money \(budget)")
 } else {
         print("Call your parents")
 }
@@ -101,20 +101,18 @@ if let bank = budget2 {
 
 // 3. извлечение опционала через guard
 func anualBudget() {
-var budget3: Int? = 854
-guard let bank = budget3 else {
-    return
+    var budget3: Int?
+    guard let bank = budget3 else {
+        return
+    }
 }
-print("We have some money \(bank)")
-}
-
 anualBudget()
 
 
 // 4. Оператор ??  Очень простое и приятное решение.
 
-var budget3:Int?
-let sendMoney = 1
-let budgetToSpend:Int = budget3 ?? sendMoney
+var budget4:Int?
+let sendMoney = 43
+let budgetToSpend:Int = budget4 ?? sendMoney
 print(budgetToSpend)
 
