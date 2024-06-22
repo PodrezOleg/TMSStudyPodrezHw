@@ -103,6 +103,12 @@ let sortedPlus = plus.sorted(by: >)
 print(sortedPlus)
 
 let sortText = text.sorted( by: {
-    $0.first < $1.first
+    $0.first! < $1.first!
 })
 print(sortText)
+
+
+let marks = [5, 6, 5, 3, 7, 7, 5, 6, 10, 9, 9]
+let sortedMarks = marks.sorted()
+print(sortedMarks)
+  
