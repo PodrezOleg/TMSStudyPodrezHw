@@ -28,7 +28,7 @@ print(arrArray)
 
 func intSquare( _ num: [Int]) -> [Int] {
     return num.map { $0 * $0 }
-    }
+}
 let arrArr = intSquare([1, 2, 3, 15])
 print(arrArr)
 
@@ -53,4 +53,19 @@ func intSquare2(arrArray2: [Int]) -> [Int] {
 }
 print(intSquare2(arrArray2: otherArr))
 
+
+//4.1 Написать 3 примера с использованием .map
+
+let plus = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let plusPlus = plus.map { $0 + $0 }
+print(plusPlus)
+
+
+let text = ["zelda", "link", "ganon", "hyrule"]
+let textCount = text.map { $0.count}
+print(textCount)
+
+
+let textCap = text.map { $0.capitalized }
+print(textCap)
 
