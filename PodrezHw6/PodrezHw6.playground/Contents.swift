@@ -4,14 +4,13 @@ import Cocoa
 
 let Arr = Array(1...14)
 let Arr2 = Array(14...30)
-
-var Arr3 = Array(Set(Arr + Arr2)).sorted()
+    var Arr3 = Array(Set(Arr + Arr2)).sorted()
 
 print(Arr3)
 
 //1.2
 var ArrArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-let ArrArray2 = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    let ArrArray2 = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 
 var ArrArray3 = Array(Set(ArrArray + ArrArray2)).sorted()
 print(ArrArray3)
@@ -29,8 +28,14 @@ print(ArrArray)
 
 func intSquare( _ num: [Int]) -> [Int] {
     return num.map { $0 * $0 }
-}
-let ArrArr = intSquare([1, 2, 3])
+    }
+let ArrArr = intSquare([1, 2, 3, 15])
 print(ArrArr)
 
 //3. Создать функцию, которая принимает массив int. Возвратить новый массив с только четными элементами.
+
+func inPairs (_ num: [Int]) -> [Int] {
+    return .filter { $0 % 2 == 0 }
+    else { print("Help")
+        }
+    }
