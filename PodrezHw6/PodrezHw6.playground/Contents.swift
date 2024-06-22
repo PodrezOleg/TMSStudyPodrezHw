@@ -10,7 +10,7 @@ print(Arr3)
 
 //1.2
 var arrArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-    let arrArray2 = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    var arrArray2 = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 
 var arrArray3 = Array(Set(arrArray + arrArray2)).sorted()
 print(arrArray3)
@@ -61,7 +61,7 @@ let plusPlus = plus.map { $0 + $0 }
 print(plusPlus)
 
 
-let text = ["zelda", "link", "ganon", "hyrule"]
+var text = ["zelda", "link", "ganon", "hyrule"]
 let textCount = text.map { $0.count}
 print(textCount)
 
@@ -85,4 +85,15 @@ print(textValidation)
 
 let oddArrArray = arrArray.compactMap { Int($0) }.filter { $0 % 2 == 0 }
 print (oddArrArray)
+
+//4.4 Написать 2 примера с .sort
+
+arrArray2.sort(by: >)
+print(arrArray2)
+
+
+text.sort {
+    $0.count > $1.count
+}
+print(text)
 
