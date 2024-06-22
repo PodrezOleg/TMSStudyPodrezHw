@@ -34,8 +34,7 @@ print(ArrArr)
 
 //3. Создать функцию, которая принимает массив int. Возвратить новый массив с только четными элементами.
 
-func inPairs (_ num: [Int]) -> [Int] {
-    return .filter { $0 % 2 == 0 }
-    else { print("Help")
-        }
-    }
+func inPairs (randomNumber: [Int]) -> [Int] {
+    return randomNumber.filter({ $0 % 2 == 0})
+}
+print(inPairs(randomNumber: [11, 56, 487, 88, 49, 22 ,11, 0, 8791, 77, 66]))
