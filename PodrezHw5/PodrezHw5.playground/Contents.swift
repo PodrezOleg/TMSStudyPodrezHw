@@ -7,7 +7,7 @@ enum Season: String {
     case spring = "Весна"
     case summer = "Лето"
     case fall = "Осень"
-}
+    }
 var a: Season = .fall
 print(a.rawValue)
 
@@ -26,8 +26,8 @@ func matchSeasons(month:Int) -> Season? {
         return .fall
     default:
         return nil
+        }
     }
-}
 print(matchSeasons(month: 9) ?? "Wrong number of month")
 
 
@@ -39,12 +39,10 @@ func varidicParameterString (arrString: String?...) -> Int {
     var count: Int = 0
     var listOfString: [String] = []
     for string in arrString {
-        if string != nil {
-            if let string {
-                listOfString.append(string)
-            }
-        } else {
-            count += 1
+        if let string {
+            listOfString.append(string)
+            } else {
+                count += 1
         }
     }
     return count
@@ -61,7 +59,7 @@ print("Количество Nil составило \(varidicParameterString(arrS
 //Как раскрыть опционалы?
 
 //1. Принулительно извлечение ( саоме опасное) через !
-//      Может ( скорее всего обязательно) приведет к критической ошибки
+//   Может ( скорее всего обязательно) приведет к критической ошибки
 
 
 let name: String = "Plunder and Flee Inc."
@@ -82,9 +80,9 @@ print(income)
 // 2. Извлечение через if. Используем его для сравнения опционала с nil ( есть ли у него значение, если нету выдаем nilб если есть, выдем значение)
 
 var budget: Int?
-if budget != nil {
-    print("We have some money \(budget)")
-} else {
+    if budget != nil {
+        print("We have some money \(budget)")
+    } else {
         print("Call your parents")
 }
 
@@ -93,10 +91,10 @@ if budget != nil {
 
 var budget2: Int?
 budget2 = 19
-if let bank = budget2 {
-    print("We have some money \(bank)")
-} else {
-    print("Call your parents")
+    if let bank = budget2 {
+        print("We have some money \(bank)")
+    } else {
+        print("Call your parents")
 }
 
 // 3. извлечение опционала через guard
@@ -112,7 +110,7 @@ anualBudget()
 // 4. Оператор ??  Очень простое и приятное решение.
 
 var budget4:Int?
-let sendMoney = 43
-let budgetToSpend:Int = budget4 ?? sendMoney
+    let sendMoney = 43
+    let budgetToSpend:Int = budget4 ?? sendMoney
 print(budgetToSpend)
 
