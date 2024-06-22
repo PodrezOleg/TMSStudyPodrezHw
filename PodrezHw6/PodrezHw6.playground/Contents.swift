@@ -37,4 +37,20 @@ print(arrArr)
 func inPairs (arrArray: [Int]) -> [Int] {
     return arrArray.filter({ $0 % 2 == 0})
 }
+let otherArr = [23, 356, 765, 234, 567, 111, 875, 24679, 4444, 6720, 3234324, 666]
 print(inPairs(arrArray: arrArray))
+print(inPairs(arrArray: otherArr))
+
+//3.1
+func intSquare2(arrArray2: [Int]) -> [Int] {
+    var otherArr2 = [Int]()
+    for number in arrArray2 {
+        if number % 2 == 0 {
+            otherArr2.append(number)
+        }
+    }
+    return(otherArr2)
+}
+print(intSquare2(arrArray2: otherArr))
+
+
