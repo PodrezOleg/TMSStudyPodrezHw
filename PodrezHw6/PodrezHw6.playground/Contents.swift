@@ -9,18 +9,18 @@ let Arr2 = Array(14...30)
 print(Arr3)
 
 //1.2
-var ArrArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-    let ArrArray2 = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+var arrArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    let arrArray2 = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 
-var ArrArray3 = Array(Set(ArrArray + ArrArray2)).sorted()
-print(ArrArray3)
+var arrArray3 = Array(Set(arrArray + arrArray2)).sorted()
+print(arrArray3)
 
 //1.3
 
-ArrArray.insert(contentsOf: ArrArray2, at: 13)
-ArrArray.removeLast()
+arrArray.insert(contentsOf: arrArray2, at: 13)
+arrArray.removeLast()
 
-print(ArrArray)
+print(arrArray)
 
 
 
@@ -29,12 +29,12 @@ print(ArrArray)
 func intSquare( _ num: [Int]) -> [Int] {
     return num.map { $0 * $0 }
     }
-let ArrArr = intSquare([1, 2, 3, 15])
-print(ArrArr)
+let arrArr = intSquare([1, 2, 3, 15])
+print(arrArr)
 
 //3. Создать функцию, которая принимает массив int. Возвратить новый массив с только четными элементами.
 
-func inPairs (randomNumber: [Int]) -> [Int] {
-    return randomNumber.filter({ $0 % 2 == 0})
+func inPairs (arrArray: [Int]) -> [Int] {
+    return arrArray.filter({ $0 % 2 == 0})
 }
-print(inPairs(randomNumber: [11, 56, 487, 88, 49, 22 ,11, 0, 8791, 77, 66]))
+print(inPairs(arrArray: arrArray))
