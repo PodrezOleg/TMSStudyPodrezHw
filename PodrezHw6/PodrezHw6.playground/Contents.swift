@@ -97,3 +97,12 @@ text.sort {
 }
 print(text)
 
+//4.4  Написать 2 примера с .sorted
+
+let sortedPlus = plus.sorted(by: >)
+print(sortedPlus)
+
+let sortText = text.sorted( by: {
+    $0.first < $1.first
+})
+print(sortText)
