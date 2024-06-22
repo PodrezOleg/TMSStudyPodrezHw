@@ -69,3 +69,11 @@ print(textCount)
 let textCap = text.map { $0.capitalized }
 print(textCap)
 
+//4.2 Написать 2 примера с использованием .filter
+
+let plusFilter1 = plus.filter { $0 <= 5 }
+print(plusFilter1)
+
+let filterText = text.filter { $0.contains("n") }
+print(filterText)
+
