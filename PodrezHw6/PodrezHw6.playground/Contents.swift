@@ -77,3 +77,12 @@ print(plusFilter1)
 let filterText = text.filter { $0.contains("n") }
 print(filterText)
 
+//4.3 Написать 2 примера с использованием .compactMap
+
+let textValidation = text.compactMap { $0.contains("a") }
+print(textValidation)
+//не совсем то, что я хотел ) но рабоатет
+
+let oddArrArray = arrArray.compactMap { Int($0) }.filter { $0 % 2 == 0 }
+print (oddArrArray)
+
