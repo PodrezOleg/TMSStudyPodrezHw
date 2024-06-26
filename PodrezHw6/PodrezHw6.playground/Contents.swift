@@ -53,6 +53,12 @@ func intSquare2(arrArray2: [Int]) -> [Int] {
 }
 print(intSquare2(arrArray2: otherArr))
 
+//3.1.1
+func intSquqre3(arrArray2: [Int]) -> [Int] {
+    return arrArray2.map {$0 * $0}
+}
+let someNum = intSquqre3(arrArray2: [1, 6, 8, 2, 10])
+print(someNum)
 
 //4.1 Написать 3 примера с использованием .map
 
