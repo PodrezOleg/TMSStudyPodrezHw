@@ -47,8 +47,15 @@ class Student: Person {
         self.subjects = subjects
         super.init(name: name, surname: surname, age: age)
     }
-        func getGrade() -> Int {
+    var getGrade: Int {
             return grade
+    }
+    
+    func printStudentInfo() {
+        print("\(surname) \(name) \(grade)")
+        for subject in subjects {
+            print("\(subject.0.rawValue) оценка \(subject.1)")
+        }
     }
  }
 
@@ -63,34 +70,39 @@ struct Address {
 }
 
 class School {
-    var students: [String]
+    var students: [Student]
     var schoolName: String
     var address: Address
     var director: Director
     
-    init(students: [String], schoolName: String, address: Address, director: Director) {
+    init(students: [Student], schoolName: String, address: Address, director: Director) {
         self.students = students
         self.schoolName = schoolName
         self.address = address
         self.director = director
     }
+    func printSchoolInfo() {
+        print("Адресс \(address.description), Найменование школы \(schoolName), Директо \(director.name) \(director.surname)")
+        print("ЛУчшие студены")
+              for student in students {
+            student.printStudentInfo()
+      }
+   }
 }
 
 let director = Director(experience: 10, rating: .excellent, name: "Ivan", surname: "Ivanovich", age: 50)
 let address = Address(longitude: 85.131, latitude: 621.1516, street: "Lenina 1")
-let school = School(students: ["Ivan", "Kiril", "Inga", "Mark"], schoolName: "Gimnasium 12", address: address, director: director)
+let students = Student(name: "Ivan", surname: "Ivanovich", age: 14, grade: 3)
+
+
+print("Школа построена на улице \(address.street) ее координаты \(address.latitude) и \(address.longitude)")
+print("Студенты \(students.name) \(students.surname) возраст \(students.age) класс \(students.getGrade) ")
+
+print("Директор \(director.name) \(director.surname) \(director.experience) лет опыта, рейтинг \(Rating.excellent.rawValue) ")
 
 
 
-print("Школа построена на улице \(school.address.street)")
-print("Студенты \(school.students)")
-print(address.description)
-print("Директор \(school.director.name) \(school.director.surname) \(school.director.experience) лет опыта \(Rating.poor.rawValue) ")
 
-
-
-
-//2.1 У ученика хранить имя, фамилию, номер класса, кортеж “название предмета - оценка”. Ученик наследуется от Person.
 let studentMasha = Student(name: "Masha",
                            surname: "Smith",
                            age: 19, 
@@ -104,11 +116,18 @@ let studentIhar = Student(name: "Ihar",
                           subjects: [(SchoolSubject.law, 10), (SchoolSubject.math, 10), (SchoolSubject.psyhology, 10)]
 )
 
-let gradeMasha = studentMasha.getGrade()
-let gradeIhar = studentIhar.getGrade()
+let school = School(students: [studentIhar, studentMasha],
+                    schoolName: "Gimnasium 12",
+                    address: address,
+                    director: director)
+school.printSchoolInfo()
 
 
-print("Студент \(studentMasha.name) \(studentMasha.surname) на \(studentMasha.grade) курс в возрасте \(studentMasha.age) лет и получила следующие оценки:")
+let gradeMasha = studentMasha.getGrade
+let gradeIhar = studentIhar.getGrade
+
+
+print("Студент \(studentMasha.name) \(studentMasha.surname) на \(studentMasha.getGrade) курс в возрасте \(studentMasha.age) лет и получила следующие оценки:")
 for subject in studentMasha.subjects {
     switch subject.0 {
     case .math:
@@ -120,6 +139,10 @@ for subject in studentMasha.subjects {
     }
 }
 
-print("Студент \(studentIhar.name) \(studentIhar.surname) перевелся на \(studentIhar.grade) курс в возрасте \(studentIhar.age)")
+print("Студент \(studentIhar.name) \(studentIhar.surname) перевелся на \(studentIhar.getGrade) курс в возрасте \(studentIhar.age)")
+
+
+print(address.description)
+
 
 
