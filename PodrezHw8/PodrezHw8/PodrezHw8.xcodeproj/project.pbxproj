@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,10 +13,24 @@
 		FFB231E62C31555B003A61D9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FFB231E52C31555B003A61D9 /* Base */; };
 		FFB231E82C31555D003A61D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB231E72C31555D003A61D9 /* Assets.xcassets */; };
 		FFB231EB2C31555D003A61D9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FFB231EA2C31555D003A61D9 /* Base */; };
+		FFB2320A2C31618F003A61D9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FFB232092C31618F003A61D9 /* SnapKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FFB232072C31613B003A61D9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		FFB231DB2C31555B003A61D9 /* PodrezHw8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodrezHw8.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFB231DB2C31555B003A61D9 /* PodrezHw8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PodrezHw8.app; path = "/Users/olegpodrez/Documents/XCode/Podrez/TmsPodrezHw/TMSStudyPodrezHw/TMSStudyPodrezHw/PodrezHw8/PodrezHw8/build/Debug-iphoneos/PodrezHw8.app"; sourceTree = "<absolute>"; };
 		FFB231DE2C31555B003A61D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFB231E02C31555B003A61D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FFB231E22C31555B003A61D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB2320A2C31618F003A61D9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,16 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				FFB231DD2C31555B003A61D9 /* PodrezHw8 */,
-				FFB231DC2C31555B003A61D9 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		FFB231DC2C31555B003A61D9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FFB231DB2C31555B003A61D9 /* PodrezHw8.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		FFB231DD2C31555B003A61D9 /* PodrezHw8 */ = {
@@ -77,12 +83,16 @@
 				FFB231D72C31555B003A61D9 /* Sources */,
 				FFB231D82C31555B003A61D9 /* Frameworks */,
 				FFB231D92C31555B003A61D9 /* Resources */,
+				FFB232072C31613B003A61D9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PodrezHw8;
+			packageProductDependencies = (
+				FFB232092C31618F003A61D9 /* SnapKit */,
+			);
 			productName = PodrezHw8;
 			productReference = FFB231DB2C31555B003A61D9 /* PodrezHw8.app */;
 			productType = "com.apple.product-type.application";
@@ -111,7 +121,10 @@
 				Base,
 			);
 			mainGroup = FFB231D22C31555B003A61D9;
-			productRefGroup = FFB231DC2C31555B003A61D9 /* Products */;
+			packageReferences = (
+				FFB232082C31618F003A61D9 /* XCLocalSwiftPackageReference "../../../SnapKit/SnapKit" */,
+			);
+			productRefGroup = FFB231D22C31555B003A61D9;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -373,6 +386,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		FFB232082C31618F003A61D9 /* XCLocalSwiftPackageReference "../../../SnapKit/SnapKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../../SnapKit/SnapKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FFB232092C31618F003A61D9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FFB231D32C31555B003A61D9 /* Project object */;
 }
