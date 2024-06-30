@@ -3,72 +3,77 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FFB231DF2C31555B003A61D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231DE2C31555B003A61D9 /* AppDelegate.swift */; };
-		FFB231E12C31555B003A61D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231E02C31555B003A61D9 /* SceneDelegate.swift */; };
-		FFB231E32C31555B003A61D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231E22C31555B003A61D9 /* ViewController.swift */; };
-		FFB231E62C31555B003A61D9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FFB231E52C31555B003A61D9 /* Base */; };
-		FFB231E82C31555D003A61D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB231E72C31555D003A61D9 /* Assets.xcassets */; };
-		FFB231EB2C31555D003A61D9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FFB231EA2C31555D003A61D9 /* Base */; };
-		FFB2320A2C31618F003A61D9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FFB232092C31618F003A61D9 /* SnapKit */; };
+		FF726B972C31CE2D0005B690 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF726B962C31CE2D0005B690 /* LoginViewController.swift */; };
+		FF726B992C31EDEA0005B690 /* MyHomeControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF726B982C31EDEA0005B690 /* MyHomeControlViewController.swift */; };
+		FFB081242C31953A005F5324 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB081232C31953A005F5324 /* AppDelegate.swift */; };
+		FFB081262C31953A005F5324 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB081252C31953A005F5324 /* SceneDelegate.swift */; };
+		FFB081282C31953A005F5324 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB081272C31953A005F5324 /* ViewController.swift */; };
+		FFB0812B2C31953A005F5324 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FFB0812A2C31953A005F5324 /* Base */; };
+		FFB0812D2C31953C005F5324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB0812C2C31953C005F5324 /* Assets.xcassets */; };
+		FFB081302C31953C005F5324 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FFB0812F2C31953C005F5324 /* Base */; };
+		FFB081392C31976E005F5324 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FFB081382C31976E005F5324 /* SnapKit */; };
+		FFB0813B2C319CBB005F5324 /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0813A2C319CBB005F5324 /* ManualViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		FFB232072C31613B003A61D9 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		FFB231DB2C31555B003A61D9 /* PodrezHw8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PodrezHw8.app; path = "/Users/olegpodrez/Documents/XCode/Podrez/TmsPodrezHw/TMSStudyPodrezHw/TMSStudyPodrezHw/PodrezHw8/PodrezHw8/build/Debug-iphoneos/PodrezHw8.app"; sourceTree = "<absolute>"; };
-		FFB231DE2C31555B003A61D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FFB231E02C31555B003A61D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FFB231E22C31555B003A61D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FFB231E52C31555B003A61D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FFB231E72C31555D003A61D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FFB231EA2C31555D003A61D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FFB231EC2C31555D003A61D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF726B962C31CE2D0005B690 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		FF726B982C31EDEA0005B690 /* MyHomeControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomeControlViewController.swift; sourceTree = SOURCE_ROOT; };
+		FFB081202C31953A005F5324 /* PodrezHw8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodrezHw8.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFB081232C31953A005F5324 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FFB081252C31953A005F5324 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FFB081272C31953A005F5324 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FFB0812A2C31953A005F5324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FFB0812C2C31953C005F5324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFB0812F2C31953C005F5324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FFB081312C31953C005F5324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFB0813A2C319CBB005F5324 /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FFB231D82C31555B003A61D9 /* Frameworks */ = {
+		FFB0811D2C31953A005F5324 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFB2320A2C31618F003A61D9 /* SnapKit in Frameworks */,
+				FFB081392C31976E005F5324 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FFB231D22C31555B003A61D9 = {
+		FFB081172C31953A005F5324 = {
 			isa = PBXGroup;
 			children = (
-				FFB231DD2C31555B003A61D9 /* PodrezHw8 */,
+				FFB081222C31953A005F5324 /* PodrezHw8 */,
+				FFB081212C31953A005F5324 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FFB231DD2C31555B003A61D9 /* PodrezHw8 */ = {
+		FFB081212C31953A005F5324 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FFB231DE2C31555B003A61D9 /* AppDelegate.swift */,
-				FFB231E02C31555B003A61D9 /* SceneDelegate.swift */,
-				FFB231E22C31555B003A61D9 /* ViewController.swift */,
-				FFB231E42C31555B003A61D9 /* Main.storyboard */,
-				FFB231E72C31555D003A61D9 /* Assets.xcassets */,
-				FFB231E92C31555D003A61D9 /* LaunchScreen.storyboard */,
-				FFB231EC2C31555D003A61D9 /* Info.plist */,
+				FFB081202C31953A005F5324 /* PodrezHw8.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFB081222C31953A005F5324 /* PodrezHw8 */ = {
+			isa = PBXGroup;
+			children = (
+				FF726B982C31EDEA0005B690 /* MyHomeControlViewController.swift */,
+				FF726B962C31CE2D0005B690 /* LoginViewController.swift */,
+				FFB0813A2C319CBB005F5324 /* ManualViewController.swift */,
+				FFB081232C31953A005F5324 /* AppDelegate.swift */,
+				FFB081252C31953A005F5324 /* SceneDelegate.swift */,
+				FFB081272C31953A005F5324 /* ViewController.swift */,
+				FFB081292C31953A005F5324 /* Main.storyboard */,
+				FFB0812C2C31953C005F5324 /* Assets.xcassets */,
+				FFB0812E2C31953C005F5324 /* LaunchScreen.storyboard */,
+				FFB081312C31953C005F5324 /* Info.plist */,
 			);
 			path = PodrezHw8;
 			sourceTree = "<group>";
@@ -76,14 +81,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FFB231DA2C31555B003A61D9 /* PodrezHw8 */ = {
+		FFB0811F2C31953A005F5324 /* PodrezHw8 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FFB231EF2C31555D003A61D9 /* Build configuration list for PBXNativeTarget "PodrezHw8" */;
+			buildConfigurationList = FFB081342C31953C005F5324 /* Build configuration list for PBXNativeTarget "PodrezHw8" */;
 			buildPhases = (
-				FFB231D72C31555B003A61D9 /* Sources */,
-				FFB231D82C31555B003A61D9 /* Frameworks */,
-				FFB231D92C31555B003A61D9 /* Resources */,
-				FFB232072C31613B003A61D9 /* Embed Frameworks */,
+				FFB0811C2C31953A005F5324 /* Sources */,
+				FFB0811D2C31953A005F5324 /* Frameworks */,
+				FFB0811E2C31953A005F5324 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -91,28 +95,28 @@
 			);
 			name = PodrezHw8;
 			packageProductDependencies = (
-				FFB232092C31618F003A61D9 /* SnapKit */,
+				FFB081382C31976E005F5324 /* SnapKit */,
 			);
 			productName = PodrezHw8;
-			productReference = FFB231DB2C31555B003A61D9 /* PodrezHw8.app */;
+			productReference = FFB081202C31953A005F5324 /* PodrezHw8.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FFB231D32C31555B003A61D9 /* Project object */ = {
+		FFB081182C31953A005F5324 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					FFB231DA2C31555B003A61D9 = {
+					FFB0811F2C31953A005F5324 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = FFB231D62C31555B003A61D9 /* Build configuration list for PBXProject "PodrezHw8" */;
+			buildConfigurationList = FFB0811B2C31953A005F5324 /* Build configuration list for PBXProject "PodrezHw8" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -120,58 +124,61 @@
 				en,
 				Base,
 			);
-			mainGroup = FFB231D22C31555B003A61D9;
+			mainGroup = FFB081172C31953A005F5324;
 			packageReferences = (
-				FFB232082C31618F003A61D9 /* XCLocalSwiftPackageReference "../../../SnapKit/SnapKit" */,
+				FFB081372C31976E005F5324 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
-			productRefGroup = FFB231D22C31555B003A61D9;
+			productRefGroup = FFB081212C31953A005F5324 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FFB231DA2C31555B003A61D9 /* PodrezHw8 */,
+				FFB0811F2C31953A005F5324 /* PodrezHw8 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FFB231D92C31555B003A61D9 /* Resources */ = {
+		FFB0811E2C31953A005F5324 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFB231E82C31555D003A61D9 /* Assets.xcassets in Resources */,
-				FFB231EB2C31555D003A61D9 /* Base in Resources */,
-				FFB231E62C31555B003A61D9 /* Base in Resources */,
+				FFB0812D2C31953C005F5324 /* Assets.xcassets in Resources */,
+				FFB081302C31953C005F5324 /* Base in Resources */,
+				FFB0812B2C31953A005F5324 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FFB231D72C31555B003A61D9 /* Sources */ = {
+		FFB0811C2C31953A005F5324 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFB231E32C31555B003A61D9 /* ViewController.swift in Sources */,
-				FFB231DF2C31555B003A61D9 /* AppDelegate.swift in Sources */,
-				FFB231E12C31555B003A61D9 /* SceneDelegate.swift in Sources */,
+				FFB081282C31953A005F5324 /* ViewController.swift in Sources */,
+				FFB081242C31953A005F5324 /* AppDelegate.swift in Sources */,
+				FFB0813B2C319CBB005F5324 /* ManualViewController.swift in Sources */,
+				FF726B992C31EDEA0005B690 /* MyHomeControlViewController.swift in Sources */,
+				FF726B972C31CE2D0005B690 /* LoginViewController.swift in Sources */,
+				FFB081262C31953A005F5324 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FFB231E42C31555B003A61D9 /* Main.storyboard */ = {
+		FFB081292C31953A005F5324 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FFB231E52C31555B003A61D9 /* Base */,
+				FFB0812A2C31953A005F5324 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		FFB231E92C31555D003A61D9 /* LaunchScreen.storyboard */ = {
+		FFB0812E2C31953C005F5324 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FFB231EA2C31555D003A61D9 /* Base */,
+				FFB0812F2C31953C005F5324 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -179,7 +186,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		FFB231ED2C31555D003A61D9 /* Debug */ = {
+		FFB081322C31953C005F5324 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -242,7 +249,7 @@
 			};
 			name = Debug;
 		};
-		FFB231EE2C31555D003A61D9 /* Release */ = {
+		FFB081332C31953C005F5324 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -298,7 +305,7 @@
 			};
 			name = Release;
 		};
-		FFB231F02C31555D003A61D9 /* Debug */ = {
+		FFB081352C31953C005F5324 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -331,7 +338,7 @@
 			};
 			name = Debug;
 		};
-		FFB231F12C31555D003A61D9 /* Release */ = {
+		FFB081362C31953C005F5324 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -367,39 +374,44 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FFB231D62C31555B003A61D9 /* Build configuration list for PBXProject "PodrezHw8" */ = {
+		FFB0811B2C31953A005F5324 /* Build configuration list for PBXProject "PodrezHw8" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FFB231ED2C31555D003A61D9 /* Debug */,
-				FFB231EE2C31555D003A61D9 /* Release */,
+				FFB081322C31953C005F5324 /* Debug */,
+				FFB081332C31953C005F5324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FFB231EF2C31555D003A61D9 /* Build configuration list for PBXNativeTarget "PodrezHw8" */ = {
+		FFB081342C31953C005F5324 /* Build configuration list for PBXNativeTarget "PodrezHw8" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FFB231F02C31555D003A61D9 /* Debug */,
-				FFB231F12C31555D003A61D9 /* Release */,
+				FFB081352C31953C005F5324 /* Debug */,
+				FFB081362C31953C005F5324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		FFB232082C31618F003A61D9 /* XCLocalSwiftPackageReference "../../../SnapKit/SnapKit" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../../SnapKit/SnapKit;
+/* Begin XCRemoteSwiftPackageReference section */
+		FFB081372C31976E005F5324 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FFB232092C31618F003A61D9 /* SnapKit */ = {
+		FFB081382C31976E005F5324 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = FFB081372C31976E005F5324 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = FFB231D32C31555B003A61D9 /* Project object */;
+	rootObject = FFB081182C31953A005F5324 /* Project object */;
 }
