@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FF726B972C31CE2D0005B690 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF726B962C31CE2D0005B690 /* LoginViewController.swift */; };
 		FF726B992C31EDEA0005B690 /* MyHomeControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF726B982C31EDEA0005B690 /* MyHomeControlViewController.swift */; };
+		FF726B9B2C32B5F30005B690 /* RegistrationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF726B9A2C32B5F30005B690 /* RegistrationFormViewController.swift */; };
 		FFB081242C31953A005F5324 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB081232C31953A005F5324 /* AppDelegate.swift */; };
 		FFB081262C31953A005F5324 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB081252C31953A005F5324 /* SceneDelegate.swift */; };
 		FFB081282C31953A005F5324 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB081272C31953A005F5324 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		FF726B962C31CE2D0005B690 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		FF726B982C31EDEA0005B690 /* MyHomeControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomeControlViewController.swift; sourceTree = SOURCE_ROOT; };
+		FF726B9A2C32B5F30005B690 /* RegistrationFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFormViewController.swift; sourceTree = SOURCE_ROOT; };
 		FFB081202C31953A005F5324 /* PodrezHw8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodrezHw8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB081232C31953A005F5324 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFB081252C31953A005F5324 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		FFB081222C31953A005F5324 /* PodrezHw8 */ = {
 			isa = PBXGroup;
 			children = (
+				FF726B9A2C32B5F30005B690 /* RegistrationFormViewController.swift */,
 				FF726B982C31EDEA0005B690 /* MyHomeControlViewController.swift */,
 				FF726B962C31CE2D0005B690 /* LoginViewController.swift */,
 				FFB0813A2C319CBB005F5324 /* ManualViewController.swift */,
@@ -161,6 +164,7 @@
 				FF726B992C31EDEA0005B690 /* MyHomeControlViewController.swift in Sources */,
 				FF726B972C31CE2D0005B690 /* LoginViewController.swift in Sources */,
 				FFB081262C31953A005F5324 /* SceneDelegate.swift in Sources */,
+				FF726B9B2C32B5F30005B690 /* RegistrationFormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
