@@ -28,7 +28,7 @@ class RegistrationFormViewController: UIViewController {
         
         view.addSubview(imageBackround)
         imageBackround.translatesAutoresizingMaskIntoConstraints = false
-        imageBackround.image = UIImage(named: "Background2")
+        imageBackround.image = UIImage(named: "Background3")
         imageBackround.contentMode = .scaleAspectFill
         imageBackround.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -43,7 +43,7 @@ class RegistrationFormViewController: UIViewController {
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
         }
         
-        wrapper.backgroundColor = .green
+        wrapper.backgroundColor = .clear
         wrapper.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(wrapper)
         wrapper.snp.makeConstraints { make in
@@ -51,34 +51,58 @@ class RegistrationFormViewController: UIViewController {
             make.centerY.equalToSuperview().offset(40)
             make.width.equalToSuperview().multipliedBy(0.9)
             make.height.equalTo(550)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
+//            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
         }
         
         titleLabelName.text = "Username"
         titleLabelName.textColor = .white
         titleLabelName.font = .boldSystemFont(ofSize: 30)
-        view.addSubview(titleLabelName)
+        wrapper.addSubview(titleLabelName)
         titleLabelName.translatesAutoresizingMaskIntoConstraints = false
         titleLabelName.snp.makeConstraints { make in
             make.left.equalTo(wrapper.snp.left).offset(20)
             make.top.equalTo(wrapper.snp.top).offset(15)
         }
-        addTextField(userField, placeholder: "Please enter username", above: titleLabelName)
+        addTextField(userField, placeholder: "Please enter username", above: titleLabelName, topSpaicing: 10)
         
         titleLabelPassword.text = "Password"
         titleLabelPassword.textColor = .white
         titleLabelPassword.font = .boldSystemFont(ofSize: 30)
-        view.addSubview(titleLabelPassword)
+        wrapper.addSubview(titleLabelPassword)
         titleLabelPassword.translatesAutoresizingMaskIntoConstraints = false
         titleLabelPassword.snp.makeConstraints { make in
             make.left.equalTo(wrapper.snp.left).offset(20)
-            make.top.equalTo(titleLabelName.snp.top).offset(30)
+            make.top.equalTo(titleLabelName.snp.bottom).offset(50)
         }
         
         addTextField(passwordField, placeholder: "Please enter password", above: titleLabelPassword, topSpaicing: 10)
         
+        titleLabelConfirmPass.text = "Confirm Password"
+        titleLabelConfirmPass.textColor = .white
+        titleLabelConfirmPass.font = .boldSystemFont(ofSize: 30)
+        wrapper.addSubview(titleLabelConfirmPass)
+        titleLabelConfirmPass.translatesAutoresizingMaskIntoConstraints = false
+        titleLabelConfirmPass.snp.makeConstraints { make in
+            make.left.equalTo(wrapper.snp.left).offset(20)
+            make.top.equalTo(titleLabelPassword.snp.bottom).offset(50)
+        }
         
-            func addTextField(_ textField: UITextField, placeholder: String, above previousField: UIView?, topSpaicing: CGFloat = 15, leftOffset: CGFloat = 10, rightOffset: CGFloat = -10) {
+        addTextField(confirmPasswordField, placeholder: "Confirm password", above: titleLabelConfirmPass, topSpaicing: 10)
+
+        
+        button.setTitle("Save", for: .normal)
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
+        wrapper.addSubview(button)
+        button.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(titleLabelConfirmPass.snp.bottom).offset(130)
+            make.width.equalTo(100)
+        }
+            
+            
+      
+            func addTextField(_ textField: UITextField, placeholder: String, above previousField: UIView?, topSpaicing: CGFloat = 15, leftOffset: CGFloat = 20, rightOffset: CGFloat = -10) {
                 textField.placeholder = placeholder
                 textField.borderStyle = .roundedRect
                 wrapper.addSubview(textField)
@@ -93,9 +117,8 @@ class RegistrationFormViewController: UIViewController {
                     
                 }
             }
-        
-        
-     
+            
+            
         
     }
 }
