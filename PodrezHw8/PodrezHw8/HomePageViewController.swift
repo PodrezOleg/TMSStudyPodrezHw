@@ -23,23 +23,17 @@ class HomePageViewController: UIViewController {
     lazy var controlLight = UISegmentedControl()
     lazy var controlDoor = UISegmentedControl()
     lazy var controlAC = UISegmentedControl()
+    lazy var sliderTemp = UISlider()
+    lazy var labelSliderTemp = UILabel()
+    lazy var alarmButton = UIButton()
     
-    
-    //MARK: SLider atribution
-    lazy var sliderTemp: UISlider = .init(frame:
-        .zero, primaryAction: .init(handler: {
-            action in
-            print(self.sliderTemp.value)
-        }))
-    
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //MARK: Background Image
         
-        imageBackround.image = UIImage(named: "Background4")
+        imageBackround.image = UIImage(named: "Background5")
         imageBackround.translatesAutoresizingMaskIntoConstraints = false
         imageBackround.contentMode = .scaleAspectFit
         view.addSubview(imageBackround)
@@ -60,7 +54,7 @@ class HomePageViewController: UIViewController {
             make.height.equalToSuperview().multipliedBy(0.15)
         }
         
-        wrapperControls.backgroundColor = .lightGray
+        wrapperControls.backgroundColor = .clear
         wrapperControls.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(wrapperControls)
         wrapperControls.snp.makeConstraints { make in
@@ -68,7 +62,7 @@ class HomePageViewController: UIViewController {
             make.top.equalTo(wrapperUser.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.9)
-            make.height.equalToSuperview().multipliedBy(0.6)
+            make.height.equalToSuperview().multipliedBy(0.65)
         }
         
         //MARK: - Label User
@@ -107,7 +101,7 @@ class HomePageViewController: UIViewController {
             make.top.equalTo(labelControl.snp.bottom)
         }
         
-    
+        
         //MARK: - Label Controls Light
         
         labelLights.text = "Lights"
@@ -120,7 +114,7 @@ class HomePageViewController: UIViewController {
             make.top.equalToSuperview().offset(30)
         }
         
-       
+        
         
         
         //MARK: Control initiation and properties for light
@@ -145,7 +139,7 @@ class HomePageViewController: UIViewController {
         wrapperControls.addSubview(labelDoor)
         labelDoor.snp.makeConstraints { make in
             make.top.equalTo(controlLight.snp.bottom).offset(15)
-           
+            
         }
         
         //MARK: Control initiation and properties for Door
@@ -170,7 +164,7 @@ class HomePageViewController: UIViewController {
         wrapperControls.addSubview(labelAC)
         labelAC.snp.makeConstraints { make in
             make.top.equalTo(controlDoor.snp.bottom).offset(15)
-
+            
         }
         
         //MARK: Control initiation and properties for A/C
@@ -186,7 +180,7 @@ class HomePageViewController: UIViewController {
             make.width.equalTo(150)
         }
         
-      
+        
         //MARK: - Label Controls Temperature
         
         labelTemp.text = "Temperture"
@@ -199,17 +193,55 @@ class HomePageViewController: UIViewController {
         }
         
         
-      
-        //MARK: -Control initiation and properties for Slider temp
-       
-     
-        sliderTemp.frame = .init(x: .zero, y: 150, width: 400, height: 20)
+        //MARK: -Control and label initiation and properties for Slider temp
+        
+        sliderTemp.minimumValue = 16
+        sliderTemp.maximumValue = 32
+        sliderTemp.value = 22
         sliderTemp.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(sliderTemp)
+        sliderTemp.isContinuous = true
+        wrapperControls.addSubview(sliderTemp)
         sliderTemp.snp.makeConstraints { make in
             make.top.equalTo(labelTemp.snp.bottom).offset(15)
+            make.width.equalTo(wrapperControls).multipliedBy(0.5)
         }
+        
+        labelSliderTemp.textColor = .white
+        labelSliderTemp.font = .systemFont(ofSize: 20)
+        labelSliderTemp.translatesAutoresizingMaskIntoConstraints = false
+               wrapperControls.addSubview(labelSliderTemp)
+        labelSliderTemp.snp.makeConstraints { make in
+            make.leading.equalTo(sliderTemp.snp.trailing).offset(10)
+            make.centerY.equalTo(sliderTemp.snp.centerY)
+            
+               }
+        
+        sliderTemp.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        updateSliderValueLabel(value: Int(sliderTemp.value))
+    }
+    
+    @objc func sliderValueChanged(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+        updateSliderValueLabel(value: currentValue)
+    }
+    
+    func updateSliderValueLabel(value: Int) {
+        labelSliderTemp.text = "\(value)°C"
+    
+        //MARK: - ALarm Button
+        
+        alarmButton.setTitle("Alarm", for: .normal)
+        alarmButton.setTitleColor(.red, for: .normal)
+        alarmButton.backgroundColor = .white
+        alarmButton.translatesAutoresizingMaskIntoConstraints = false
+        wrapperControls.addSubview(alarmButton)
+        alarmButton.snp.makeConstraints { make in
+            make.leftMargin.equalToSuperview()
+            make.width.equalTo(100)
+            make.bottom.equalTo(wrapperControls.snp_bottomMargin)
+        }
+        
+        
         
     }
 }
-            
