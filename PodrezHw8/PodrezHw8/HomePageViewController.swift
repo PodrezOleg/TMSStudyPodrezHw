@@ -25,6 +25,14 @@ class HomePageViewController: UIViewController {
     lazy var controlAC = UISegmentedControl()
     
     
+    //MARK: SLider atribution
+    lazy var sliderTemp: UISlider = .init(frame:
+        .zero, primaryAction: .init(handler: {
+            action in
+            print(self.sliderTemp.value)
+        }))
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +60,7 @@ class HomePageViewController: UIViewController {
             make.height.equalToSuperview().multipliedBy(0.15)
         }
         
-        wrapperControls.backgroundColor = .clear
+        wrapperControls.backgroundColor = .lightGray
         wrapperControls.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(wrapperControls)
         wrapperControls.snp.makeConstraints { make in
@@ -178,7 +186,29 @@ class HomePageViewController: UIViewController {
             make.width.equalTo(150)
         }
         
+      
+        //MARK: - Label Controls Temperature
         
+        labelTemp.text = "Temperture"
+        labelTemp.textColor = .white
+        labelTemp.font = .systemFont(ofSize: 25)
+        labelTemp.translatesAutoresizingMaskIntoConstraints = false
+        wrapperControls.addSubview(labelTemp)
+        labelTemp.snp.makeConstraints { make in
+            make.top.equalTo(controlAC.snp.bottom).offset(15)
+        }
+        
+        
+      
+        //MARK: -Control initiation and properties for Slider temp
+       
+     
+        sliderTemp.frame = .init(x: .zero, y: 150, width: 400, height: 20)
+        sliderTemp.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(sliderTemp)
+        sliderTemp.snp.makeConstraints { make in
+            make.top.equalTo(labelTemp.snp.bottom).offset(15)
+        }
         
     }
 }
