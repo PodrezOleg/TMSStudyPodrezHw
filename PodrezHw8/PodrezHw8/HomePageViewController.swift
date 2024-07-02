@@ -101,7 +101,6 @@ class HomePageViewController: UIViewController {
             make.top.equalTo(labelControl.snp.bottom)
         }
         
-        
         //MARK: - Label Controls Light
         
         labelLights.text = "Lights"
@@ -113,9 +112,6 @@ class HomePageViewController: UIViewController {
             make.leftMargin.equalToSuperview()
             make.top.equalToSuperview().offset(30)
         }
-        
-        
-        
         
         //MARK: Control initiation and properties for light
         
@@ -139,7 +135,6 @@ class HomePageViewController: UIViewController {
         wrapperControls.addSubview(labelDoor)
         labelDoor.snp.makeConstraints { make in
             make.top.equalTo(controlLight.snp.bottom).offset(15)
-            
         }
         
         //MARK: Control initiation and properties for Door
@@ -164,7 +159,6 @@ class HomePageViewController: UIViewController {
         wrapperControls.addSubview(labelAC)
         labelAC.snp.makeConstraints { make in
             make.top.equalTo(controlDoor.snp.bottom).offset(15)
-            
         }
         
         //MARK: Control initiation and properties for A/C
@@ -180,7 +174,6 @@ class HomePageViewController: UIViewController {
             make.width.equalTo(150)
         }
         
-        
         //MARK: - Label Controls Temperature
         
         labelTemp.text = "Temperture"
@@ -191,7 +184,6 @@ class HomePageViewController: UIViewController {
         labelTemp.snp.makeConstraints { make in
             make.top.equalTo(controlAC.snp.bottom).offset(15)
         }
-        
         
         //MARK: -Control and label initiation and properties for Slider temp
         
@@ -240,8 +232,5 @@ class HomePageViewController: UIViewController {
             make.width.equalTo(100)
             make.bottom.equalTo(wrapperControls.snp_bottomMargin)
         }
-        
-        
-        
     }
 }
