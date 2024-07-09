@@ -17,7 +17,6 @@ class SecondViewController: UIViewController {
         labelText.text = "Hello"
         view.addSubview(labelText)
         labelText.translatesAutoresizingMaskIntoConstraints = false
-        
         labelText.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
@@ -25,11 +24,8 @@ class SecondViewController: UIViewController {
         view.backgroundColor = .purple
         title = "Second Screen"
         
-//        func viewDidAppear(_ animated: Bool) {
-//            super.viewDidAppear(animated)
-//            
-            
-            
+        func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
         }
     }
-
+}
