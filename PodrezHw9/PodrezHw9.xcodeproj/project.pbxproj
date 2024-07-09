@@ -13,9 +13,11 @@
 		FF71B54B2C355D77004A8A78 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF71B54A2C355D77004A8A78 /* Base */; };
 		FF71B54D2C355D79004A8A78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71B54C2C355D79004A8A78 /* Assets.xcassets */; };
 		FF71B5502C355D79004A8A78 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF71B54F2C355D79004A8A78 /* Base */; };
-		FF71B5582C355EA9004A8A78 /* OrangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71B5572C355EA9004A8A78 /* OrangeViewController.swift */; };
-		FF71B55A2C355ED2004A8A78 /* VioletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71B5592C355ED1004A8A78 /* VioletViewController.swift */; };
 		FF71B55D2C35629E004A8A78 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FF71B55C2C35629E004A8A78 /* SnapKit */; };
+		FFFA1B372C3C4F6700CD1D4F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA1B362C3C4F6700CD1D4F /* FirstViewController.swift */; };
+		FFFA1B392C3C4F7100CD1D4F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA1B382C3C4F7100CD1D4F /* SecondViewController.swift */; };
+		FFFA1B3B2C3C4F9300CD1D4F /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA1B3A2C3C4F9300CD1D4F /* ThirdViewController.swift */; };
+		FFFA1B3D2C3D3D5000CD1D4F /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFA1B3C2C3D3D5000CD1D4F /* TabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +29,10 @@
 		FF71B54C2C355D79004A8A78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF71B54F2C355D79004A8A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF71B5512C355D79004A8A78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF71B5572C355EA9004A8A78 /* OrangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeViewController.swift; sourceTree = "<group>"; };
-		FF71B5592C355ED1004A8A78 /* VioletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VioletViewController.swift; sourceTree = "<group>"; };
+		FFFA1B362C3C4F6700CD1D4F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		FFFA1B382C3C4F7100CD1D4F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		FFFA1B3A2C3C4F9300CD1D4F /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		FFFA1B3C2C3D3D5000CD1D4F /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF68A0332C3C2E6300DAD628 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FFFA1B362C3C4F6700CD1D4F /* FirstViewController.swift */,
+				FFFA1B382C3C4F7100CD1D4F /* SecondViewController.swift */,
+				FFFA1B3A2C3C4F9300CD1D4F /* ThirdViewController.swift */,
+				FFFA1B3C2C3D3D5000CD1D4F /* TabViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		FF71B5372C355D77004A8A78 = {
 			isa = PBXGroup;
 			children = (
@@ -69,8 +84,7 @@
 				FF71B54C2C355D79004A8A78 /* Assets.xcassets */,
 				FF71B54E2C355D79004A8A78 /* LaunchScreen.storyboard */,
 				FF71B5512C355D79004A8A78 /* Info.plist */,
-				FF71B5572C355EA9004A8A78 /* OrangeViewController.swift */,
-				FF71B5592C355ED1004A8A78 /* VioletViewController.swift */,
+				FF68A0332C3C2E6300DAD628 /* Controllers */,
 			);
 			path = PodrezHw9;
 			sourceTree = "<group>";
@@ -152,11 +166,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF71B5582C355EA9004A8A78 /* OrangeViewController.swift in Sources */,
 				FF71B5482C355D77004A8A78 /* ViewController.swift in Sources */,
 				FF71B5442C355D77004A8A78 /* AppDelegate.swift in Sources */,
 				FF71B5462C355D77004A8A78 /* SceneDelegate.swift in Sources */,
-				FF71B55A2C355ED2004A8A78 /* VioletViewController.swift in Sources */,
+				FFFA1B392C3C4F7100CD1D4F /* SecondViewController.swift in Sources */,
+				FFFA1B3B2C3C4F9300CD1D4F /* ThirdViewController.swift in Sources */,
+				FFFA1B3D2C3D3D5000CD1D4F /* TabViewController.swift in Sources */,
+				FFFA1B372C3C4F6700CD1D4F /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
