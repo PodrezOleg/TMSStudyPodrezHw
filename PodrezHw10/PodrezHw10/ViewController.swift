@@ -91,9 +91,27 @@ class FifthViewController: UIViewController {
         homeButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10).isActive = true
         homeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         homeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-      
+     
+         let secondPage = UIButton()
+        secondPage.setTitle("To second Page", for: .normal)
+         secondPage.setTitleColor(.white, for: .normal)
+         view.addSubview(secondPage)
+         secondPage.translatesAutoresizingMaskIntoConstraints = false
+        secondPage.addTarget(self, action: #selector(tapSecondButoon), for: .touchUpInside)
+        secondPage.topAnchor.constraint(equalTo: homeButton.bottomAnchor, constant: 100).isActive = true
+        secondPage.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        secondPage.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
+    
     @objc func tapHomeButton() {
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func tapSecondButoon() {
+        if let secondController = navigationController?.viewControllers.first(where: {
+            $0 is SecondViewController
+        }) {
+            navigationController?.popToViewController(secondController, animated: true)
+        }
     }
 }
