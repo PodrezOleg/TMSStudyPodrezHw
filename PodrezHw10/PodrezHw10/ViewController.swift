@@ -2,77 +2,84 @@
 //  ViewController.swift
 //  PodrezHw10
 //
-//  Created by Oleg Podrez on 10.07.24.
+//  Created by Oleg Podrez on 13.07.24.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
     
-    let buttonTo5th = UIButton(type: .system)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemCyan
+        navigationItem.title = "First Page"
+        let button = UIButton()
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("5TH Page", for: .normal)
+        button.setTitleColor(.systemOrange, for: .normal)
+        button.addTarget(self, action: #selector(clickTheButton), for: .touchUpInside)
+        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        
+    }
+    @objc func clickTheButton() {
+        let secondCotroller = SecondViewController()
+        let thirdController = ThirdViewController()
+        let fourthController = ForthViewController()
+        let fifthController = FifthViewController()
        
-        buttonTo5th.frame = .init(x: 50, y: 350, width: 100, height: 25)
-        buttonTo5th.setTitle("5th Base", for: .normal)
-        buttonTo5th.setTitleColor(.systemOrange, for: .normal)
-        view.addSubview(buttonTo5th)
-        buttonTo5th.addTarget(self, action: #selector(pushThebutton), for: .touchUpInside)
+                
+        navigationController?.pushViewController(secondCotroller, animated: true)
+        navigationController?.pushViewController(thirdController, animated: true)
+        navigationController?.pushViewController(fourthController, animated: true)
+        navigationController?.pushViewController(fifthController, animated: true)
     }
-    
-    @objc func pushThebutton() {
-        let vc2 = vc2()
-        vc2.gotTheMessage = "Peekaboo"
-        navigationController?.pushViewController(vc2, animated: true)
-        print("Working")
+  
+}
+        class SecondViewController: UIViewController {
+
+            override func viewDidLoad() {
+                super.viewDidLoad()
+                view.backgroundColor = .systemMint
+                navigationItem.title = "Second Page"
     }
 }
 
-class vc2: UIViewController {
-    var gotTheMessage: String?
-    
+class ThirdViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
-            let vc3 = vc3()
-            self.navigationController?.pushViewController(vc3, animated: true)
+        view.backgroundColor = .systemPink
+        navigationItem.title = "Third Page"
     }
 }
 
-class vc3: UIViewController {
-    var gotTheMessage: String?
-    
+class ForthViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-            let vc4 = vc4()
-            self.navigationController?.pushViewController(vc4, animated: true)
+        view.backgroundColor = .systemTeal
+        navigationItem.title = "May 4"
     }
 }
 
-class vc4: UIViewController {
-    var gotTheMessage: String?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .cyan
-            let vc5 = vc5()
-            self.navigationController?.pushViewController(vc5, animated: true)
-    }
-}
+class FifthViewController: UIViewController {
 
-class vc5: UIViewController {
-    var gotTheMessage: String?
-    var label: UILabel?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        label = UILabel(frame: CGRect(x: 50, y: 350, width: 130, height: 50))
-        label?.text = gotTheMessage
-        if let label = label {
-            view.addSubview(label)
-        }
+        view.backgroundColor = .systemIndigo
+        navigationItem.title = "Fifth"
+        let label = UILabel()
+        label.text = "5 page"
+        label.textColor = .white
+        label.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
     }
 }

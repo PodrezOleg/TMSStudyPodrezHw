@@ -7,62 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF680A8E2C3E928900C0DA6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF680A8D2C3E928900C0DA6C /* AppDelegate.swift */; };
-		FF680A902C3E928900C0DA6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF680A8F2C3E928900C0DA6C /* SceneDelegate.swift */; };
-		FF680A922C3E928900C0DA6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF680A912C3E928900C0DA6C /* ViewController.swift */; };
-		FF680A952C3E928900C0DA6C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF680A942C3E928900C0DA6C /* Base */; };
-		FF680A972C3E928B00C0DA6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF680A962C3E928B00C0DA6C /* Assets.xcassets */; };
-		FF680A9A2C3E928B00C0DA6C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF680A992C3E928B00C0DA6C /* Base */; };
+		FF8965C52C429AE600FEE2C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8965C42C429AE600FEE2C9 /* AppDelegate.swift */; };
+		FF8965C72C429AE600FEE2C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8965C62C429AE600FEE2C9 /* SceneDelegate.swift */; };
+		FF8965C92C429AE600FEE2C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8965C82C429AE600FEE2C9 /* ViewController.swift */; };
+		FF8965CC2C429AE600FEE2C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF8965CB2C429AE600FEE2C9 /* Base */; };
+		FF8965CE2C429AE800FEE2C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF8965CD2C429AE800FEE2C9 /* Assets.xcassets */; };
+		FF8965D12C429AE800FEE2C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF8965D02C429AE800FEE2C9 /* Base */; };
+		FF8965DA2C429F0B00FEE2C9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FF8965D92C429F0B00FEE2C9 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FF680A8A2C3E928900C0DA6C /* PodrezHw10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodrezHw10.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF680A8D2C3E928900C0DA6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF680A8F2C3E928900C0DA6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF680A912C3E928900C0DA6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FF680A942C3E928900C0DA6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FF680A962C3E928B00C0DA6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FF680A992C3E928B00C0DA6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FF680A9B2C3E928B00C0DA6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF8965C12C429AE600FEE2C9 /* PodrezHw10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodrezHw10.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF8965C42C429AE600FEE2C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FF8965C62C429AE600FEE2C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FF8965C82C429AE600FEE2C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF8965CB2C429AE600FEE2C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FF8965CD2C429AE800FEE2C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF8965D02C429AE800FEE2C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FF8965D22C429AE800FEE2C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FF680A872C3E928900C0DA6C /* Frameworks */ = {
+		FF8965BE2C429AE600FEE2C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8965DA2C429F0B00FEE2C9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF680A812C3E928900C0DA6C = {
+		FF8965B82C429AE600FEE2C9 = {
 			isa = PBXGroup;
 			children = (
-				FF680A8C2C3E928900C0DA6C /* PodrezHw10 */,
-				FF680A8B2C3E928900C0DA6C /* Products */,
+				FF8965C32C429AE600FEE2C9 /* PodrezHw10 */,
+				FF8965C22C429AE600FEE2C9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FF680A8B2C3E928900C0DA6C /* Products */ = {
+		FF8965C22C429AE600FEE2C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF680A8A2C3E928900C0DA6C /* PodrezHw10.app */,
+				FF8965C12C429AE600FEE2C9 /* PodrezHw10.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FF680A8C2C3E928900C0DA6C /* PodrezHw10 */ = {
+		FF8965C32C429AE600FEE2C9 /* PodrezHw10 */ = {
 			isa = PBXGroup;
 			children = (
-				FF680A8D2C3E928900C0DA6C /* AppDelegate.swift */,
-				FF680A8F2C3E928900C0DA6C /* SceneDelegate.swift */,
-				FF680A912C3E928900C0DA6C /* ViewController.swift */,
-				FF680A932C3E928900C0DA6C /* Main.storyboard */,
-				FF680A962C3E928B00C0DA6C /* Assets.xcassets */,
-				FF680A982C3E928B00C0DA6C /* LaunchScreen.storyboard */,
-				FF680A9B2C3E928B00C0DA6C /* Info.plist */,
+				FF8965C42C429AE600FEE2C9 /* AppDelegate.swift */,
+				FF8965C62C429AE600FEE2C9 /* SceneDelegate.swift */,
+				FF8965C82C429AE600FEE2C9 /* ViewController.swift */,
+				FF8965CA2C429AE600FEE2C9 /* Main.storyboard */,
+				FF8965CD2C429AE800FEE2C9 /* Assets.xcassets */,
+				FF8965CF2C429AE800FEE2C9 /* LaunchScreen.storyboard */,
+				FF8965D22C429AE800FEE2C9 /* Info.plist */,
 			);
 			path = PodrezHw10;
 			sourceTree = "<group>";
@@ -70,39 +72,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF680A892C3E928900C0DA6C /* PodrezHw10 */ = {
+		FF8965C02C429AE600FEE2C9 /* PodrezHw10 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF680A9E2C3E928B00C0DA6C /* Build configuration list for PBXNativeTarget "PodrezHw10" */;
+			buildConfigurationList = FF8965D52C429AE800FEE2C9 /* Build configuration list for PBXNativeTarget "PodrezHw10" */;
 			buildPhases = (
-				FF680A862C3E928900C0DA6C /* Sources */,
-				FF680A872C3E928900C0DA6C /* Frameworks */,
-				FF680A882C3E928900C0DA6C /* Resources */,
+				FF8965BD2C429AE600FEE2C9 /* Sources */,
+				FF8965BE2C429AE600FEE2C9 /* Frameworks */,
+				FF8965BF2C429AE600FEE2C9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PodrezHw10;
+			packageProductDependencies = (
+				FF8965D92C429F0B00FEE2C9 /* SnapKit */,
+			);
 			productName = PodrezHw10;
-			productReference = FF680A8A2C3E928900C0DA6C /* PodrezHw10.app */;
+			productReference = FF8965C12C429AE600FEE2C9 /* PodrezHw10.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FF680A822C3E928900C0DA6C /* Project object */ = {
+		FF8965B92C429AE600FEE2C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					FF680A892C3E928900C0DA6C = {
+					FF8965C02C429AE600FEE2C9 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = FF680A852C3E928900C0DA6C /* Build configuration list for PBXProject "PodrezHw10" */;
+			buildConfigurationList = FF8965BC2C429AE600FEE2C9 /* Build configuration list for PBXProject "PodrezHw10" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,55 +115,58 @@
 				en,
 				Base,
 			);
-			mainGroup = FF680A812C3E928900C0DA6C;
-			productRefGroup = FF680A8B2C3E928900C0DA6C /* Products */;
+			mainGroup = FF8965B82C429AE600FEE2C9;
+			packageReferences = (
+				FF8965D82C429F0B00FEE2C9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
+			productRefGroup = FF8965C22C429AE600FEE2C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF680A892C3E928900C0DA6C /* PodrezHw10 */,
+				FF8965C02C429AE600FEE2C9 /* PodrezHw10 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FF680A882C3E928900C0DA6C /* Resources */ = {
+		FF8965BF2C429AE600FEE2C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF680A972C3E928B00C0DA6C /* Assets.xcassets in Resources */,
-				FF680A9A2C3E928B00C0DA6C /* Base in Resources */,
-				FF680A952C3E928900C0DA6C /* Base in Resources */,
+				FF8965CE2C429AE800FEE2C9 /* Assets.xcassets in Resources */,
+				FF8965D12C429AE800FEE2C9 /* Base in Resources */,
+				FF8965CC2C429AE600FEE2C9 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FF680A862C3E928900C0DA6C /* Sources */ = {
+		FF8965BD2C429AE600FEE2C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF680A922C3E928900C0DA6C /* ViewController.swift in Sources */,
-				FF680A8E2C3E928900C0DA6C /* AppDelegate.swift in Sources */,
-				FF680A902C3E928900C0DA6C /* SceneDelegate.swift in Sources */,
+				FF8965C92C429AE600FEE2C9 /* ViewController.swift in Sources */,
+				FF8965C52C429AE600FEE2C9 /* AppDelegate.swift in Sources */,
+				FF8965C72C429AE600FEE2C9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FF680A932C3E928900C0DA6C /* Main.storyboard */ = {
+		FF8965CA2C429AE600FEE2C9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FF680A942C3E928900C0DA6C /* Base */,
+				FF8965CB2C429AE600FEE2C9 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		FF680A982C3E928B00C0DA6C /* LaunchScreen.storyboard */ = {
+		FF8965CF2C429AE800FEE2C9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FF680A992C3E928B00C0DA6C /* Base */,
+				FF8965D02C429AE800FEE2C9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +174,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		FF680A9C2C3E928B00C0DA6C /* Debug */ = {
+		FF8965D32C429AE800FEE2C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -229,7 +237,7 @@
 			};
 			name = Debug;
 		};
-		FF680A9D2C3E928B00C0DA6C /* Release */ = {
+		FF8965D42C429AE800FEE2C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -285,7 +293,7 @@
 			};
 			name = Release;
 		};
-		FF680A9F2C3E928B00C0DA6C /* Debug */ = {
+		FF8965D62C429AE800FEE2C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -318,7 +326,7 @@
 			};
 			name = Debug;
 		};
-		FF680AA02C3E928B00C0DA6C /* Release */ = {
+		FF8965D72C429AE800FEE2C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -354,25 +362,44 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF680A852C3E928900C0DA6C /* Build configuration list for PBXProject "PodrezHw10" */ = {
+		FF8965BC2C429AE600FEE2C9 /* Build configuration list for PBXProject "PodrezHw10" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF680A9C2C3E928B00C0DA6C /* Debug */,
-				FF680A9D2C3E928B00C0DA6C /* Release */,
+				FF8965D32C429AE800FEE2C9 /* Debug */,
+				FF8965D42C429AE800FEE2C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF680A9E2C3E928B00C0DA6C /* Build configuration list for PBXNativeTarget "PodrezHw10" */ = {
+		FF8965D52C429AE800FEE2C9 /* Build configuration list for PBXNativeTarget "PodrezHw10" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF680A9F2C3E928B00C0DA6C /* Debug */,
-				FF680AA02C3E928B00C0DA6C /* Release */,
+				FF8965D62C429AE800FEE2C9 /* Debug */,
+				FF8965D72C429AE800FEE2C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FF8965D82C429F0B00FEE2C9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FF8965D92C429F0B00FEE2C9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF8965D82C429F0B00FEE2C9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = FF680A822C3E928900C0DA6C /* Project object */;
+	rootObject = FF8965B92C429AE600FEE2C9 /* Project object */;
 }

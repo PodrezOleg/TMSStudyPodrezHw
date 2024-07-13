@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  PodrezHw10
 //
-//  Created by Oleg Podrez on 10.07.24.
+//  Created by Oleg Podrez on 13.07.24.
 //
 
 import UIKit
@@ -10,15 +10,10 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let vc1 = ViewController()
-              let navigationController = UINavigationController(rootViewController: vc1)
-              window?.rootViewController = navigationController
-              window?.makeKeyAndVisible()
         return true
     }
 
