@@ -75,11 +75,25 @@ class FifthViewController: UIViewController {
         view.backgroundColor = .systemIndigo
         navigationItem.title = "Fifth"
         let label = UILabel()
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "5 page"
         label.textColor = .white
-        label.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        let homeButton = UIButton()
+        homeButton.setTitle("To the start", for: .normal)
+        homeButton.setTitleColor(.systemGreen, for: .normal)
+        homeButton.translatesAutoresizingMaskIntoConstraints = false
+        homeButton.addTarget(self, action: #selector(tapHomeButton), for: .touchUpInside)
+        view.addSubview(homeButton)
+        homeButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10).isActive = true
+        homeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        homeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+      
+    }
+    @objc func tapHomeButton() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }
