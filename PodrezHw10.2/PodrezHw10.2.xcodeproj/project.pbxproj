@@ -66,12 +66,12 @@
 			children = (
 				FFE4ABC92C433EEE001DF224 /* AppDelegate.swift */,
 				FFE4ABCB2C433EEE001DF224 /* SceneDelegate.swift */,
-				FFE4ABDD2C434387001DF224 /* Task1 */,
-				FFE4ABE22C434531001DF224 /* Task2 */,
 				FFE4ABCF2C433EEE001DF224 /* Main.storyboard */,
+				FFE4ABD72C433EF0001DF224 /* Info.plist */,
 				FFE4ABD22C433EF0001DF224 /* Assets.xcassets */,
 				FFE4ABD42C433EF0001DF224 /* LaunchScreen.storyboard */,
-				FFE4ABD72C433EF0001DF224 /* Info.plist */,
+				FFE4ABDD2C434387001DF224 /* Task1 */,
+				FFE4ABE22C434531001DF224 /* Task2 */,
 			);
 			path = PodrezHw10.2;
 			sourceTree = "<group>";
