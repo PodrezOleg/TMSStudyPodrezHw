@@ -25,8 +25,26 @@ class ViewController: UIViewController {
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        
+//        let task2Button = UIButton()
+//        view.addSubview(task2Button)
+//        task2Button.translatesAutoresizingMaskIntoConstraints = false
+//        task2Button.setTitle("Second Task HW10", for: .normal)
+//        task2Button.setTitleColor(.systemRed, for: .normal)
+//        task2Button.addTarget(self, action: #selector(goToTaskTwo), for: .touchUpInside)
+//        task2Button.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 20).isActive = true
+//        task2Button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
+    
+//    @objc func goToTaskTwo() {
+//        let task2Storyboard = UIStoryboard(name: "Task2", bundle: nil)
+//        guard let viewController = task2Storyboard.instantiateViewController(withIdentifier: "Task2ViewController") as? SecondTask2ViewController else {
+//            return
+//        }
+//        let healthyFood = HealthyFood(name: "Apple", count: 10, healthy: true)
+//        viewController.healthyFood = healthyFood
+//        navigationController?.pushViewController(viewController, animated: true)
+//    }
+    
     @objc func clickTheButton() {
         let secondCotroller = SecondViewController()
         let thirdController = ThirdViewController()
@@ -115,3 +133,4 @@ class FifthViewController: UIViewController {
         }
     }
 }
+
