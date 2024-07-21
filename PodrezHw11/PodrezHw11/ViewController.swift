@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .black
         
         lazy var calculatorMainView = UIStackView()
         lazy var calculatorLabelResult = UILabel()
@@ -25,23 +25,25 @@ class ViewController: UIViewController {
         view.addSubview(calculatorMainView)
         view.addSubview(calculatorLabelResult)
         
-        calculatorMainView.translatesAutoresizingMaskIntoConstraints = false
-        calculatorLabelResult.translatesAutoresizingMaskIntoConstraints = false
-        
         calculatorMainView.axis = .vertical
+        calculatorMainView.translatesAutoresizingMaskIntoConstraints = false
         calculatorMainView.spacing = 10
-        calculatorMainView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor).isActive = true
-        calculatorMainView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        calculatorMainView.snp.makeConstraints {make in
+            make.bottom.equalTo(view.snp_bottomMargin)
+            make.centerX.equalTo(view)
+        }
         rowsInMainStackView(row1, row2, row3, row4, row5)
         
+        calculatorLabelResult.translatesAutoresizingMaskIntoConstraints = false
         calculatorLabelResult.text = "0"
-        calculatorLabelResult.font = .systemFont(ofSize: 80)
         calculatorLabelResult.textColor = .white
-        calculatorLabelResult.textAlignment = .right
+        calculatorLabelResult.font = .systemFont(ofSize: 80)
         
-        calculatorLabelResult.bottomAnchor.constraint(equalTo: calculatorMainView.topAnchor, constant: -10).isActive = true
-        calculatorLabelResult.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 210).isActive = true
-        calculatorLabelResult.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30).isActive = true
+        calculatorLabelResult.snp.makeConstraints{ make in
+            make.bottom.equalTo(calculatorMainView.snp_topMargin)
+            make.leading.equalTo(view.safeAreaLayoutGuide).offset(300)
+            make.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
         
 //MARK: row1
     
