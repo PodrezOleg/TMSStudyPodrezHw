@@ -7,12 +7,11 @@
 
 import UIKit
 
-protocol EditFieldViewControllerDelegate: AnyObject {
-    func didUpdateField(fieldName: String, withValue value: String)
-}
 
-protocol EditInterestsViewControllerDelegate: AnyObject {
-    func didUpdateInterests(_ interests: [String])
+
+
+protocol SelectGenderViewControllerDelegate: AnyObject {
+    func didSelectGender(_ gender: String)
 }
 
 struct User {
@@ -24,21 +23,25 @@ struct User {
     var interests: [String]
 }
 
-class ProfileViewController: UIViewController, EditFieldViewControllerDelegate, EditInterestsViewControllerDelegate {
+class ProfileViewController: UIViewController, EditFieldViewControllerDelegate, EditInterestsViewControllerDelegate, SelectGenderViewControllerDelegate {
+   
+    var user: User = User(firstName: "", lastName: "", age: 0 , gender: "Укажите пол", birthDate: Date(), interests: ["Футбол", "Музыка", "Пить Пиво"])
 
-    var user: User = User(firstName: "", lastName: "", age: 25, gender: "", birthDate: Date(), interests: ["Футбол", "Музыка", "Пить Пиво"])
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        title = "Профиль Пользователя"
         setupUI()
     }
+    
+
     
     func setupUI() {
         let stackView = UIStackView()
         stackView.axis = .vertical
 
-        stackView.spacing = 30
+        stackView.spacing = 10
         stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
@@ -53,40 +56,44 @@ class ProfileViewController: UIViewController, EditFieldViewControllerDelegate, 
         stackView.addArrangedSubview(createLabelWithButton(labelText: "Фамилия: \(user.lastName)", action: #selector(editLastName)))
         stackView.addArrangedSubview(createLabelWithButton(labelText: "Возраст: \(user.age)", action: #selector(editAge)))
         stackView.addArrangedSubview(createLabelWithButton(labelText: "Пол: \(user.gender)", action: #selector(editGender)))
-        stackView.addArrangedSubview(createLabelWithButton(labelText: "День рождения: \(formatDate(user.birthDate))", action: #selector(editBirthDate)))
+        stackView.addArrangedSubview(createLabelWithButton(labelText: "Дата рождения: \(formatDate(user.birthDate))", action: #selector(editBirthDate)))
         stackView.addArrangedSubview(createLabelWithButton(labelText: "Интересы: \(user.interests.joined(separator: ", "))", action: #selector(editInterests)))
     }
     
     func createLabelWithButton(labelText: String, action: Selector) -> UIView {
-        let view = UIView()
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+
         let label = UILabel()
         label.backgroundColor = .lightGray
-        label.numberOfLines = .max
+        label.numberOfLines = 0
         label.text = labelText
-        
         label.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(label)
-        
+        containerView.addSubview(label)
+
         let editButton = UIButton(type: .system)
         editButton.setImage(UIImage(systemName: "pencil"), for: .normal)
         editButton.addTarget(self, action: action, for: .touchUpInside)
         editButton.translatesAutoresizingMaskIntoConstraints = false
-        editButton.isUserInteractionEnabled = true
-        view.addSubview(editButton)
-        
+        containerView.addSubview(editButton)
+
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-           
-            editButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            editButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            label.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            label.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            label.trailingAnchor.constraint(equalTo: editButton.leadingAnchor, constant: -30),
+            
+            editButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            editButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            editButton.widthAnchor.constraint(equalToConstant: 50),
+            editButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            containerView.heightAnchor.constraint(equalTo: label.heightAnchor, constant: 20)
         ])
         
-        return view
+        return containerView
     }
-    
+
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -96,7 +103,7 @@ class ProfileViewController: UIViewController, EditFieldViewControllerDelegate, 
     @objc func editButtonTapped() {
            print("Edit button tapped!")
        }
-    // Методы редактирования полей
+    
     @objc func editFirstName() {
         openEditScreen(fieldName: "Имя", initialValue: user.firstName)
     }
@@ -110,11 +117,53 @@ class ProfileViewController: UIViewController, EditFieldViewControllerDelegate, 
     }
     
     @objc func editGender() {
-        openEditScreen(fieldName: "Пол", initialValue: user.gender)
-    }
+           let selectGenderVC = SelectGenderViewController(currentGender: user.gender)
+           selectGenderVC.delegate = self
+           present(selectGenderVC, animated: true, completion: nil)
+       }
     
     @objc func editBirthDate() {
-        // Реализуйте этот метод для редактирования даты
+        let alertControl = UIAlertController(title: "Укажите Дату рождения", message: nil, preferredStyle: .alert)
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        
+     
+        let minDate = Calendar.current.date(byAdding: .year, value: -100, to: Date())
+        let maxDate = Date()
+        datePicker.maximumDate = maxDate
+        datePicker.minimumDate = minDate
+        
+        alertControl.view.addSubview(datePicker)
+        
+  
+        alertControl.view.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        datePicker.centerXAnchor.constraint(equalTo: alertControl.view.centerXAnchor).isActive = true
+        datePicker.topAnchor.constraint(equalTo: alertControl.view.topAnchor, constant: 50).isActive = true
+        
+  
+        let saveAction = UIAlertAction(title: "Сохранить", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            
+          
+            let selectedDate = datePicker.date
+            self.user.birthDate = selectedDate
+            self.user.age = self.calculateAge(from: selectedDate)
+            self.reloadUI()
+        }
+        alertControl.addAction(saveAction)
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        alertControl.addAction(cancelAction)
+        
+        present(alertControl, animated: true, completion: nil)
+    }
+
+    func calculateAge(from birthDate: Date) -> Int {
+        let calendar = Calendar.current
+        let ageComponents = calendar.dateComponents([.year], from: birthDate, to: Date())
+        return ageComponents.year ?? 0
     }
     
     @objc func editInterests() {
@@ -156,11 +205,15 @@ class ProfileViewController: UIViewController, EditFieldViewControllerDelegate, 
         user.interests = interests
         reloadUI()
     }
-
+    
+    func didSelectGender(_ gender: String) {
+        user.gender = gender
+        reloadUI()
+    }
     
     func reloadUI() {
-        // Перезагружаем все элементы интерфейса
-        view.subviews.forEach({ $0.removeFromSuperview() })
+    
+        view.subviews.forEach { $0.removeFromSuperview() }
         setupUI()
     }
 }

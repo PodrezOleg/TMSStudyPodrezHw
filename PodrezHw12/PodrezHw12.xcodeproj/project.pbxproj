@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF6DA14A2C694E9500D6DA6B /* SelectGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6DA1492C694E9500D6DA6B /* SelectGenderViewController.swift */; };
+		FF6DA14C2C6962F900D6DA6B /* EditSingleInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6DA14B2C6962F900D6DA6B /* EditSingleInterestViewController.swift */; };
 		FF86D3D02C68077B00AF3A4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF86D3CF2C68077B00AF3A4E /* AppDelegate.swift */; };
 		FF86D3D22C68077C00AF3A4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF86D3D12C68077C00AF3A4E /* SceneDelegate.swift */; };
 		FF86D3D42C68077C00AF3A4E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF86D3D32C68077C00AF3A4E /* ProfileViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF6DA1492C694E9500D6DA6B /* SelectGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderViewController.swift; sourceTree = "<group>"; };
+		FF6DA14B2C6962F900D6DA6B /* EditSingleInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSingleInterestViewController.swift; sourceTree = "<group>"; };
 		FF86D3CC2C68077B00AF3A4E /* PodrezHw12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodrezHw12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF86D3CF2C68077B00AF3A4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF86D3D12C68077C00AF3A4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +68,9 @@
 				FF86D3D12C68077C00AF3A4E /* SceneDelegate.swift */,
 				FF86D3D32C68077C00AF3A4E /* ProfileViewController.swift */,
 				FF86D3E32C68110E00AF3A4E /* EditFieldViewController.swift */,
+				FF6DA1492C694E9500D6DA6B /* SelectGenderViewController.swift */,
 				FF86D3E52C6923CA00AF3A4E /* EditInterestsViewController.swift */,
+				FF6DA14B2C6962F900D6DA6B /* EditSingleInterestViewController.swift */,
 				FF86D3D52C68077C00AF3A4E /* Main.storyboard */,
 				FF86D3D82C68077D00AF3A4E /* Assets.xcassets */,
 				FF86D3DA2C68077D00AF3A4E /* LaunchScreen.storyboard */,
@@ -144,11 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6DA14A2C694E9500D6DA6B /* SelectGenderViewController.swift in Sources */,
 				FF86D3E62C6923CA00AF3A4E /* EditInterestsViewController.swift in Sources */,
 				FF86D3D42C68077C00AF3A4E /* ProfileViewController.swift in Sources */,
 				FF86D3E42C68110E00AF3A4E /* EditFieldViewController.swift in Sources */,
 				FF86D3D02C68077B00AF3A4E /* AppDelegate.swift in Sources */,
 				FF86D3D22C68077C00AF3A4E /* SceneDelegate.swift in Sources */,
+				FF6DA14C2C6962F900D6DA6B /* EditSingleInterestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

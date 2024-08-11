@@ -7,11 +7,18 @@
 
 import UIKit
 
+protocol EditInterestsViewControllerDelegate: AnyObject {
+    func didUpdateInterests(_ interests: [String])
+}
+
+
 class EditFieldViewController: UIViewController {
     
     weak var delegate: EditFieldViewControllerDelegate?
     
     var fieldName: String
+    
+    
     var initialValue: String
     private let completion: (String) -> Void
     
@@ -32,7 +39,7 @@ class EditFieldViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .orange
         setupUI()
         
         textField.text = initialValue
