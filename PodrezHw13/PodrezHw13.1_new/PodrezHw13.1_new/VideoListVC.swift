@@ -24,6 +24,7 @@ class VideoListVC: UIViewController {
         
     }
     
+  
     func cofigureTableView() {
         view.addSubview(tableView)
         setTableViewDelagates()
@@ -64,8 +65,7 @@ extension VideoListVC: UITableViewDelegate, UITableViewDataSource {
             self.presentFullTextVC(with: video)
         }
         
-      
-        
+        cell.layoutIfNeeded()
         return cell
     }
     
@@ -74,6 +74,9 @@ extension VideoListVC: UITableViewDelegate, UITableViewDataSource {
         fullTextVC.textToDisplay = video.title
         fullTextVC.imageToDisplay = video.image
         present(fullTextVC, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
 }
