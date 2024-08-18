@@ -17,6 +17,7 @@
 		FF6DA19A2C6CEDEF00D6DA6B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6DA1992C6CEDEF00D6DA6B /* VideoCell.swift */; };
 		FF6DA19C2C6CF1AD00D6DA6B /* Jokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6DA19B2C6CF1AD00D6DA6B /* Jokes.swift */; };
 		FF6DA19E2C6CF20000D6DA6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6DA19D2C6CF20000D6DA6B /* Constants.swift */; };
+		FF833BE42C720D4C001636AD /* FullTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF833BE32C720D4C001636AD /* FullTextVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FF6DA1992C6CEDEF00D6DA6B /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		FF6DA19B2C6CF1AD00D6DA6B /* Jokes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jokes.swift; sourceTree = "<group>"; };
 		FF6DA19D2C6CF20000D6DA6B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FF833BE32C720D4C001636AD /* FullTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullTextVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				FF6DA19B2C6CF1AD00D6DA6B /* Jokes.swift */,
 				FF6DA1972C6CEB4700D6DA6B /* pin.swift */,
 				FF6DA1992C6CEDEF00D6DA6B /* VideoCell.swift */,
+				FF833BE32C720D4C001636AD /* FullTextVC.swift */,
 			);
 			path = PodrezHw13.1_new;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				FF6DA1962C6CE8E000D6DA6B /* VideoListVC.swift in Sources */,
 				FF6DA1822C6CE85D00D6DA6B /* AppDelegate.swift in Sources */,
 				FF6DA1842C6CE85D00D6DA6B /* SceneDelegate.swift in Sources */,
+				FF833BE42C720D4C001636AD /* FullTextVC.swift in Sources */,
 				FF6DA19E2C6CF20000D6DA6B /* Constants.swift in Sources */,
 				FF6DA19C2C6CF1AD00D6DA6B /* Jokes.swift in Sources */,
 				FF6DA1982C6CEB4700D6DA6B /* pin.swift in Sources */,

@@ -18,25 +18,26 @@ class VideoListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Щутки за код"
+        title = "Шутки за код"
         videos = fetchData()
         cofigureTableView()
+        
     }
-    
-  
     
     func cofigureTableView() {
         view.addSubview(tableView)
         setTableViewDelagates()
-        tableView.rowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 80
         tableView.register(VideoCell.self, forCellReuseIdentifier: Cells.VideoCell)
         tableView.pin(to: view)
-    
     }
 
+    
     func setTableViewDelagates() {
         tableView.delegate = self
         tableView.dataSource = self
+       
     }
     
     
@@ -56,8 +57,23 @@ extension VideoListVC: UITableViewDelegate, UITableViewDataSource {
         let video = videos[indexPath.row]
         cell.set(video: video)
         
+        cell.onImageTap = {
+            self.presentFullTextVC(with: video)
+        }
+        cell.onTextTap = {
+            self.presentFullTextVC(with: video)
+        }
+        
+      
         
         return cell
+    }
+    
+    func presentFullTextVC(with video: Video) {
+        let fullTextVC = FullTextVC()
+        fullTextVC.textToDisplay = video.title
+        fullTextVC.imageToDisplay = video.image
+        present(fullTextVC, animated: true, completion: nil)
     }
     
 }
