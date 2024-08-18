@@ -23,7 +23,6 @@ class FullTextVC: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemCyan
@@ -60,9 +59,7 @@ class FullTextVC: UIViewController {
                 fullTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
                 fullTextLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
                 fullTextLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-                
             ])
-            
         }
     }
 

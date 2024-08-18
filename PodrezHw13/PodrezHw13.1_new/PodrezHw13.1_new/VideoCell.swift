@@ -15,7 +15,6 @@ class VideoCell: UITableViewCell {
     var onImageTap: (() -> Void)?
     var onTextTap: (() -> Void)?
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(videoImageView)
@@ -25,15 +24,12 @@ class VideoCell: UITableViewCell {
         setImageConstraints()
         setTitleLabelConstraints()
         TapToOpen()
-       
     }
-    
-    
+
     func TapToOpen() {
         let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         videoImageView.isUserInteractionEnabled = true
         videoImageView.addGestureRecognizer(imageTapGesture)
-        
         
         let textTapGesture = UITapGestureRecognizer(target: self, action: #selector(textTapped))
         videoTitleLabel.isUserInteractionEnabled = true
@@ -59,7 +55,6 @@ class VideoCell: UITableViewCell {
         onTextTap?()
     }
     
-    
     func configureImageView() {
         videoImageView.layer.cornerRadius = 10
         videoImageView.clipsToBounds = true
@@ -71,8 +66,6 @@ class VideoCell: UITableViewCell {
         videoTitleLabel.adjustsFontSizeToFitWidth = false
        }
    
-    
-    
     func setImageConstraints() {
         videoImageView.translatesAutoresizingMaskIntoConstraints = false
         videoImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -87,7 +80,5 @@ class VideoCell: UITableViewCell {
         videoTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
         videoTitleLabel.leadingAnchor.constraint(equalTo: videoImageView.trailingAnchor, constant: 20).isActive = true
         videoTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12).isActive = true
-       
     }
-    
 }

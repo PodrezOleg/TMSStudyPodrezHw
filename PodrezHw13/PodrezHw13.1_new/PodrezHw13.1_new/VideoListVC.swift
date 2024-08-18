@@ -21,10 +21,8 @@ class VideoListVC: UIViewController {
         title = "Шутки за код"
         videos = fetchData()
         cofigureTableView()
-        
     }
     
-  
     func cofigureTableView() {
         view.addSubview(tableView)
         setTableViewDelagates()
@@ -34,15 +32,10 @@ class VideoListVC: UIViewController {
         tableView.pin(to: view)
     }
 
-    
     func setTableViewDelagates() {
         tableView.delegate = self
         tableView.dataSource = self
-       
     }
-    
-    
-   
 }
 
 extension VideoListVC: UITableViewDelegate, UITableViewDataSource {
@@ -50,7 +43,6 @@ extension VideoListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videos.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -74,9 +66,7 @@ extension VideoListVC: UITableViewDelegate, UITableViewDataSource {
         fullTextVC.textToDisplay = video.title
         fullTextVC.imageToDisplay = video.image
         present(fullTextVC, animated: true, completion: nil)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+       
     }
     
 }
