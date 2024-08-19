@@ -22,7 +22,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         Planet(name: "Uranus", imageName: "uranus"),
         Planet(name: "Neptune", imageName: "neptune")
     ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,7 +50,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView?.backgroundColor = .clear 
         guard let collectionView = collectionView else {
             return
-        }
+    }
         
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
@@ -68,11 +67,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return planets.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlanetCollectionViewCell.identifier, for: indexPath) as? PlanetCollectionViewCell else {
             return UICollectionViewCell()
-        }
+    }
         cell.configure(with: planets[indexPath.row])
         return cell
     }

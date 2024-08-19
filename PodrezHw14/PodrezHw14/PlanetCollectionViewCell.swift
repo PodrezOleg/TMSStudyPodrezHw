@@ -42,7 +42,6 @@ class PlanetCollectionViewCell: UICollectionViewCell {
         let labelHeight: CGFloat = 30
         let imageViewHeight = contentView.frame.size.height - labelHeight
 
-     
         imageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: imageViewHeight)
         label.frame = CGRect(x: 0, y: imageView.frame.size.height, width: contentView.frame.size.width, height: -100)
     }
