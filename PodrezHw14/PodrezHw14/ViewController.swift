@@ -10,7 +10,12 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     private var collectionView: UICollectionView?
-    private let backgroundImageView = UIImageView()
+    private var backgroundImageView = UIImageView()
+    
+    lazy var blurEffect = UIBlurEffect(style: .dark)
+    lazy var blurEffectView = UIVisualEffectView(effect: blurEffect)
+   
+  
     
     private let planets: [Planet] = [
         Planet(name: "Mercury", imageName: "mercury"),
@@ -24,45 +29,51 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .cyan
-        
-        // Настройка фона
-        backgroundImageView.image = UIImage(named: "sky_3")
+//        view.backgroundColor = .cyan
+       
+       
+     
+        backgroundImageView.image = UIImage(named: "sky_4")
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.frame = view.bounds
-        
         view.addSubview(backgroundImageView)
-        view.sendSubviewToBack(backgroundImageView)
         
-        // Настройка UICollectionView
+        blurEffectView.frame = backgroundImageView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.addSubview(blurEffectView)
+     
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
-        layout.minimumLineSpacing = 2
-        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
         layout.sectionInset = .zero
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView?.register(PlanetCollectionViewCell.self, forCellWithReuseIdentifier: PlanetCollectionViewCell.identifier)
+
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        collectionView?.backgroundColor = .clear 
-        guard let collectionView = collectionView else {
-            return
-    }
+        collectionView?.backgroundColor = .clear
+        view.addSubview(collectionView!)
+        collectionView?.frame = view.bounds
+        guard let collectionView = collectionView else
+        
+        { return }
         
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
+        
+    
     }
 
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // Сдвиг фонового изображения при прокрутке
-        let offset = scrollView.contentOffset.x
-        let parallaxEffect = offset * 0.1
-        backgroundImageView.transform = CGAffineTransform(translationX: parallaxEffect, y: 0)
-    }
+           // Сдвиг фонового изображения при прокрутке
+           let offset = scrollView.contentOffset.x
+           let parallaxEffect = offset * 0.1
+           backgroundImageView.transform = CGAffineTransform(translationX: parallaxEffect, y: 0)
+       }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return planets.count
@@ -76,3 +87,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 }
 
+//#Preview {
+//    ViewController()
+//}

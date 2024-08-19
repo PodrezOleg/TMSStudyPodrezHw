@@ -14,15 +14,15 @@ class PlanetCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.alpha = 0.75
+        imageView.alpha = 0.6
         return imageView
     }()
     
     private let label: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .systemCyan
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
+        label.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
         return label
     }()
     
@@ -43,7 +43,7 @@ class PlanetCollectionViewCell: UICollectionViewCell {
         let imageViewHeight = contentView.frame.size.height - labelHeight
 
         imageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: imageViewHeight)
-        label.frame = CGRect(x: 0, y: imageView.frame.size.height, width: contentView.frame.size.width, height: -100)
+        label.frame = CGRect(x: 0, y: imageView.frame.size.height, width: contentView.frame.size.width, height: -200)
     }
     
     public func configure(with planet: Planet) {
