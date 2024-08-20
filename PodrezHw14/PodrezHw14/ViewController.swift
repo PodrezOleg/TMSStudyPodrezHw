@@ -9,12 +9,13 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    private var collectionView: UICollectionView?
-    private var backgroundImageView = UIImageView()
-    
-    lazy var blurEffect = UIBlurEffect(style: .dark)
+    lazy var blurEffect = UIBlurEffect(style: .light)
     lazy var blurEffectView = UIVisualEffectView(effect: blurEffect)
    
+     var collectionView: UICollectionView?
+     var backgroundImageView = UIImageView()
+    
+
   
     
     private let planets: [Planet] = [
@@ -29,24 +30,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .cyan
+
        
        
      
         backgroundImageView.image = UIImage(named: "sky_4")
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.frame = view.bounds
+        backgroundImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(backgroundImageView)
-        
-        blurEffectView.frame = backgroundImageView.bounds
+
+              
+        blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        view.addSubview(blurEffectView)
+        blurEffectView.backgroundColor = UIColor.clear
+        blurEffectView.alpha = 0.7
+        view.addSubview(blurEffectView)
+     
      
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 100
+        layout.minimumInteritemSpacing = 100
         layout.sectionInset = .zero
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -55,7 +61,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView?.dataSource = self
         collectionView?.delegate = self
         collectionView?.backgroundColor = .clear
-        view.addSubview(collectionView!)
         collectionView?.frame = view.bounds
         guard let collectionView = collectionView else
         
@@ -63,10 +68,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
-        
     
     }
-
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
            // Сдвиг фонового изображения при прокрутке
