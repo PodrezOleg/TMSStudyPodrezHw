@@ -54,9 +54,9 @@ class ManualViewController: UIViewController {
         
         actionButton.backgroundColor = .red
         actionButton.setTitle("Change Color", for: .normal)
-//        actionButton.setTitleColor(.red, for: .highlighted)
+
         actionButton.titleLabel?.font = .systemFont(ofSize: 20)
-//        actionButton.isEnabled = false
+
 
     }
     

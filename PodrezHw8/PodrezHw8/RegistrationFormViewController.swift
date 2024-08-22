@@ -52,7 +52,7 @@ class RegistrationFormViewController: UIViewController {
             make.centerY.equalToSuperview().offset(40)
             make.width.equalToSuperview().multipliedBy(0.9)
             make.height.equalTo(550)
-//            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
+
         }
         
         titleLabelName.text = "Username"

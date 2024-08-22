@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import SwiftUI
 
 let Arr: Array = [1...14]
@@ -5,3 +6,125 @@ let Arr2: Array = [15...30]
 
 var Arr3 = 
 
+=======
+import Cocoa
+
+//1.1 Создайте два массива. Первый от 0 до 14, второй от 14 до 30. Объедините их в один массив.
+
+let Arr = Array(1...14)
+let Arr2 = Array(14...30)
+    var Arr3 = Array(Set(Arr + Arr2)).sorted()
+
+print(Arr3)
+
+//1.2
+var arrArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    var arrArray2 = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+
+var arrArray3 = Array(Set(arrArray + arrArray2)).sorted()
+print(arrArray3)
+
+//1.3
+
+arrArray.insert(contentsOf: arrArray2, at: 13)
+arrArray.removeLast()
+
+print(arrArray)
+
+
+
+//2. Создать функцию, которая принимает массив int. Возвести все Int в квадрат. Возвратить новый массив.
+
+func intSquare( _ num: [Int]) -> [Int] {
+    return num.map { $0 * $0 }
+}
+let arrArr = intSquare([1, 2, 3, 15])
+print(arrArr)
+
+//3. Создать функцию, которая принимает массив int. Возвратить новый массив с только четными элементами.
+
+func inPairs (arrArray: [Int]) -> [Int] {
+    return arrArray.filter({ $0 % 2 == 0})
+}
+let otherArr = [23, 356, 765, 234, 567, 111, 875, 24679, 4444, 6720, 3234324, 666]
+print(inPairs(arrArray: arrArray))
+print(inPairs(arrArray: otherArr))
+
+//3.1
+func intSquare2(arrArray2: [Int]) -> [Int] {
+    var otherArr2 = [Int]()
+    for number in arrArray2 {
+        if number % 2 == 0 {
+            otherArr2.append(number)
+        }
+    }
+    return(otherArr2)
+}
+print(intSquare2(arrArray2: otherArr))
+
+//3.1.1
+func intSquqre3(arrArray2: [Int]) -> [Int] {
+    return arrArray2.map {$0 * $0}
+}
+let someNum = intSquqre3(arrArray2: [1, 6, 8, 2, 10])
+print(someNum)
+
+//4.1 Написать 3 примера с использованием .map
+
+let plus = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let plusPlus = plus.map { $0 + $0 }
+print(plusPlus)
+
+
+var text = ["zelda", "link", "ganon", "hyrule"]
+let textCount = text.map { $0.count}
+print(textCount)
+
+
+let textCap = text.map { $0.capitalized }
+print(textCap)
+
+//4.2 Написать 2 примера с использованием .filter
+
+let plusFilter1 = plus.filter { $0 <= 5 }
+print(plusFilter1)
+
+let filterText = text.filter { $0.contains("n") }
+print(filterText)
+
+//4.3 Написать 2 примера с использованием .compactMap
+
+let textValidation = text.compactMap { $0.contains("a") }
+print(textValidation)
+//не совсем то, что я хотел ) но рабоатет
+
+let oddArrArray = arrArray.compactMap { Int($0) }.filter { $0 % 2 == 0 }
+print (oddArrArray)
+
+//4.4 Написать 2 примера с .sort
+
+arrArray2.sort(by: >)
+print(arrArray2)
+
+
+text.sort {
+    $0.count > $1.count
+}
+print(text)
+
+//4.4  Написать 2 примера с .sorted
+
+let sortedPlus = plus.sorted(by: >)
+print(sortedPlus)
+
+let sortText = text.sorted( by: {
+    $0.first! < $1.first!
+})
+print(sortText)
+
+
+let marks = [5, 6, 5, 3, 7, 7, 5, 6, 10, 9, 9]
+let sortedMarks = marks.sorted()
+print(sortedMarks)
+  
+>>>>>>> HW6

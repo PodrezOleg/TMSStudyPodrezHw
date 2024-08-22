@@ -30,9 +30,8 @@ class LoginViewController: UIViewController {
         addSubviews(loginButton, passwordTextField, loginTextField)
         alignToCenter(wrapper)
         wrapper.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        wrapper.widthAnchor.constraint(equalToConstant: 250).isActive = true
-//        wrapper.heightAnchor.constraint(equalToConstant: 300).isActive = true
-//
+
+        
         loginTextField.topAnchor.constraint(equalTo: wrapper.topAnchor, constant: 10).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 10).isActive = true
         loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10).isActive = true
