@@ -26,6 +26,7 @@ class RegistrationFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         view.addSubview(imageBackround)
         imageBackround.translatesAutoresizingMaskIntoConstraints = false
         imageBackround.image = UIImage(named: "Background3")
@@ -102,23 +103,19 @@ class RegistrationFormViewController: UIViewController {
             
             
       
-            func addTextField(_ textField: UITextField, placeholder: String, above previousField: UIView?, topSpaicing: CGFloat = 15, leftOffset: CGFloat = 20, rightOffset: CGFloat = -10) {
-                textField.placeholder = placeholder
-                textField.borderStyle = .roundedRect
-                wrapper.addSubview(textField)
-                textField.snp.makeConstraints { make in
-                    make.left.equalTo(wrapper.snp.left).offset(leftOffset)
-                    make.right.equalTo(wrapper.snp.right).offset(rightOffset)
-                    if let previousField = previousField {
-                        make.top.equalTo(previousField.snp.bottom).offset(topSpaicing)
-                    } else {
-                        make.top.equalTo(wrapper.snp.top).offset(30)
-                    }
-                    
+        func addTextField(_ textField: UITextField, placeholder: String, above previousField: UIView?, topSpaicing: CGFloat = 15, leftOffset: CGFloat = 20, rightOffset: CGFloat = -10) {
+            textField.placeholder = placeholder
+            textField.borderStyle = .roundedRect
+            wrapper.addSubview(textField)
+            textField.snp.makeConstraints { make in
+                make.left.equalTo(wrapper.snp.left).offset(leftOffset)
+                make.right.equalTo(wrapper.snp.right).offset(rightOffset)
+                if let previousField = previousField {
+                    make.top.equalTo(previousField.snp.bottom).offset(topSpaicing)
+                } else {
+                    make.top.equalTo(wrapper.snp.top).offset(30)
                 }
             }
-            
-            
-        
+        }
     }
 }

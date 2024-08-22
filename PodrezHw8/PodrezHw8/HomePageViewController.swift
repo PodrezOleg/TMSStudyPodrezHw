@@ -227,10 +227,16 @@ class HomePageViewController: UIViewController {
         alarmButton.backgroundColor = .white
         alarmButton.translatesAutoresizingMaskIntoConstraints = false
         wrapperControls.addSubview(alarmButton)
+        alarmButton.addTarget(self, action: #selector(openSnooz), for: .touchUpInside)
         alarmButton.snp.makeConstraints { make in
             make.leftMargin.equalToSuperview()
             make.width.equalTo(100)
             make.bottom.equalTo(wrapperControls.snp_bottomMargin)
         }
     }
+    @objc func openSnooz() {
+        let loginscreen = LoginViewController()
+        navigationController?.pushViewController(loginscreen, animated: true)
+    }
+    
 }
