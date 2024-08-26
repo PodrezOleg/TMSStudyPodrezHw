@@ -9,11 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // Элементы интерфейса
+    
     let label: UILabel = {
         let label = UILabel()
         label.text = ""
         label.numberOfLines = 0
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 30)
         return label
@@ -23,13 +24,13 @@ class ViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Передать тут"
         textField.borderStyle = .roundedRect
-      
+        textField.backgroundColor? = .clear
         return textField
     }()
     
     let button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Писать тут", for: .normal)
+        button.setTitle("Нажать тут", for: .normal)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
@@ -50,31 +51,31 @@ class ViewController: UIViewController {
         view.backgroundColor = .systemCyan
         
         setupView()
-   
-             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-             view.addGestureRecognizer(tapGesture)
-             
-       
-             NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-             NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     func setupView() {
-     
+        
         view.addSubview(notificationView)
         
-     
+        
         notificationView.addSubview(label)
         notificationView.addSubview(textField)
         notificationView.addSubview(button)
         
-   
+        
         notificationView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
         
-     
+        
         NSLayoutConstraint.activate([
             notificationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             notificationView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
@@ -82,7 +83,7 @@ class ViewController: UIViewController {
             notificationView.heightAnchor.constraint(equalToConstant: 200)
         ])
         
-
+        
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: notificationView.centerXAnchor),
             label.topAnchor.constraint(equalTo: notificationView.topAnchor, constant: 20),
@@ -100,6 +101,7 @@ class ViewController: UIViewController {
         label.text = textField.text
         textField.text = ""
         textField.resignFirstResponder()
+        
     }
     
     @objc func dismissKeyboard() {
@@ -112,11 +114,11 @@ class ViewController: UIViewController {
             notificationView.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 1.25)
         }
     }
-
+    
     @objc func keyboardDidHide(_ notification: Notification) {
         notificationView.transform = .identity
     }
-
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
