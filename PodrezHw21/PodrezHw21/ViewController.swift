@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     let fontSegmentedControl = UISegmentedControl(items: ["N", "B", "I"])
     let sizeSegmentedControl = UISegmentedControl(items: ["S", "M", "L"])
     let underlineSegmentedControl = UISegmentedControl(items: ["Без подчеркивания", "Подчеркнуть"])
+    let fontSizes: [CGFloat] = [10, 14, 18, 22]
     
     
     override func viewDidLoad() {
@@ -135,8 +136,8 @@ class ViewController: UIViewController {
         let length = textView.offset(from: selectedRange.start, to: selectedRange.end)
         let range = NSRange(location: start, length: length)
         
-        let attributedText = NSMutableAttributedString(attributedString: textView.attributedText)
-        
+        let fullText = textView.text ?? ""
+        let attributedText = NSMutableAttributedString(string: fullText)
         
         let selectedColor: UIColor
         switch colorSegmentedControl.selectedSegmentIndex {
@@ -157,7 +158,6 @@ class ViewController: UIViewController {
         attributedText.addAttribute(.foregroundColor, value: selectedColor, range: range)
         attributedText.addAttribute(.font, value: selectedFont, range: range)
         
-        
         if underlineSegmentedControl.selectedSegmentIndex == 1 {
             attributedText.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
         } else {
@@ -174,11 +174,11 @@ class ViewController: UIViewController {
     }
     
     private func getSelectedFontSize() -> CGFloat {
-        switch sizeSegmentedControl.selectedSegmentIndex {
-        case 0: return 14
-        case 1: return 18
-        case 2: return 24
-        default: return 18
+        let index = sizeSegmentedControl.selectedSegmentIndex
+        if index >= 0 && index < fontSizes.count {
+            return fontSizes[index]
+        } else {
+            return fontSizes[1]
         }
     }
 }
