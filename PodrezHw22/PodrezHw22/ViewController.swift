@@ -46,10 +46,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     let showPicture: UIImageView = {
         let showPicture = UIImageView()
-        showPicture.contentMode = .scaleAspectFit
-        showPicture.layer.cornerRadius = 20
-        showPicture.layer.borderWidth = 1
-        showPicture.layer.borderColor = UIColor.orange.cgColor
+        showPicture.contentMode = .scaleToFill
+        showPicture.layer.cornerRadius = 30
+//        showPicture.layer.borderWidth = 1
+//        showPicture.layer.borderColor = UIColor.orange.cgColor
         showPicture.clipsToBounds = true
         showPicture.translatesAutoresizingMaskIntoConstraints = false
         return showPicture
@@ -74,12 +74,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             buttonAddImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonAddImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             buttonAddImage.heightAnchor.constraint(equalToConstant: 50),
-            buttonAddImage.widthAnchor.constraint(equalToConstant: 300),
+            buttonAddImage.widthAnchor.constraint(equalToConstant: 250),
             
             buttonToTap.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonToTap.topAnchor.constraint(equalTo: buttonAddImage.bottomAnchor, constant: 20),
             buttonToTap.heightAnchor.constraint(equalToConstant: 50),
-            buttonToTap.widthAnchor.constraint(equalToConstant: 300),
+            buttonToTap.widthAnchor.constraint(equalToConstant: 250),
             
             pickerCity.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pickerCity.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
@@ -91,8 +91,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
             showPicture.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             showPicture.bottomAnchor.constraint(equalTo: buttonAddImage.topAnchor, constant: -20),
-            showPicture.heightAnchor.constraint(equalToConstant: 300),
-            showPicture.widthAnchor.constraint(equalToConstant: 300)
+            showPicture.heightAnchor.constraint(equalToConstant: 200),
+            showPicture.widthAnchor.constraint(equalToConstant: 250)
         ])
         
         buttonToTap.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
