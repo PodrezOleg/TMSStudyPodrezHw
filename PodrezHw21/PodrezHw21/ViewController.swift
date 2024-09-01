@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class ViewController: UIViewController, UITextViewDelegate {
+class ViewController: UIViewController {
     
     let textView = UITextView()
     let applyFormatButton = UIButton(type: .system)
@@ -14,7 +14,8 @@ class ViewController: UIViewController, UITextViewDelegate {
     let colorSegmentedControl = UISegmentedControl(items: ["Red", "Green", "Blue"])
     let fontSegmentedControl = UISegmentedControl(items: ["N", "B", "I"])
     let sizeSegmentedControl = UISegmentedControl(items: ["S", "M", "L"])
-    let underlineSegmentedControl = UISegmentedControl(items: ["Без подчеркивания", "Подчеркивание"])
+    let underlineSegmentedControl = UISegmentedControl(items: ["Без подчеркивания", "Подчеркнуть"])
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,6 @@ class ViewController: UIViewController, UITextViewDelegate {
         setupKeyboardNotifications()
         setupTapGesture()
         
-        textView.delegate = self
     }
     
     deinit {
@@ -37,18 +37,20 @@ class ViewController: UIViewController, UITextViewDelegate {
     private func setupTextView() {
         textView.layer.borderColor = UIColor.gray.cgColor
         textView.layer.borderWidth = 1.0
-        textView.layer.cornerRadius = 10.0
-        textView.layer.backgroundColor = .init(genericGrayGamma2_2Gray: 1, alpha: 0.5)
+        textView.layer.cornerRadius = 5.0
+        textView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.5).cgColor
         textView.font = UIFont.systemFont(ofSize: 18)
         textView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(textView)
         
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 200),
+            textView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            textView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            textView.heightAnchor.constraint(equalToConstant: 150)
+            textView.heightAnchor.constraint(equalToConstant: 100)
         ])
+        
     }
     
     private func setupSegmentedControls() {
@@ -88,11 +90,7 @@ class ViewController: UIViewController, UITextViewDelegate {
             buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        textView.becomeFirstResponder()
-    }
-   
+    
     private func setupKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -102,7 +100,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardHeight = keyboardFrame.cgRectValue.height
         UIView.animate(withDuration: 0.3) {
-            self.view.frame.origin.y = -keyboardHeight / 2
+            self.view.frame.origin.y = -keyboardHeight / 1.5
         }
     }
     
@@ -121,25 +119,25 @@ class ViewController: UIViewController, UITextViewDelegate {
         view.endEditing(true)
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        applyFormatting()
-    }
-    
-   
     @objc private func applyFormatTapped() {
         applyFormatting()
     }
     
     @objc private func resetTextTapped() {
-        textView.attributedText = nil
         textView.text = ""
+        textView.attributedText = NSAttributedString(string: textView.text)
     }
     
     private func applyFormatting() {
-        guard textView.selectedTextRange != nil else { return }
+        guard let selectedRange = textView.selectedTextRange else { return }
+        
+        let start = textView.offset(from: textView.beginningOfDocument, to: selectedRange.start)
+        let length = textView.offset(from: selectedRange.start, to: selectedRange.end)
+        let range = NSRange(location: start, length: length)
+        
         let attributedText = NSMutableAttributedString(attributedString: textView.attributedText)
         
-      
+        
         let selectedColor: UIColor
         switch colorSegmentedControl.selectedSegmentIndex {
         case 0: selectedColor = .red
@@ -148,7 +146,6 @@ class ViewController: UIViewController, UITextViewDelegate {
         default: selectedColor = .black
         }
         
-      
         let selectedFont: UIFont
         switch fontSegmentedControl.selectedSegmentIndex {
         case 0: selectedFont = UIFont.systemFont(ofSize: getSelectedFontSize())
@@ -157,10 +154,9 @@ class ViewController: UIViewController, UITextViewDelegate {
         default: selectedFont = UIFont.systemFont(ofSize: getSelectedFontSize())
         }
         
-      
-        let range = textView.selectedRange
         attributedText.addAttribute(.foregroundColor, value: selectedColor, range: range)
         attributedText.addAttribute(.font, value: selectedFont, range: range)
+        
         
         if underlineSegmentedControl.selectedSegmentIndex == 1 {
             attributedText.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
@@ -169,15 +165,20 @@ class ViewController: UIViewController, UITextViewDelegate {
         }
         
         textView.attributedText = attributedText
-        textView.selectedRange = range
+        
+        if let startPos = textView.position(from: textView.beginningOfDocument, offset: range.location),
+           let endPos = textView.position(from: startPos, offset: range.length),
+           let newRange = textView.textRange(from: startPos, to: endPos) {
+            textView.selectedTextRange = newRange
+        }
     }
     
     private func getSelectedFontSize() -> CGFloat {
         switch sizeSegmentedControl.selectedSegmentIndex {
-        case 0: return 10
-        case 1: return 14
-        case 2: return 20
-        default: return 15
+        case 0: return 14
+        case 1: return 18
+        case 2: return 24
+        default: return 18
         }
     }
 }
