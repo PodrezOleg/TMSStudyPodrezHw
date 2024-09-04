@@ -10,7 +10,6 @@ class BookmarksViewController: UIViewController, UITableViewDataSource, UITableV
     
     private var bookmarks: [String]
     private let onSelect: (String) -> Void
-    
     private let tableView = UITableView()
     
     init(bookmarks: [String], onSelect: @escaping (String) -> Void) {
@@ -51,12 +50,10 @@ class BookmarksViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let urlString = bookmarks[indexPath.row]
         onSelect(urlString)
         dismiss(animated: true)
     }
-    
 }
 
