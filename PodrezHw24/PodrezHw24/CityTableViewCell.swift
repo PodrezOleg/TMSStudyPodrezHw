@@ -21,7 +21,7 @@ class CityTableViewCell: UITableViewCell {
      
      private func setupUI() {
          contentView.backgroundColor = .clear
-         contentView.layer.cornerRadius = 15
+         contentView.layer.cornerRadius = 20
          contentView.layer.masksToBounds = true
          contentView.layer.borderColor = UIColor.clear.cgColor
          contentView.layer.borderWidth = 2

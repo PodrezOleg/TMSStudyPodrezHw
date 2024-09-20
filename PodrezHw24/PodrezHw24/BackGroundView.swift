@@ -16,7 +16,7 @@ class UISetup {
         view.layer.insertSublayer(gradientLayer, at: 0)
 
         let animation = CABasicAnimation(keyPath: "colors")
-        animation.fromValue = [UIColor.systemTeal.cgColor, UIColor.systemMint.cgColor]
+        animation.fromValue = [UIColor.systemIndigo.cgColor, UIColor.systemBlue.cgColor]
         animation.toValue = [UIColor.systemCyan.cgColor, UIColor.systemPink.cgColor]
         animation.duration = 4.0
         animation.autoreverses = true

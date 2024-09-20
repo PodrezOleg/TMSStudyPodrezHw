@@ -7,30 +7,41 @@
 
 import Foundation
 
-struct City {
+class City {
     let name: String
-    let timeZone: Int
+    let timeZone: String
     
+    init(name: String, timeZone: String) {
+        self.name = name
+        self.timeZone = timeZone
+    }
     func showCurrentTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
+//        formatter.timeZone = TimeZone(identifier: timeZone)
         
-        let currentDate = Date()
-        let timeZoneSeconds = timeZone * 3600
-        let localDate = currentDate.addingTimeInterval(TimeInterval(timeZoneSeconds))
-        return formatter.string(from: localDate)
+        if let cityTimeZone = TimeZone(identifier: timeZone) {
+            formatter.timeZone = cityTimeZone
+        } else {
+            formatter.timeZone = TimeZone.current 
+        }
+        
+        let currentTime = formatter.string(from: Date())
+        return currentTime
     }
+    
+    static let cityList: [City] = [
+        City(name: "Tokyo", timeZone: "Asia/Tokyo"),
+        City(name: "Sydney", timeZone: "Australia/Sydney"),
+        City(name: "Dallas", timeZone: "America/Chicago"),
+        City(name: "Cape Town", timeZone: "Africa/Johannesburg"),
+        City(name: "Santiago", timeZone: "America/Santiago"),
+        City(name: "Tromsø", timeZone: "Europe/Oslo"),
+        City(name: "Dakar", timeZone: "Africa/Dakar"),
+        City(name: "All", timeZone: "")
+    ]
+    
 }
 
-let cities = [
-City(name: "Tokyo", timeZone: 9),
-City(name: "Sydney", timeZone: 10),
-City(name: "Dallas", timeZone: -5),
-City(name: "Cape Town", timeZone: 2),
-City(name: "Santiago", timeZone: -3),
-City(name: "Tromsø", timeZone: 2),
-City(name: "Dakar", timeZone: 0),
-City(name: "All", timeZone: 0)
-]
 
 

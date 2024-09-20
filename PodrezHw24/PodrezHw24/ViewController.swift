@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         setupUi()
         displayCityTime()
         UISetup.setupAnimatedBackground(for: self.view)
-        startTimer()
+        
     }
     
     func setupUi() {
@@ -52,11 +52,12 @@ class ViewController: UIViewController {
         displayCityTime()
     }
     override func viewDidDisappear(_ animated: Bool) {
-          super.viewDidDisappear(animated)
-         
-          timer?.invalidate()
-          timer = nil
-      }
-  }
-   
+        super.viewDidDisappear(animated)
+        
+        startTimer()
+        timer?.invalidate()
+        timer = nil
+    }
+}
+
 

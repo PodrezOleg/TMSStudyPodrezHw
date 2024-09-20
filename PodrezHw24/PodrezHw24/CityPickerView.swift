@@ -10,7 +10,7 @@ import UIKit
 class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   
     let pickerView = UIPickerView()
-    var selectedCity: City = cities[0]
+    var selectedCity: City = City.cityList[0]
     let currentTime = UILabel()
     
     override func viewDidLoad() {
@@ -23,7 +23,6 @@ class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCurrentTime), userInfo: nil, repeats: true)
     }
 
-    
     func setupPicker() {
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -34,10 +33,9 @@ class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             pickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pickerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             pickerView.heightAnchor.constraint(equalToConstant: 200)
-           
         ])
     }
-    
+
     func setupUi() {
         navigationItem.title = "Current time"
         currentTime.font = UIFont.systemFont(ofSize: 30)
@@ -59,28 +57,27 @@ class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(showTime), for: .touchUpInside)
         view.addSubview(button)
-        view.addSubview(currentTime)
         
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: pickerView.bottomAnchor, constant: 20),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.widthAnchor.constraint(equalToConstant: 100),
-            currentTime.bottomAnchor.constraint(equalTo: pickerView.topAnchor,constant: 20),
+            currentTime.bottomAnchor.constraint(equalTo: pickerView.topAnchor, constant: 20),
             currentTime.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-
         ])
     }
-    
+
     @objc func showTime() {
-        if selectedCity.name == "All" {
-            let allCitiesVC = AllCitiesViewViewController()
-            navigationController?.pushViewController(allCitiesVC, animated: true)
-        } else {
-            let cityTimeVC = ViewController()
-            cityTimeVC.city = selectedCity
-            navigationController?.pushViewController(cityTimeVC, animated: true)
-        }
-    }
+         if selectedCity.name == "All" {
+             let allCitiesVC = AllCitiesViewViewController()
+             navigationController?.pushViewController(allCitiesVC, animated: true)
+         } else {
+             let cityTimeVC = CityDetailView()
+             cityTimeVC.cities = selectedCity
+             navigationController?.pushViewController(cityTimeVC, animated: true)
+         }
+     }
+     
     
     @objc func updateCurrentTime() {
         let formatter = DateFormatter()
@@ -88,23 +85,21 @@ class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         formatter.dateFormat = "HH:mm:ss"
         let currentTimeFormat = formatter.string(from: Date())
         currentTime.text = "Current Time: \n \(currentTimeFormat)"
-        
     }
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        cities.count
+        return City.cityList.count
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-           return cities[row].name
-       }
-    
+        return City.cityList[row].name
+    }
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            selectedCity = cities[row]
-        }
+        selectedCity = City.cityList[row]
+    }
 }
