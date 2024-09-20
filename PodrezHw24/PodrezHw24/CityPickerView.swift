@@ -10,7 +10,7 @@ import UIKit
 class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   
     let pickerView = UIPickerView()
-    var selectedCity: City = City.cityList[0]
+    var selectedCity: City = cities[0]
     let currentTime = UILabel()
     
     override func viewDidLoad() {
@@ -78,7 +78,6 @@ class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
          }
      }
      
-    
     @objc func updateCurrentTime() {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
@@ -92,14 +91,14 @@ class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return City.cityList.count
+        return cities.count
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return City.cityList[row].name
+        return cities[row].name
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCity = City.cityList[row]
+        selectedCity = cities[row]
     }
 }

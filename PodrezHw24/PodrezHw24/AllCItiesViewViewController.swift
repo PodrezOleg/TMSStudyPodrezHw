@@ -41,29 +41,26 @@ class AllCitiesViewViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.reloadData()
     }
     
-    func isDaytime(timezone: TimeZone?) -> Bool  {
-        guard let date = Calendar.current.date(byAdding: .init(timeZone: timezone), to: .now)
-        else { return false }
-        let hour = Calendar.current.component(.hour, from: .now)
-        print ("Текущее время: \(hour)")
-               return hour >= 6 && hour < 18
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return City.cityList.count - 1
+        return cities.count - 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
-//        let isDay = isDaytime(timezone: TimeZone(identifier: cities[indexPath.row].timeZone))
+        let city = cities[indexPath.row]
         
-        let city = City.cityList[indexPath.row]
-        cell.textLabel?.text = city.name
+        if city.isDaytime() {
+            cell.contentView.backgroundColor = UIColor.systemBlue
+        } else {
+            cell.contentView.backgroundColor = UIColor.gray
+            }
+    
         cell.backgroundColor = .clear
         cell.layer.cornerRadius = 20
         cell.layer.borderWidth = 3
@@ -74,7 +71,7 @@ class AllCitiesViewViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCity = City.cityList[indexPath.row]
+        let selectedCity = cities[indexPath.row]
         let cityDetailVC = CityDetailView()
         cityDetailVC.cities = selectedCity
         navigationController?.pushViewController(cityDetailVC, animated: true)

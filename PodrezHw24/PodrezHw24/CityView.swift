@@ -7,30 +7,32 @@
 
 import Foundation
 
-class City {
+struct City {
     let name: String
     let timeZone: String
     
-    init(name: String, timeZone: String) {
-        self.name = name
-        self.timeZone = timeZone
-    }
+    
     func showCurrentTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
-//        formatter.timeZone = TimeZone(identifier: timeZone)
-        
-        if let cityTimeZone = TimeZone(identifier: timeZone) {
-            formatter.timeZone = cityTimeZone
-        } else {
-            formatter.timeZone = TimeZone.current 
-        }
-        
-        let currentTime = formatter.string(from: Date())
-        return currentTime
+        formatter.timeZone = TimeZone(identifier: timeZone)
+        return formatter.string(from: Date())
+    }
+    func currentHour() -> Int? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH"
+        formatter.timeZone = TimeZone(identifier: timeZone)
+        return Int(formatter.string(from: Date()))
     }
     
-    static let cityList: [City] = [
+    func isDaytime() -> Bool  {
+        guard let hour = currentHour() else { return false }
+        return hour >= 6 && hour < 18
+    }
+}
+      
+    
+     let cities = [
         City(name: "Tokyo", timeZone: "Asia/Tokyo"),
         City(name: "Sydney", timeZone: "Australia/Sydney"),
         City(name: "Dallas", timeZone: "America/Chicago"),
@@ -40,8 +42,7 @@ class City {
         City(name: "Dakar", timeZone: "Africa/Dakar"),
         City(name: "All", timeZone: "")
     ]
-    
-}
+
 
 
 
