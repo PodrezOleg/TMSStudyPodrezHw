@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     
     let youtubeLink = URL(string: "https://www.youtube.com/watch?v=xLAPstwuvG0")!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAnimatedBackground()
@@ -25,7 +24,7 @@ class ViewController: UIViewController {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
         gradientLayer.colors = [UIColor.systemBlue.cgColor, UIColor.systemPurple.cgColor]
-        gradientLayer.locations = [0.0, 1.0] // Корректировка для плавного перехода
+        gradientLayer.locations = [0.0, 1.0]
         view.layer.addSublayer(gradientLayer)
         
         let animation = CABasicAnimation(keyPath: "colors")
@@ -37,7 +36,6 @@ class ViewController: UIViewController {
         gradientLayer.add(animation, forKey: "animateColors")
     }
 
-
     func setupPianoKeys() {
         let whiteStackView = createStackView(axis: .horizontal)
         let blackStackView = createStackView(axis: .horizontal)
@@ -45,7 +43,6 @@ class ViewController: UIViewController {
         view.addSubview(whiteStackView)
         view.addSubview(blackStackView)
 
-        
         NSLayoutConstraint.activate([
             whiteStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             whiteStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
@@ -62,7 +59,7 @@ class ViewController: UIViewController {
             whiteStackView.addArrangedSubview(button)
         }
 
-        for (index, note) in blackNotes.enumerated() {
+        for (_, note) in blackNotes.enumerated() {
             if !note.isEmpty {
                 let button = createBlackButton(note: note)
                 blackStackView.addArrangedSubview(button)
