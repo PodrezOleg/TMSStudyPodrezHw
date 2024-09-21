@@ -11,7 +11,6 @@ struct City {
     let name: String
     let timeZone: String
     
-    
     func showCurrentTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"

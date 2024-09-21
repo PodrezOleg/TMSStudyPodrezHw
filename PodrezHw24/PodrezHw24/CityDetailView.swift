@@ -18,7 +18,6 @@ class CityDetailView: UIViewController {
             UISetup.setupAnimatedBackground(for: self.view)
             updateCityTime()
             timerRefresh()
-          
         }
         
         func setupUI() {

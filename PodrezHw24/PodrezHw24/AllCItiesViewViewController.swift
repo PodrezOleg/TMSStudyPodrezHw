@@ -29,11 +29,11 @@ class AllCitiesViewViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.backgroundColor = .clear
         tableView.layer.backgroundColor = UIColor.clear.cgColor
         tableView.separatorStyle = .none
-
-        view.addSubview(tableView)
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
