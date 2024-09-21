@@ -31,7 +31,6 @@ struct City {
     }
 }
       
-    
      let cities = [
         City(name: "Tokyo", timeZone: "Asia/Tokyo"),
         City(name: "Sydney", timeZone: "Australia/Sydney"),

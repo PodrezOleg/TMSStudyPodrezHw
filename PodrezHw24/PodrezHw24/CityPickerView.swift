@@ -20,7 +20,11 @@ class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         setupPicker()
         setupUi()
         updateCurrentTime()
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCurrentTime), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1.0,
+                             target: self,
+                             selector: #selector(updateCurrentTime),
+                             userInfo: nil,
+                             repeats: true)
     }
 
     func setupPicker() {
@@ -38,7 +42,7 @@ class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     func setupUi() {
         navigationItem.title = "Current time"
-        currentTime.font = UIFont.systemFont(ofSize: 30)
+        currentTime.font = UIFont.systemFont(ofSize: 50)
         currentTime.numberOfLines = 0
         currentTime.textAlignment = .center
        
@@ -94,11 +98,15 @@ class CityPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return cities.count
     }
 
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
         return cities[row].name
     }
 
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
         selectedCity = cities[row]
     }
 }

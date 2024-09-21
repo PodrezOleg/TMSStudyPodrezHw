@@ -17,13 +17,12 @@ class CityDetailView: UIViewController {
             setupUI()
             UISetup.setupAnimatedBackground(for: self.view)
             updateCityTime()
-            
-            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCityTime), userInfo: nil, repeats: true)
+            timerRefresh()
+          
         }
         
         func setupUI() {
             navigationItem.title = cities?.name
-            
             timeLabel.font = UIFont.systemFont(ofSize: 40)
             timeLabel.textAlignment = .center
             timeLabel.numberOfLines = 0
@@ -35,7 +34,13 @@ class CityDetailView: UIViewController {
                 timeLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
         }
-        
+        func timerRefresh() {
+        Timer.scheduledTimer(timeInterval: 1,
+                             target: self,
+                             selector: #selector(updateCityTime),
+                             userInfo: nil,
+                             repeats: true)
+    }
         @objc func updateCityTime() {
             if let city = cities {
                 timeLabel.text =  "\(city.name) \n Current Time: \n \(city.showCurrentTime())"

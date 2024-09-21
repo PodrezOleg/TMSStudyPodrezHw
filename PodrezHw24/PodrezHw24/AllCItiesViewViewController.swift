@@ -16,14 +16,20 @@ class AllCitiesViewViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "CityTableViewCell")
         setupUI()
         UISetup.setupAnimatedBackground(for: self.view)
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTable), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1.0,
+                             target: self,
+                             selector: #selector(updateTable),
+                             userInfo: nil,
+                             repeats: true)
     }
     
     func setupUI() {
         navigationItem.title = "All Cities"
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .clear
-    
+        tableView.layer.backgroundColor = UIColor.clear.cgColor
+        tableView.separatorStyle = .none
+
         view.addSubview(tableView)
         
         tableView.delegate = self
@@ -41,9 +47,8 @@ class AllCitiesViewViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.reloadData()
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 100
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,22 +56,14 @@ class AllCitiesViewViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "CityTableViewCell",
+        for: indexPath) as? CityTableViewCell else {
+            return UITableViewCell()
+        }
+
         let city = cities[indexPath.row]
-        
-        if city.isDaytime() {
-            cell.contentView.backgroundColor = UIColor.systemBlue
-        } else {
-            cell.contentView.backgroundColor = UIColor.gray
-            }
-    
-        cell.backgroundColor = .clear
-        cell.layer.cornerRadius = 20
-        cell.layer.borderWidth = 3
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.masksToBounds = true
-        cell.detailTextLabel?.text = "Current Time: \(city.showCurrentTime())"
+        cell.configure(with: city)
         return cell
     }
     
