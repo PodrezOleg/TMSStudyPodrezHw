@@ -24,7 +24,6 @@ class Apartment {
     var number: Int
   weak var resident: PersonBig?
     
-    
     init(address: String, number: Int, resident: PersonBig? = nil) {
         self.address = address
         self.number = number
