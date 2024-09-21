@@ -33,8 +33,9 @@ class CityTableViewCell: UITableViewCell {
         cityLabel.numberOfLines = 0
         cityLabel.textAlignment = .left
         cityLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(cityLabel)
         contentView.addSubview(cityImageView)
+        contentView.addSubview(cityLabel)
+       
         
         NSLayoutConstraint.activate([
             cityImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
