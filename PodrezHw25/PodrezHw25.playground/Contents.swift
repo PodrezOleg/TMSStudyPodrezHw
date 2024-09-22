@@ -1,9 +1,9 @@
 import Cocoa
 
 class PersonBig {
-    var name: String
-    var sex: String
-    var age: Int
+    let name: String
+    let sex: String
+    let age: Int
    weak var apartment: Apartment?
 
     init(name: String, sex: String, age: Int, apartment: Apartment? = nil) {
@@ -20,8 +20,8 @@ class PersonBig {
 }
 
 class Apartment {
-    var address: String
-    var number: Int
+    let address: String
+    let number: Int
   weak var resident: PersonBig?
     
     init(address: String, number: Int, resident: PersonBig? = nil) {
