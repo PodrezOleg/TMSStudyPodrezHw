@@ -52,8 +52,9 @@ class ViewController: UIViewController {
             queue.async {
                 self.account.deposit(amount: Double.random(in: 1...100))
             }
+            sleep (1)
             queue.async {
-                self.account.withdraw(amount: Double.random(in: 1...1000))
+                self.account.withdraw(amount: Double.random(in: 1...500))
             }
         }
         
