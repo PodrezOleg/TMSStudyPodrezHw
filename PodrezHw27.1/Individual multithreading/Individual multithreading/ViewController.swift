@@ -9,12 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    class Wallet {
+    actor Wallet {
         private var balance: Double = 0.0
-        private let addFundSemaphore = DispatchSemaphore(value: 1)
-        private let spendFundsSemaphore = DispatchSemaphore(value: 1)
-        private let CheckBalanceSemaphore = DispatchSemaphore(value: 1)
-        
         private let numberFormatter: NumberFormatter = {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
@@ -23,33 +19,24 @@ class ViewController: UIViewController {
             return formatter
         }()
         
-        func addFunds(_ amount: Double) {
+        func addFunds(_ amount: Double) async {
             let formattedAmount = round(amount * 100) / 100.00
-            if addFundSemaphore.wait(timeout: .now() + 2) == .success {
-                defer { addFundSemaphore.signal() }
-                balance += formattedAmount
-                print("Пополнение: \(formattedAmount). Текущий баланс: \(checkBalance())")
+            balance += formattedAmount
+            print("Пополнение: \(formattedAmount). Текущий баланс: \(await checkBalance())")
+        }
+        
+        func spendFunds(_ amount: Double) async {
+            let formattedAmount = round(amount * 100) / 100.00
+            if balance >= formattedAmount {
+                balance -= formattedAmount
+                print("Снял: \(formattedAmount). Текущий баланс: \(await checkBalance())")
             } else {
-                print("Не удалось добавить средства: операция заблокирована.")
+                print("Недостаточно средств.")
             }
         }
         
-        func spendFunds(_ amount: Double) {
-                  let formattedAmount = round(amount * 100) / 100.00
-            spendFundsSemaphore.wait()
-                  if balance >= formattedAmount {
-                      balance -= formattedAmount
-                      print("Снял: \(formattedAmount). Текущий баланс: \(checkBalance())")
-                  } else {
-                      print("Недостаточно средств")
-                  }
-            spendFundsSemaphore.signal()
-              }
-        
-        func checkBalance() -> String {
-            CheckBalanceSemaphore.wait()
+        func checkBalance() async  -> String {
             let formattedBalance = formattedAmount(balance)
-            CheckBalanceSemaphore.signal()
             return "Текущий баланс: \(formattedBalance)"
         }
         
@@ -60,46 +47,24 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.performWalletOperations()
-        }
-    }
     
-    func performWalletOperations(){
+    }
+    func performWalletOperations() {
         let wallet = Wallet()
-        let queue = DispatchQueue(
-            label: "com.wallet.queue",
-            attributes: .concurrent
-        )
-        let group = DispatchGroup()
         
-        group.enter()
-        queue.async {
-            wallet.addFunds(248)
-            sleep(1)
-            group.leave()
+        Task  {
+            await wallet.addFunds(10)
         }
-        group.enter()
-        queue.async {
-            wallet.spendFunds(59999)
-            sleep(1)
-            group.leave()
+        Task {
+            await wallet.spendFunds(2)
         }
-        group.enter()
-        queue.async {
-            wallet.spendFunds(100)
-            sleep(1)
-            group.leave()
+        Task {
+            await wallet.spendFunds(4)
         }
-        group.enter()
-        queue.async {
-            wallet.addFunds(5243697)
-            sleep(1)
-            group.leave()
-        }
-        
-        group.notify(queue: .main) {
-            print("Финальный баланс: \(wallet.checkBalance())")
+        Task {
+            await wallet.addFunds(124)
         }
     }
 }
+    
