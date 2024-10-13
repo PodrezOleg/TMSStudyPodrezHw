@@ -11,11 +11,13 @@ class CustomMenuButton: UIButton {
     
     private var gradientLayer: CAGradientLayer?
     private var shapeLayers: CAShapeLayer?
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupButton()
         StartAnimationBorder()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -23,7 +25,7 @@ class CustomMenuButton: UIButton {
         self.setTitleColor(.white, for: .normal)
         self.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         self.layer.cornerRadius = LayoutConstants.cornerRadiusButton
-    
+
         setupGradientBorder()
         
         self.layer.shadowColor = UIColor.black.cgColor
@@ -32,19 +34,13 @@ class CustomMenuButton: UIButton {
         self.layer.shadowRadius = LayoutConstants.shadowRadiusButton
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant:
-                            CGFloat(LayoutConstants.buttonWidth)).isActive = true
-        self.heightAnchor.constraint(equalToConstant:
-                            CGFloat(LayoutConstants.buttonHeight)).isActive = true
+        self.widthAnchor.constraint(equalToConstant: CGFloat(LayoutConstants.buttonWidth)).isActive = true
+        self.heightAnchor.constraint(equalToConstant: CGFloat(LayoutConstants.buttonHeight)).isActive = true
     }
     private func setupGradientBorder() {
         gradientLayer = CAGradientLayer()
         gradientLayer?.frame = self.bounds
-        gradientLayer?.colors = [
-            UIColor.red.cgColor,
-            UIColor.yellow.cgColor,
-            UIColor.blue.cgColor,
-            UIColor.white.cgColor]
+        gradientLayer?.colors = [UIColor.red.cgColor, UIColor.systemBlue.cgColor]
         gradientLayer?.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer?.endPoint = CGPoint(x: 1, y: 1)
         gradientLayer?.cornerRadius = LayoutConstants.cornerRadiusButton
@@ -52,24 +48,23 @@ class CustomMenuButton: UIButton {
         
         shapeLayers = CAShapeLayer()
         shapeLayers?.lineWidth = LayoutConstants.borderWidthButton
-        shapeLayers?.path = UIBezierPath(roundedRect: bounds,
-                                         cornerRadius: LayoutConstants.cornerRadiusButton).cgPath
+        shapeLayers?.path = UIBezierPath(roundedRect: bounds, cornerRadius: LayoutConstants.cornerRadiusButton).cgPath
         shapeLayers?.fillColor = UIColor.clear.cgColor
         shapeLayers?.strokeColor = UIColor.white.cgColor
-        guard let gradientLayer = gradientLayer, let shapeLayer = shapeLayers else {
-              return
-          }
-          layer.addSublayer(shapeLayer)
-          gradientLayer.mask = shapeLayer
-          layer.insertSublayer(gradientLayer, below: shapeLayer)
         
+        guard let gradientLayer = gradientLayer, let shapeLayer = shapeLayers else {
+            return
+        }
+        layer.addSublayer(shapeLayer)
+        gradientLayer.mask = shapeLayer
+        layer.insertSublayer(gradientLayer, below: shapeLayer)
     }
     
-     func StartAnimationBorder() {
+    func StartAnimationBorder() {
         let animation = CABasicAnimation(keyPath: "colors")
-        animation.fromValue = [UIColor.red.cgColor, UIColor.blue.cgColor]
-        animation.toValue = [UIColor.yellow.cgColor, UIColor.orange.cgColor]
-        animation.duration = 5.0
+        animation.fromValue = [UIColor.red.cgColor, UIColor.blue.cgColor, UIColor.purple.cgColor]
+        animation.toValue = [UIColor.cyan.cgColor, UIColor.orange.cgColor, UIColor.white.cgColor]
+        animation.duration = 2.0
         animation.autoreverses = true
         animation.repeatCount = .infinity
         gradientLayer?.add(animation, forKey: "changeColor")
