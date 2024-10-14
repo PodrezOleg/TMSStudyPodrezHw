@@ -50,5 +50,8 @@ struct LayoutConstants {
     
     
     static let blurAlpha: CGFloat = 0.5
+    
+    static let widthStroyButton: CGFloat = 400
+    static let heightStroyButton: CGFloat = 50
    
 }

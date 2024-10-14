@@ -16,18 +16,23 @@ class NewGameViewController: UIViewController {
     let gameTimer = GameTimer()
     var isKeyBoardVisible = false
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundController.setupBackground(for: view, imageName: "CreateCharacterBackgroundNew")
         setupUI()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
+    
     deinit {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -107,20 +112,19 @@ class NewGameViewController: UIViewController {
             isKeyBoardVisible = true
         }
     }
+    
     @objc func keyBoardWillHide(notification: NSNotification) {
         if isKeyBoardVisible {
             view.frame.origin.y = 0
             isKeyBoardVisible = false
         }
     }
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    
-    
     @objc func startNewGameCharacter() {
-        
         guard let playerName = nameTextField.text, !playerName.isEmpty else {
             let alert = UIAlertController(
                 title: "Вспоминай",
@@ -132,23 +136,27 @@ class NewGameViewController: UIViewController {
                                           handler: nil)
             )
             present(alert, animated: true, completion: nil)
-            
             return
         }
-            gameTimer.start() 
-            UserDefaults.standard.set(playerName, forKey: "playerName")
-            
-            let newGameStartViewController = NewGameStartViewController()
-            newGameStartViewController.playerName = playerName 
-            newGameStartViewController.modalTransitionStyle = .crossDissolve
-            newGameStartViewController.modalPresentationStyle = .fullScreen
-            present(newGameStartViewController, animated: true, completion: nil)
+        gameTimer.start()
+        GameStateManager.shared.saveGame(playerName: playerName, currentStoryPointID: 0, elapsedTime: 0)
         
-           
-         
-        }
-   
+        let newGameStartViewController = NewGameStartViewController()
+        newGameStartViewController.playerName = playerName
+        newGameStartViewController.modalTransitionStyle = .crossDissolve
+        newGameStartViewController.modalPresentationStyle = .fullScreen
+        present(newGameStartViewController, animated: true, completion: nil)
     }
     
+    @objc func appWillResignActive() {
+        print("Приложение свернуто - останавливаем таймер")
+        gameTimer.stop()
+    }
+    
+    @objc func appDidBecomeActive() {
+        print("Приложение активно - продолжаем таймер")
+        gameTimer.start()
+    }
+}
 
 

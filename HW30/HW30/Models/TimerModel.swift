@@ -13,15 +13,8 @@ class GameTimer {
     private(set) var elapsedTime: TimeInterval = 0
     
     func start() {
-        print("Таймер запущен")
-        startTime = Date().timeIntervalSince1970
-        timer = Timer
-            .scheduledTimer(
-                timeInterval: 1.0,
-                target: self,
-                selector: #selector (updateTimer),
-                userInfo: nil,
-                repeats: true )
+        startTime = Date().timeIntervalSince1970 - elapsedTime  
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     func stop() {
@@ -33,14 +26,13 @@ class GameTimer {
         stop()
         elapsedTime = 0
     }
+    func setElapsedTime(_ time: TimeInterval) {
+         self.elapsedTime = time
+     }
+    
     @objc private func updateTimer() {
         let currentTime = Date().timeIntervalSince1970
-        
-        if startTime > 0 {
-            elapsedTime = currentTime - startTime
-            print("Время в игре \(elapsedTime)")
-        } else {
-            print("Ошибка: startTime не инициализировано")
-        }
+        elapsedTime = currentTime - startTime
+        print("Время в игре \(elapsedTime)")
     }
 }

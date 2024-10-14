@@ -8,9 +8,15 @@
 import UIKit
 
 class backgroundController {
-    static func setupBackground( for view: UIView, imageName: String) {
+    static func setupBackground(for view: UIView, imageName: String) {
+        for subview in view.subviews {
+            if let imageView = subview as? UIImageView {
+                imageView.removeFromSuperview()
+            }
+        }
+        
         guard let backgroundImage = UIImage(named: imageName) else {
-            print ("Error: background image not found \(imageName)")
+            print("Error: background image not found \(imageName)")
             return
         }
         

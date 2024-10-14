@@ -10,7 +10,7 @@ import UIKit
 class UINewStartViewController {
     
     static func setupUI(for viewController: UIViewController, storyTextView: UITextView, storyStackView: UIStackView) {
-        // Настройка storyTextView
+  
         storyTextView.font = UIFont.systemFont(ofSize: LayoutConstants.textStorySize)
         storyTextView.textColor = .white
         storyTextView.backgroundColor = .clear
@@ -23,7 +23,6 @@ class UINewStartViewController {
         storyTextView.layer.cornerRadius = LayoutConstants.cornerRadiusButton
         storyTextView.layer.masksToBounds = true
         
-        // Настройка StackView для вариантов
         storyStackView.axis = .vertical
         storyStackView.distribution = .equalSpacing
         storyStackView.alignment = .center
@@ -32,7 +31,6 @@ class UINewStartViewController {
         storyStackView.translatesAutoresizingMaskIntoConstraints = false
         storyTextView.translatesAutoresizingMaskIntoConstraints = false
         
-        // Добавление на экран
         viewController.view.addSubview(storyStackView)
         viewController.view.addSubview(storyTextView)
         
@@ -55,7 +53,6 @@ class UINewStartViewController {
         nextTapGesture.direction = .left
         viewController.view.addGestureRecognizer(nextTapGesture)
         
-    
         let previousSwipeGesture = UISwipeGestureRecognizer(target: viewController, action: previousSelector)
         previousSwipeGesture.direction = .right
         viewController.view.addGestureRecognizer(previousSwipeGesture)

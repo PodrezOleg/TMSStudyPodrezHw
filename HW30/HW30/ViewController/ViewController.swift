@@ -9,8 +9,8 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
     
+   //MARK: Заглушка для NEW GAME+ & Leaders
     var isGameCompleted: Bool = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,6 @@ class MainMenuViewController: UIViewController {
         setupMenuButtons()
         
     }
-    
     func setupMenuButtons()  {
         let stackMainView = UIStackView()
         stackMainView.axis = .vertical
@@ -41,7 +40,6 @@ class MainMenuViewController: UIViewController {
         titleLabel.layer.shadowRadius = LayoutConstants.shadowRadiusButton
         titleLabel.layer.shadowRadius = LayoutConstants.shadowRadiusButton
         
-        
         view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     
@@ -57,8 +55,7 @@ class MainMenuViewController: UIViewController {
             button.setButtonTitle(title)
             button.addTarget(self, action: action, for: .touchUpInside)
             
-            //условия активации кнопки Новая игра+
-            
+        
             if title == "Забыть все+" || title == "Лидеры" {
                 if isGameCompleted {
                     button.isEnabled = true
