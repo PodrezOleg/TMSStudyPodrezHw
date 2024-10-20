@@ -98,8 +98,10 @@ class MainMenuViewController: UIViewController {
         //                 navigationController?.pushViewController(gamePlusViewController, animated: true)
     }
     @objc func loadGame() {
-        //                 let loadGameViewController = LoadGameViewController()
-        //                 navigationController?.pushViewController(loadGameViewController, animated: true)
+                         let loadGameViewController = LeaderboardViewController()
+        loadGameViewController.modalTransitionStyle = .crossDissolve
+        loadGameViewController.modalPresentationStyle = .fullScreen
+        present(loadGameViewController, animated: true, completion: nil)
     }
     @objc func showLeaderBoard() {
         //                 let leaderBoardViewController = LeaderBoardViewController()

@@ -112,8 +112,8 @@ let storyPoints: [StoryPoint] = [
     StoryPoint(
         text: "Поздравляем, {name}, ты победил корпорацию и восстановил свою личность!",
         choices: [
-            Choice(text: "Просмотр таблицы лидеров", nextStoryPointID: -1, explanation: ""),
-            Choice(text: "Начать заново", nextStoryPointID: 0, explanation: "")
+            Choice(text: "Просмотр таблицы лидеров", nextStoryPointID: 101, explanation: ""),
+            Choice(text: "Начать заново", nextStoryPointID: 102, explanation: "")
         ],
         backGroundView: "GoodEndingBackground"
     ),
@@ -122,8 +122,8 @@ let storyPoints: [StoryPoint] = [
     StoryPoint(
         text: "Корпорация захватила тебя и полностью стерла твои воспоминания. Ты потерпел поражение.",
         choices: [
-            Choice(text: "Просмотр таблицы лидеров", nextStoryPointID: -1, explanation: ""),
-            Choice(text: "Начать заново", nextStoryPointID: 0, explanation: "")
+            Choice(text: "Просмотр таблицы лидеров", nextStoryPointID: 101, explanation: ""),
+            Choice(text: "Начать заново", nextStoryPointID: 102, explanation: "")
         ],
         backGroundView: "BadEndingBackground"
     ),
@@ -132,8 +132,8 @@ let storyPoints: [StoryPoint] = [
     StoryPoint(
         text: "Ты погиб. Время твоей игры сохранено в таблице лидеров.",
         choices: [
-            Choice(text: "Просмотр таблицы лидеров", nextStoryPointID: -1, explanation: ""),
-            Choice(text: "Начать заново", nextStoryPointID: 0, explanation: "")
+            Choice(text: "Просмотр таблицы лидеров", nextStoryPointID: 101, explanation: ""),
+            Choice(text: "Начать заново", nextStoryPointID: 102, explanation: "")
         ],
         backGroundView: "MountainsBacground"
     )

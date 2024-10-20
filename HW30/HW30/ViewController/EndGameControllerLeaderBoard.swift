@@ -13,19 +13,16 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     
     var leaderboardEntries: [(name: String, time: TimeInterval)] = []
     let tableView = UITableView()
+    let clearButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBackground()
         setupUI()
+        backButtonMenu()
+        leaderboardEntries = GameStateManager.shared.loadLeaderboard().map { ($0.playerName, $0.time) }
         
-        let loadedEntries = GameStateManager.shared.loadLeaderboard()
-        leaderboardEntries = loadedEntries.map { ($0.playerName, $0.time) }
-        
-        print("Загруженные данные таблицы лидеров: \(leaderboardEntries)")
-        
-        tableView.reloadData()
     }
     
     func setupBackground() {
@@ -34,7 +31,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func setupUI() {
-   
         let leaderboardLabel = UILabel()
         leaderboardLabel.text = "Таблица лидеров"
         leaderboardLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -42,35 +38,88 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         leaderboardLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(leaderboardLabel)
         
-        NSLayoutConstraint.activate([
-            leaderboardLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            leaderboardLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        view.addSubview(tableView)
+        view.addSubview(clearButton)
         
         setupTableView()
+        
+        //MARK: Не забыть удалит!! - Добавляем кнопку очистки таблицы лидеров
+        setupClearButton()
+        
+        NSLayoutConstraint.activate([
+            leaderboardLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+            leaderboardLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
     
     func setupTableView() {
-     
         view.addSubview(tableView)
-        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "LeaderboardCell")
         
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+        NSLayoutConstraint.activate(
+[
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
+            tableView.bottomAnchor
+                .constraint(
+                    equalTo: clearButton.topAnchor,
+                    constant: LayoutConstants.bottomAnchorStack
+                )
+        ]
+)
         tableView.backgroundColor = .clear
     }
+    func backButtonMenu() {
+        let backButton = CustomMenuButton()
+        backButton.setTitle("Главная", for: .normal)
+        backButton.addTarget(self, action: #selector(backToMainMenu), for: .touchUpInside)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        
+      
+        view.addSubview(backButton)
+        
+        NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10)
+        ])
+    }
     
-    // MARK: - UITableViewDataSource
+    func setupClearButton() {
+        clearButton.setTitle("Очистить таблицу лидеров", for: .normal)
+        clearButton.backgroundColor = .systemRed
+        clearButton.layer.cornerRadius = LayoutConstants.cornerRadiusButton
+        clearButton.addTarget(self, action: #selector(clearLeaderboard), for: .touchUpInside)
+        clearButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(clearButton)
+        
+        NSLayoutConstraint.activate(
+            [
+                clearButton.heightAnchor.constraint(equalToConstant: 50),
+                clearButton.leadingAnchor
+                    .constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingStack),
+                clearButton.trailingAnchor
+                    .constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingStack),
+                clearButton.bottomAnchor
+                    .constraint(
+                        equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                        constant: LayoutConstants
+                            .bottomAnchorStack)
+            ]
+        )
+    }
+    
+    @objc func clearLeaderboard() {
+        GameStateManager.shared.clearLeaderboard()
+        leaderboardEntries = []
+        tableView.reloadData()
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return leaderboardEntries.count
@@ -82,13 +131,15 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         let entry = leaderboardEntries[indexPath.row]
         let formattedTime = String(format: "%.2f", entry.time)
         
+        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
+        
         let label = UILabel()
         label.text = "\(indexPath.row + 1). \(entry.name) - \(formattedTime) сек"
         label.font = UIFont.systemFont(ofSize: 24)
-        label.textAlignment = .center  
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.tag = 100
         
-        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         cell.contentView.addSubview(label)
         
         NSLayoutConstraint.activate([
@@ -98,16 +149,15 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             label.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -10)
         ])
         
-        cell.backgroundColor = .clear
         
+        cell.backgroundColor = .clear
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Вы выбрали: \(leaderboardEntries[indexPath.row].name)")
-    }
-    
-    func displayLeaderboard() {
-        tableView.reloadData()
+   @objc func backToMainMenu() {
+        let mainViewController = MainMenuViewController()
+        mainViewController.modalPresentationStyle = .fullScreen
+        mainViewController.modalTransitionStyle = .crossDissolve
+        present(mainViewController, animated: true, completion: nil)
     }
 }

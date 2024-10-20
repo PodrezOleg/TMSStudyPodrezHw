@@ -13,7 +13,7 @@ class NewGameStartViewController: UIViewController {
     let storyTextView = UITextView()
     var currentTextIndex = 0
     var currentStoryPointID = 0
-    var playerName: String = "Player"
+    var playerName: String = "Fantom Player"
     var isShowingChoiceExplanation = false
     var selectedChoiceExplanation: String?
     var selectedNextStoryPointID: Int?
@@ -22,15 +22,21 @@ class NewGameStartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundController.setupBlurBackground(for: view, style: .extraLight, alpha: LayoutConstants.blurAlpha)
+        backgroundController.setupBlurBackground(for: view,
+                                                 style: .extraLight,
+                                                 alpha: LayoutConstants.blurAlpha)
         backgroundController.setupBackground(for: view, imageName: "StoryBackground")
         
-        UINewStartViewController.setupUI(for: self, storyTextView: storyTextView, storyStackView: storyStackView)
-        UINewStartViewController.setupGestures(for: self, nextSelector: #selector(handleNextSegmentTap), previousSelector: #selector(handlePreviousSegmentSwipe))
+        UINewStartViewController.setupUI(for: self,
+                                         storyTextView: storyTextView,
+                                         storyStackView: storyStackView)
+        UINewStartViewController.setupGestures(for: self,
+                                        nextSelector: #selector(handleNextSegmentTap),
+                                        previousSelector: #selector(handlePreviousSegmentSwipe))
         
-        displayPlayerIntro() 
+        displayPlayerIntro()
     }
-    
+    //Добить путь к концовкам
     @objc func handleNextSegmentTap() {
         if isShowingChoiceExplanation {
             isShowingChoiceExplanation = false
@@ -57,7 +63,10 @@ class NewGameStartViewController: UIViewController {
             return
         }
         
-        let textWithPlayerName = ReplaceName.replacePlayerName(in: lorText[currentTextIndex], with: playerName)
+        let textWithPlayerName = ReplaceName.replacePlayerName(
+            in: lorText[currentTextIndex],
+            with: playerName
+        )
         storyTextView.text = textWithPlayerName
     }
     
@@ -80,14 +89,30 @@ class NewGameStartViewController: UIViewController {
     func displayCurrentStoryPoint() {
         let currentStoryPoint = storyPoints[currentStoryPointID]
         
-        let storyTextWithPlayerName = ReplaceName.replacePlayerName(in: currentStoryPoint.text, with: playerName)
+        let storyTextWithPlayerName = ReplaceName.replacePlayerName(
+            in: currentStoryPoint.text,
+            with: playerName
+        )
         storyTextView.text = storyTextWithPlayerName
-    
+        
+        // Проверяем, если это смертельная концовка!!!!!!!
+          if currentStoryPoint.text.contains("Ты погиб") {
+              gameTimer.stop()
+              GameStateManager.shared.addLeaderboardEntry(playerName: playerName, time: gameTimer.elapsedTime)
+              print("Таймер остановлен. Время: \(gameTimer.elapsedTime) секунд. Результат добавлен в таблицу лидеров.")
+          }
+        
         for choice in currentStoryPoint.choices {
             let choiceButton = UIButton()
-            let choiceTextWithPlayerName = ReplaceName.replacePlayerName(in: choice.text, with: playerName)
+            let choiceTextWithPlayerName = ReplaceName.replacePlayerName(
+                in: choice.text,
+                with: playerName
+            )
             choiceButton.setTitle(choiceTextWithPlayerName, for: .normal)
-            let explanationWithPlayerName = ReplaceName.replacePlayerName(in: choice.explanation, with: playerName)
+            let explanationWithPlayerName = ReplaceName.replacePlayerName(
+                in: choice.explanation,
+                with: playerName
+            )
             choiceButton.backgroundColor = UIColor.orange.withAlphaComponent(LayoutConstants.blurAlpha)
             choiceButton.layer.cornerRadius = LayoutConstants.cornerRadiusButton
             
@@ -96,16 +121,21 @@ class NewGameStartViewController: UIViewController {
             choiceButton.titleLabel?.minimumScaleFactor = 0.5
             
             choiceButton.translatesAutoresizingMaskIntoConstraints = false
-            choiceButton.widthAnchor.constraint(equalToConstant: LayoutConstants.widthStroyButton).isActive = true
-            choiceButton.heightAnchor.constraint(equalToConstant: LayoutConstants.heightStroyButton).isActive = true
-
+            
+            NSLayoutConstraint.activate([
+                choiceButton.widthAnchor.constraint(equalToConstant: LayoutConstants.widthStroyButton),
+                choiceButton.heightAnchor.constraint(equalToConstant: LayoutConstants.heightStroyButton)
+            ]
+        )
+            
             choiceButton.accessibilityHint = explanationWithPlayerName
             choiceButton.tag = choice.nextStoryPointID
             choiceButton.addTarget(self, action: #selector(choiceSelected(_:)), for: .touchUpInside)
             storyStackView.addArrangedSubview(choiceButton)
         }
         
-        backgroundController.setupBackground(for: view, imageName: currentStoryPoint.backGroundView)
+        backgroundController.setupBackground(for: view,
+                                             imageName: currentStoryPoint.backGroundView)
     }
     
     @objc func choiceSelected(_ sender: UIButton) {
@@ -116,43 +146,47 @@ class NewGameStartViewController: UIViewController {
         
         isShowingChoiceExplanation = true
         selectedNextStoryPointID = sender.tag
-    
-        let currentStoryPoint = storyPoints[currentStoryPointID]
         
-        if currentStoryPoint.text.contains("Ты погиб") {
+        if selectedNextStoryPointID == 101 {
             endGameWithDeath()
-            return
+        } else if selectedNextStoryPointID == 102 {
+            backToMainMenu()
+        } else {
+            displayCurrentStoryPoint()
         }
+            return
         
         storyStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
     }
     
-    // Сохранение игры
     @objc func saveCurrentGame() {
-        GameStateManager.shared.saveGame(playerName: playerName, currentStoryPointID: currentStoryPointID, elapsedTime: gameTimer.elapsedTime)
-        GameStateManager.shared.addLeaderboardEntry(playerName: playerName, time: gameTimer.elapsedTime)
-        print("Игра сохранена.")
-    }
-    
-    // Загрузка игры
-    @objc func loadSavedGame() {
-        if let savedGame = GameStateManager.shared.loadGame() {
-            self.playerName = savedGame.playerName
-            self.currentStoryPointID = savedGame.currentStoryPointID
-            
-            gameTimer.setElapsedTime(savedGame.elapsedTime)
-            
-            print("Игра загружена: Игрок: \(playerName), Время: \(gameTimer.elapsedTime), Точка сюжета: \(currentStoryPointID)")
-            displayCurrentStoryPoint()
-        } else {
-            print("Сохраненная игра не найдена.")
-        }
-    }
+           GameStateManager.shared.saveGame(playerName: playerName,
+                                            currentStoryPointID: currentStoryPointID,
+                                            elapsedTime: gameTimer.elapsedTime)
+           
+       }
+       
+       @objc func loadSavedGame() {
+           if let savedGame = GameStateManager.shared.loadGame() {
+               self.playerName = savedGame.playerName
+               self.currentStoryPointID = savedGame.currentStoryPointID
+               gameTimer.stop()
+               GameStateManager.shared.addLeaderboardEntry(playerName: playerName,
+                                                           time: gameTimer.elapsedTime)
+           }
+       }
     
     func endGameWithDeath() {
         gameTimer.stop()
         GameStateManager.shared.addLeaderboardEntry(playerName: playerName, time: gameTimer.elapsedTime)
         showLeaderboardScreen()
+    }
+    
+    func backToMainMenu() {
+        let mainViewController = MainMenuViewController()
+        mainViewController.modalPresentationStyle = .fullScreen
+        mainViewController.modalTransitionStyle = .crossDissolve
+        present(mainViewController, animated: true, completion: nil)
     }
     
     func showLeaderboardScreen() {

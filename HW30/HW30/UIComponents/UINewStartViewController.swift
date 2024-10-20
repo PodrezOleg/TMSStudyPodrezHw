@@ -9,7 +9,9 @@ import UIKit
 
 class UINewStartViewController {
     
-    static func setupUI(for viewController: UIViewController, storyTextView: UITextView, storyStackView: UIStackView) {
+    static func setupUI(for viewController: UIViewController,
+                        storyTextView: UITextView,
+                        storyStackView: UIStackView) {
   
         storyTextView.font = UIFont.systemFont(ofSize: LayoutConstants.textStorySize)
         storyTextView.textColor = .white
@@ -49,8 +51,12 @@ class UINewStartViewController {
     
     static func setupGestures(for viewController: UIViewController, nextSelector: Selector, previousSelector: Selector) {
         
+        let tapGesture = UITapGestureRecognizer(target: viewController, action: nextSelector)
+        tapGesture.numberOfTapsRequired = 1
+        viewController.view.addGestureRecognizer(tapGesture)
+        
         let nextTapGesture = UISwipeGestureRecognizer(target: viewController, action: nextSelector)
-        nextTapGesture.direction = .left
+        nextTapGesture.numberOfTouchesRequired = 1
         viewController.view.addGestureRecognizer(nextTapGesture)
         
         let previousSwipeGesture = UISwipeGestureRecognizer(target: viewController, action: previousSelector)
@@ -59,3 +65,4 @@ class UINewStartViewController {
     }
     
 }
+
