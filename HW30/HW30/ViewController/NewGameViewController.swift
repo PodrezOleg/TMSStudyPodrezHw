@@ -13,7 +13,7 @@ class NewGameViewController: UIViewController {
     let nameTextField = UITextField()
     let backButton = CustomMenuButton()
     let startGameButton = CustomMenuButton()
-    let gameTimer = GameTimer()
+    let gameTimer = GameTimer.shared
     var isKeyBoardVisible = false
     
     override func viewDidLoad() {

@@ -12,6 +12,7 @@ class GameTimer {
     private var startTime: TimeInterval = 0
     private(set) var elapsedTime: TimeInterval = 0
     private var isRunning: Bool = false
+    static let shared = GameTimer()
 
     
     func start() {
@@ -35,14 +36,12 @@ class GameTimer {
         print("Таймер остановлен на \(elapsedTime) секунд")
     }
     
-  
     func reset() {
         stop()
         elapsedTime = 0
         print("Таймер сброшен")
     }
     
-
     func setElapsedTime(_ time: TimeInterval) {
         self.elapsedTime = time
         print("Установлено время: \(time) секунд")

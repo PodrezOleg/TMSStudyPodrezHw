@@ -17,7 +17,7 @@ class NewGameStartViewController: UIViewController {
     var isShowingChoiceExplanation = false
     var selectedChoiceExplanation: String?
     var selectedNextStoryPointID: Int?
-    let gameTimer = GameTimer()
+    let gameTimer = GameTimer.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +97,7 @@ class NewGameStartViewController: UIViewController {
         
         // Проверяем, если это смертельная концовка!!!!!!!
           if currentStoryPoint.text.contains("Ты погиб") {
-              gameTimer.stop()
+              GameTimer.shared.stop()
               GameStateManager.shared.addLeaderboardEntry(playerName: playerName, time: gameTimer.elapsedTime)
               print("Таймер остановлен. Время: \(gameTimer.elapsedTime) секунд. Результат добавлен в таблицу лидеров.")
           }
@@ -170,14 +170,14 @@ class NewGameStartViewController: UIViewController {
            if let savedGame = GameStateManager.shared.loadGame() {
                self.playerName = savedGame.playerName
                self.currentStoryPointID = savedGame.currentStoryPointID
-               gameTimer.stop()
+               GameTimer.shared.stop()
                GameStateManager.shared.addLeaderboardEntry(playerName: playerName,
                                                            time: gameTimer.elapsedTime)
            }
        }
     
     func endGameWithDeath() {
-        gameTimer.stop()
+        GameTimer.shared.stop()
         GameStateManager.shared.addLeaderboardEntry(playerName: playerName, time: gameTimer.elapsedTime)
         showLeaderboardScreen()
     }
