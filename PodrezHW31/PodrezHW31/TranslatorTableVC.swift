@@ -22,6 +22,9 @@ class TranslatorTableVC: UITableViewController {
     }
     private func setupUI() {
         title = "Переводчики"
+        navigationController?.navigationBar.titleTextAttributes = [
+              .foregroundColor: UIColor.systemOrange
+          ]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addTranslatorTapped))
