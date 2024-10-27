@@ -5,8 +5,8 @@
 //  Created by Oleg Podrez on 27.10.24.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 protocol AddTranslatorDelegate: AnyObject {
     func didAddTranslator()
@@ -39,14 +39,16 @@ class AddTranslatorVC: UIViewController {
         return textField
     }()
 
-    private let statusSwitch: UISwitch = {
-        let switchControl = UISwitch()
-        return switchControl
+    private let statusSegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["Свободен", "Занят"])
+        segmentedControl.selectedSegmentIndex = 0
+        return segmentedControl
     }()
 
     private let saveButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Созранить", for: .normal)
+        button.setTitle("Сохранить", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -54,24 +56,42 @@ class AddTranslatorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        uISetupBackground.setupAnimatedBackground(for: view)
+
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(keyboardWillShow(notification:)),
+            name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(keyboardWillHide(notification:)),
+            name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    deinit {
+
+        NotificationCenter.default.removeObserver(
+            self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(
+            self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     private func setupUI() {
         title = "Добавить переводчика"
         view.backgroundColor = .white
 
-        let stackView = UIStackView(arrangedSubviews: [nameTextField, languageTextField, rateTextField, statusSwitch, saveButton])
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let mainStackView = UIStackView(arrangedSubviews: [
+            nameTextField, languageTextField, rateTextField, statusSegmentedControl, saveButton,
+        ])
+        mainStackView.axis = .vertical
+        mainStackView.spacing = 10
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        view.addSubview(stackView)
+        view.addSubview(mainStackView)
 
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 
@@ -80,7 +100,7 @@ class AddTranslatorVC: UIViewController {
         newTranslator.name = nameTextField.text
         newTranslator.language = languageTextField.text
         newTranslator.rate = Int16(rateTextField.text ?? "0") ?? 0
-        newTranslator.status = statusSwitch.isOn
+        newTranslator.status = (statusSegmentedControl.selectedSegmentIndex == 0)
 
         do {
             try context.save()
@@ -89,5 +109,18 @@ class AddTranslatorVC: UIViewController {
         } catch let error as NSError {
             print("Failed to save translator: \(error), \(error.userInfo)")
         }
+    }
+
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+            as? CGRect
+        {
+            let keyboardHeight = keyboardFrame.height
+            self.view.frame.origin.y = -keyboardHeight / 2
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
 }

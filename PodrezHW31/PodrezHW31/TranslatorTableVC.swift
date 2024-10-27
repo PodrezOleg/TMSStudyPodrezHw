@@ -15,37 +15,19 @@ class TranslatorTableVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("TranslatorTableVC loaded")
         
         setupUI()
         fetchTranslators()
-        uISetupBackground.setupAnimatedBackground(for: self.view)
         
-        if translators.isEmpty {
-                 let newTranslator = TranslatorData(context: context)
-                 newTranslator.name = "Test Translator"
-                 newTranslator.language = "English"
-                 newTranslator.rate = 10
-                 newTranslator.status = true
-                 
-                 do {
-                     try context.save()
-                     fetchTranslators()
-                 } catch {
-                     print("Failed to save initial data: \(error)")
-                 }
-             }
-         }
-        
-
-
+    }
     private func setupUI() {
-        title = "Translators"
+        title = "Переводчики"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addTranslatorTapped))
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TranslatorCell")
+        tableView.backgroundColor = .clear
     }
 
     func fetchTranslators() {
@@ -63,13 +45,25 @@ class TranslatorTableVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TranslatorCell", for: indexPath)
-        let translator = translators[indexPath.row]
-        cell.textLabel?.text = "\(translator.name ?? "") - \(translator.language ?? "")"
-        cell.detailTextLabel?.text = "Rate: \(translator.rate) per page, Status: \(translator.statusDescription)"
-        print("Displaying cell for \(translator.name ?? "Unknown")")  // Отладочная информация
-        return cell
-    }
+      
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "TranslatorCell")
+           let translator = translators[indexPath.row]
+           
+           cell.textLabel?.numberOfLines = 0
+           cell.textLabel?.text = """
+           Имя: \(translator.name ?? "Unknown")
+           Язык: \(translator.language ?? "Unknown Language")
+           Ставка: \(translator.rate) за страницу
+           Статус: \(translator.status ? "Свободен" : "Занят")
+           """
+           cell.textLabel?.textColor = .systemOrange
+           cell.backgroundColor = .clear
+           return cell
+       }
+    
+       override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           return 100
+       }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
