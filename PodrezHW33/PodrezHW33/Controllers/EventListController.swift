@@ -16,10 +16,14 @@ class EventListController: UIViewController,  UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        UISetup.setupAnimatedBackground(for: view)
         title = "Напомниналка"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addEvent))
+        navigationController?.navigationBar.tintColor = .white
+        
+        tableView.backgroundColor = .clear 
+       
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -41,15 +45,15 @@ class EventListController: UIViewController,  UITableViewDataSource, UITableView
     @objc private func addEvent() {
         let vc = EventFormController()
         vc.onAdd = { [weak self] newEvent in
-            self?.events.append(newEvent)
-            self?.events.sort { $0.date < $1.date }
-            StorageManager.shared.saveEvent(event: newEvent)
+            guard let self = self else { return }
+            self.events.append(newEvent)
+            self.events.sort { $0.date < $1.date }
+            StorageManager.shared.saveEvents(self.events)
             Notifications.shared.scheduleNotification(for: newEvent)
-            self?.tableView.reloadData()
+            self.tableView.reloadData()
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         events.count
@@ -58,8 +62,20 @@ class EventListController: UIViewController,  UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let event = events[indexPath.row]
-        cell.textLabel?.text = event.title
+        cell.textLabel?.text = "\(event.title) - \(formattedDate(event.date))"
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.backgroundColor = .clear
         return cell
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let event = events[indexPath.row]
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.title])
+            events.remove(at: indexPath.row)
+            StorageManager.shared.saveEvents(events)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
     
     private func formattedDate(_ date: Date) -> String {

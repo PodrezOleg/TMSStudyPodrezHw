@@ -15,6 +15,7 @@ class EventFormController: UIViewController, CNContactPickerDelegate {
         let textField = UITextField()
         textField.placeholder = "Укажи событие"
         textField.borderStyle = .roundedRect
+
         return textField
     }()
     
@@ -30,7 +31,7 @@ class EventFormController: UIViewController, CNContactPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        UISetup.setupAnimatedBackground(for: view)
         title = "Добавить Событие"
         
         setupUI()
@@ -42,6 +43,7 @@ class EventFormController: UIViewController, CNContactPickerDelegate {
         
         let addEventButton = UIButton(type: .system)
         addEventButton.setTitle("Добавить", for: .normal)
+        addEventButton.tintColor = .white
         addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
         
         [titleTextField, datePicker, useContactLabel, useContactSwitch, addEventButton].forEach {
@@ -84,11 +86,17 @@ class EventFormController: UIViewController, CNContactPickerDelegate {
     }
     
     @objc private func addEvent() {
-        let eventTitle = (useContactSwitch.isOn && selectedContactName != nil) ? "День Рождения \(selectedContactName!)" : titleTextField.text ?? "Событие"
-        let newEvent = Event(title: eventTitle, date: datePicker.date, notificationInterval: 60 * 60 * 24) // уведомление за 1 день
-        
+        let eventTitle: String
+        if useContactSwitch.isOn, let contactName = selectedContactName {
+              let userEventText = titleTextField.text ?? "Событие"
+            eventTitle = "Назначаю отвественного \(contactName): \(userEventText)"
+          } else {
+              eventTitle = titleTextField.text ?? "Событие"
+          }
+        let newEvent = Event(title: eventTitle, date: datePicker.date, notificationInterval: 60 * 60 * 24)
         onAdd?(newEvent)
         
+        Notifications.shared.updateBadgeCount()
         navigationController?.popViewController(animated: true)
     }
 }

@@ -14,8 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let eventFormController = EventFormController()
-        let navigationController = UINavigationController(rootViewController: eventFormController)
+        let eventListController = EventListController()
+        let navigationController = UINavigationController(rootViewController: eventListController)
         
         window.rootViewController = navigationController
         self.window = window
@@ -31,6 +31,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        // for IOS 17 and <
+        UNUserNotificationCenter.current().setBadgeCount(0)
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }
