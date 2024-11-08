@@ -50,7 +50,7 @@ class Notifications {
             content1day.title = event.title
             content1day.body = "Напоминание: \(event.title) завтра"
             content1day.sound = .default
-            content1day.badge = NSNumber(value: pendingNotificationCount)
+            content1day.badge = NSNumber(value: 1)
             
             
             let oneDayBefore = event.date.addingTimeInterval(-60 * 60 * 24)
@@ -74,7 +74,7 @@ class Notifications {
             content.title = event.title
             content.body = "Событие: \(event.title) начинается сейчас"
             content.sound = .default
-            content.badge = NSNumber(value: pendingNotificationCount + 1)
+            content.badge = NSNumber(value: 1)
             
             
             let triggerDate2 = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: event.date)
