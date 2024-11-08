@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  PodrezHW34
 //
-//  Created by Oleg Podrez on 3.11.24.
+//  Created by Oleg Podrez on 9.11.24.
 //
 
 import UIKit

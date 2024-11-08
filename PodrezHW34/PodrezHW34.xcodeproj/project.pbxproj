@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		FF4DF98A2CD817630078109F /* PodrezHW34.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodrezHW34.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF5540C32CDECACF0015463A /* PodrezHW34.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodrezHW34.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		FF4DF99C2CD817650078109F /* Exceptions for "PodrezHW34" folder in "PodrezHW34" target */ = {
+		FF5540D52CDECAD10015463A /* Exceptions for "PodrezHW34" folder in "PodrezHW34" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = FF4DF9892CD817630078109F /* PodrezHW34 */;
+			target = FF5540C22CDECACF0015463A /* PodrezHW34 */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		FF4DF98C2CD817630078109F /* PodrezHW34 */ = {
+		FF5540C52CDECACF0015463A /* PodrezHW34 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				FF4DF99C2CD817650078109F /* Exceptions for "PodrezHW34" folder in "PodrezHW34" target */,
+				FF5540D52CDECAD10015463A /* Exceptions for "PodrezHW34" folder in "PodrezHW34" target */,
 			);
 			path = PodrezHW34;
 			sourceTree = "<group>";
@@ -32,7 +32,7 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FF4DF9872CD817630078109F /* Frameworks */ = {
+		FF5540C02CDECACF0015463A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,18 +42,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF4DF9812CD817630078109F = {
+		FF5540BA2CDECACF0015463A = {
 			isa = PBXGroup;
 			children = (
-				FF4DF98C2CD817630078109F /* PodrezHW34 */,
-				FF4DF98B2CD817630078109F /* Products */,
+				FF5540C52CDECACF0015463A /* PodrezHW34 */,
+				FF5540C42CDECACF0015463A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FF4DF98B2CD817630078109F /* Products */ = {
+		FF5540C42CDECACF0015463A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF4DF98A2CD817630078109F /* PodrezHW34.app */,
+				FF5540C32CDECACF0015463A /* PodrezHW34.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,64 +61,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF4DF9892CD817630078109F /* PodrezHW34 */ = {
+		FF5540C22CDECACF0015463A /* PodrezHW34 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF4DF99D2CD817650078109F /* Build configuration list for PBXNativeTarget "PodrezHW34" */;
+			buildConfigurationList = FF5540D62CDECAD10015463A /* Build configuration list for PBXNativeTarget "PodrezHW34" */;
 			buildPhases = (
-				FF4DF9862CD817630078109F /* Sources */,
-				FF4DF9872CD817630078109F /* Frameworks */,
-				FF4DF9882CD817630078109F /* Resources */,
+				FF5540BF2CDECACF0015463A /* Sources */,
+				FF5540C02CDECACF0015463A /* Frameworks */,
+				FF5540C12CDECACF0015463A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				FF4DF98C2CD817630078109F /* PodrezHW34 */,
+				FF5540C52CDECACF0015463A /* PodrezHW34 */,
 			);
 			name = PodrezHW34;
 			packageProductDependencies = (
 			);
 			productName = PodrezHW34;
-			productReference = FF4DF98A2CD817630078109F /* PodrezHW34.app */;
+			productReference = FF5540C32CDECACF0015463A /* PodrezHW34.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FF4DF9822CD817630078109F /* Project object */ = {
+		FF5540BB2CDECACF0015463A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					FF4DF9892CD817630078109F = {
+					FF5540C22CDECACF0015463A = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = FF4DF9852CD817630078109F /* Build configuration list for PBXProject "PodrezHW34" */;
+			buildConfigurationList = FF5540BE2CDECACF0015463A /* Build configuration list for PBXProject "PodrezHW34" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = FF4DF9812CD817630078109F;
+			mainGroup = FF5540BA2CDECACF0015463A;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = FF4DF98B2CD817630078109F /* Products */;
+			productRefGroup = FF5540C42CDECACF0015463A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF4DF9892CD817630078109F /* PodrezHW34 */,
+				FF5540C22CDECACF0015463A /* PodrezHW34 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FF4DF9882CD817630078109F /* Resources */ = {
+		FF5540C12CDECACF0015463A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,7 +128,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FF4DF9862CD817630078109F /* Sources */ = {
+		FF5540BF2CDECACF0015463A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,7 +138,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		FF4DF99E2CD817650078109F /* Debug */ = {
+		FF5540D72CDECAD10015463A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -153,6 +153,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -170,7 +171,7 @@
 			};
 			name = Debug;
 		};
-		FF4DF99F2CD817650078109F /* Release */ = {
+		FF5540D82CDECAD10015463A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -185,6 +186,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -202,7 +204,7 @@
 			};
 			name = Release;
 		};
-		FF4DF9A02CD817650078109F /* Debug */ = {
+		FF5540D92CDECAD10015463A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -265,7 +267,7 @@
 			};
 			name = Debug;
 		};
-		FF4DF9A12CD817650078109F /* Release */ = {
+		FF5540DA2CDECAD10015463A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -324,25 +326,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF4DF9852CD817630078109F /* Build configuration list for PBXProject "PodrezHW34" */ = {
+		FF5540BE2CDECACF0015463A /* Build configuration list for PBXProject "PodrezHW34" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF4DF9A02CD817650078109F /* Debug */,
-				FF4DF9A12CD817650078109F /* Release */,
+				FF5540D92CDECAD10015463A /* Debug */,
+				FF5540DA2CDECAD10015463A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF4DF99D2CD817650078109F /* Build configuration list for PBXNativeTarget "PodrezHW34" */ = {
+		FF5540D62CDECAD10015463A /* Build configuration list for PBXNativeTarget "PodrezHW34" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF4DF99E2CD817650078109F /* Debug */,
-				FF4DF99F2CD817650078109F /* Release */,
+				FF5540D72CDECAD10015463A /* Debug */,
+				FF5540D82CDECAD10015463A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = FF4DF9822CD817630078109F /* Project object */;
+	rootObject = FF5540BB2CDECACF0015463A /* Project object */;
 }
