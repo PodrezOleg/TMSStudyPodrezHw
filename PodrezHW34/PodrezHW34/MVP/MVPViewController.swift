@@ -28,13 +28,13 @@ class MVPViewController: UIViewController, CountMVPViewProtocol {
         print("MVPViewController: setupUI called")
         
         view.backgroundColor = .cyan
-        label.textColor = .red
-        label.text = "skdnflsdnflfngldknf"
+        label.textColor = .systemOrange
+        label.text = "0"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 30)
         
         plusButton.setTitle("Plus", for: .normal)
-        minusButton.setTitle("Minsu", for: .normal)
+        minusButton.setTitle("Minus", for: .normal)
         
         plusButton.setTitleColor(.white, for: .normal)
         minusButton.setTitleColor(.white, for: .normal)
@@ -64,21 +64,17 @@ class MVPViewController: UIViewController, CountMVPViewProtocol {
             stack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
-        print("MVPViewController: UI setup complete")
     }
 
     func updateCount(with value: Int) {
-        print("MVPViewController: updateCount called with value \(value)")
         label.text = String(value)
     }
     
     @objc private func minusButtonTapped() {
-        print("MVPViewController: minusButtonTapped called")
         presenter.minusButtonTapped()
     }
     
     @objc private func plusButtonTapped() {
-        print("MVPViewController: plusButtonTapped called")
         presenter.plusButtonTapped()
     }
 }
