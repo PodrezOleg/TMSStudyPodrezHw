@@ -8,8 +8,8 @@
 import Foundation
 
 class CountMVPPresenter {
-    private var model = CountMVPModel()
-    private weak var view: CountMVPViewProtocol?
+     var model = CountMVPModel()
+     weak var view: CountMVPViewProtocol?
     
     init(view: CountMVPViewProtocol) {
         self.view = view
@@ -30,7 +30,7 @@ class CountMVPPresenter {
         }
     }
     
-    private func updateView() {
+     func updateView() {
         view?.updateCount(with: model.count)
     }
 }

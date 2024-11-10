@@ -13,10 +13,10 @@ protocol CountMVPViewProtocol: AnyObject {
 
 class MVPViewController: UIViewController, CountMVPViewProtocol {
 
-    private let label = UILabel()
-    private let plusButton = UIButton()
-    private let minusButton = UIButton()
-    private lazy var presenter = CountMVPPresenter(view: self)
+     let label = UILabel()
+     let plusButton = UIButton()
+     let minusButton = UIButton()
+    lazy var presenter = CountMVPPresenter(view: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,13 @@ class MVPViewController: UIViewController, CountMVPViewProtocol {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 30)
         
-        plusButton.setTitle("+", for: .normal)
-        minusButton.setTitle("-", for: .normal)
+        plusButton.setTitle("Plus", for: .normal)
+        minusButton.setTitle("Minsu", for: .normal)
+        
+        plusButton.setTitleColor(.white, for: .normal)
+        minusButton.setTitleColor(.white, for: .normal)
+        plusButton.backgroundColor = .blue
+        minusButton.backgroundColor = .red
         
         plusButton.addTarget(
             self,

@@ -13,16 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        didFinishLaunchingWithOptions launchOptions:
+    [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // Создаем окно
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        // Устанавливаем rootViewController
         let rootViewController = MVPViewController()
         window?.rootViewController = rootViewController
-        
-        // Отображаем окно
         window?.makeKeyAndVisible()
         
         return true
