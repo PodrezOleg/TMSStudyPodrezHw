@@ -30,10 +30,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
-       
-     
         backgroundImageView.image = UIImage(named: "sky_4")
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.frame = view.bounds
