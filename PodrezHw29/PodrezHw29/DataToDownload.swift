@@ -27,13 +27,13 @@ class DataToDownload {
         dataTask.resume()
     }
     
-    func loadPhotos(completion: @escaping ([Photos]) -> Void) {
+    func loadPhotos(completion: @escaping ([Photo]) -> Void) {
         guard let urlPhoto = URL(string: APIHandler.photos) else { return }
         let request = URLRequest(url: urlPhoto)
         let dataTask = URLSession.shared.dataTask(with: request) { data, _, error in
             guard let data else { return }
             let decoder = JSONDecoder()
-            guard let photo: [Photos]? = try? decoder.decode([Photos].self, from: data)
+            guard let photo: [Photo]? = try? decoder.decode([Photo].self, from: data)
             else { return }
             guard let photo else { return }
             completion(photo)

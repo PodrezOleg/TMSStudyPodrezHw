@@ -8,7 +8,7 @@ import UIKit
 
 class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var photos: [Photos] = []
+    var photos: [Photo] = []
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()

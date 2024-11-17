@@ -9,7 +9,7 @@ import UIKit
 
 class PhotoDetailViewController: UIViewController {
     
-    var photo: Photos?
+    var photo: Photo?
 
     private let titleLabel = UILabel()
     private let imageView = UIImageView()

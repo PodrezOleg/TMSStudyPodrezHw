@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Photos: Codable {
+struct Photo: Codable {
     let albumID, id: Int
     let title: String
     let url, thumbnailURL: String
