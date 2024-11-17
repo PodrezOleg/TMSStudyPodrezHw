@@ -6,38 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		FF14817F2CEA9DB00078FC0D /* TabBarFactoryforController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14817E2CEA9DB00078FC0D /* TabBarFactoryforController.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		FF14817E2CEA9DB00078FC0D /* TabBarFactoryforController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFactoryforController.swift; sourceTree = "<group>"; };
-		FF476CB52CE0DCA8007F2468 /* PodrezHW35.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodrezHW35.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF41C3EF2CBA9619007052B1 /* HW30.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW30.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		FF476CC72CE0DCAA007F2468 /* Exceptions for "PodrezHW35" folder in "PodrezHW35" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = FF476CB42CE0DCA8007F2468 /* PodrezHW35 */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		FF476CB72CE0DCA8007F2468 /* PodrezHW35 */ = {
+		FF41C3F12CBA9619007052B1 /* HW30 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				FF476CC72CE0DCAA007F2468 /* Exceptions for "PodrezHW35" folder in "PodrezHW35" target */,
-			);
-			path = PodrezHW35;
+			path = HW30;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FF476CB22CE0DCA8007F2468 /* Frameworks */ = {
+		FF41C3EC2CBA9619007052B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,19 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF476CAC2CE0DCA8007F2468 = {
+		FF41C3E62CBA9619007052B1 = {
 			isa = PBXGroup;
 			children = (
-				FF14817E2CEA9DB00078FC0D /* TabBarFactoryforController.swift */,
-				FF476CB72CE0DCA8007F2468 /* PodrezHW35 */,
-				FF476CB62CE0DCA8007F2468 /* Products */,
+				FF41C3F12CBA9619007052B1 /* HW30 */,
+				FF41C3F02CBA9619007052B1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FF476CB62CE0DCA8007F2468 /* Products */ = {
+		FF41C3F02CBA9619007052B1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF476CB52CE0DCA8007F2468 /* PodrezHW35.app */,
+				FF41C3EF2CBA9619007052B1 /* HW30.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,65 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF476CB42CE0DCA8007F2468 /* PodrezHW35 */ = {
+		FF41C3EE2CBA9619007052B1 /* HW30 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF476CC82CE0DCAA007F2468 /* Build configuration list for PBXNativeTarget "PodrezHW35" */;
+			buildConfigurationList = FF41C4022CBA961B007052B1 /* Build configuration list for PBXNativeTarget "HW30" */;
 			buildPhases = (
-				FF476CB12CE0DCA8007F2468 /* Sources */,
-				FF476CB22CE0DCA8007F2468 /* Frameworks */,
-				FF476CB32CE0DCA8007F2468 /* Resources */,
+				FF41C3EB2CBA9619007052B1 /* Sources */,
+				FF41C3EC2CBA9619007052B1 /* Frameworks */,
+				FF41C3ED2CBA9619007052B1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				FF476CB72CE0DCA8007F2468 /* PodrezHW35 */,
+				FF41C3F12CBA9619007052B1 /* HW30 */,
 			);
-			name = PodrezHW35;
+			name = HW30;
 			packageProductDependencies = (
 			);
-			productName = PodrezHW35;
-			productReference = FF476CB52CE0DCA8007F2468 /* PodrezHW35.app */;
+			productName = HW30;
+			productReference = FF41C3EF2CBA9619007052B1 /* HW30.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FF476CAD2CE0DCA8007F2468 /* Project object */ = {
+		FF41C3E72CBA9619007052B1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1610;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					FF476CB42CE0DCA8007F2468 = {
-						CreatedOnToolsVersion = 16.1;
+					FF41C3EE2CBA9619007052B1 = {
+						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
-			buildConfigurationList = FF476CB02CE0DCA8007F2468 /* Build configuration list for PBXProject "PodrezHW35" */;
+			buildConfigurationList = FF41C3EA2CBA9619007052B1 /* Build configuration list for PBXProject "HW30" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
-				ru,
 			);
-			mainGroup = FF476CAC2CE0DCA8007F2468;
+			mainGroup = FF41C3E62CBA9619007052B1;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = FF476CB62CE0DCA8007F2468 /* Products */;
+			productRefGroup = FF41C3F02CBA9619007052B1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF476CB42CE0DCA8007F2468 /* PodrezHW35 */,
+				FF41C3EE2CBA9619007052B1 /* HW30 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FF476CB32CE0DCA8007F2468 /* Resources */ = {
+		FF41C3ED2CBA9619007052B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,18 +115,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FF476CB12CE0DCA8007F2468 /* Sources */ = {
+		FF41C3EB2CBA9619007052B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF14817F2CEA9DB00078FC0D /* TabBarFactoryforController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		FF476CC92CE0DCAA007F2468 /* Debug */ = {
+		FF41C4032CBA961B007052B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -155,19 +134,20 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MLNT49BZ43;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PodrezHW35/Info.plist;
+				INFOPLIST_FILE = HW30/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Podrez.PodrezHW35;
+				PRODUCT_BUNDLE_IDENTIFIER = Podrez.HW30;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -179,7 +159,7 @@
 			};
 			name = Debug;
 		};
-		FF476CCA2CE0DCAA007F2468 /* Release */ = {
+		FF41C4042CBA961B007052B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -188,19 +168,20 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MLNT49BZ43;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PodrezHW35/Info.plist;
+				INFOPLIST_FILE = HW30/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Podrez.PodrezHW35;
+				PRODUCT_BUNDLE_IDENTIFIER = Podrez.HW30;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -212,7 +193,7 @@
 			};
 			name = Release;
 		};
-		FF476CCB2CE0DCAA007F2468 /* Debug */ = {
+		FF41C4052CBA961B007052B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -264,7 +245,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -275,7 +256,7 @@
 			};
 			name = Debug;
 		};
-		FF476CCC2CE0DCAA007F2468 /* Release */ = {
+		FF41C4062CBA961B007052B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -321,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -334,25 +315,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF476CB02CE0DCA8007F2468 /* Build configuration list for PBXProject "PodrezHW35" */ = {
+		FF41C3EA2CBA9619007052B1 /* Build configuration list for PBXProject "HW30" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF476CCB2CE0DCAA007F2468 /* Debug */,
-				FF476CCC2CE0DCAA007F2468 /* Release */,
+				FF41C4052CBA961B007052B1 /* Debug */,
+				FF41C4062CBA961B007052B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF476CC82CE0DCAA007F2468 /* Build configuration list for PBXNativeTarget "PodrezHW35" */ = {
+		FF41C4022CBA961B007052B1 /* Build configuration list for PBXNativeTarget "HW30" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF476CC92CE0DCAA007F2468 /* Debug */,
-				FF476CCA2CE0DCAA007F2468 /* Release */,
+				FF41C4032CBA961B007052B1 /* Debug */,
+				FF41C4042CBA961B007052B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = FF476CAD2CE0DCA8007F2468 /* Project object */;
+	rootObject = FF41C3E72CBA9619007052B1 /* Project object */;
 }
