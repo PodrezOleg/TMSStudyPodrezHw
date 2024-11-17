@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene as! UIWindowScene)
         let tabBarController = UITabBarController()
         let mvpViewController = MVPViewController()
-        mvpViewController.tabBarItem = UITabBarItem(title: "MVP", image: nil, tag: 0)
+        mvpViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("MVP", comment: ""),
+                                                    image: nil,
+                                                    tag: 0)
         
         let vipViewController = VIPRouter.createModule()
         vipViewController.tabBarItem = UITabBarItem(title: "VIP", image: nil, tag: 1)

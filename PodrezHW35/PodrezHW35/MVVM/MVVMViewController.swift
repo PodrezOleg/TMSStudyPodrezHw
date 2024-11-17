@@ -33,7 +33,10 @@ class MVVMViewController: UIViewController {
     
     private func setupUI() {
       
-        labelView.text = "MVVM, это как MVP, но с большими возможностями и меньшим количеством шаблонного кода."
+        labelView.text = NSLocalizedString(
+            "MVVM, это как MVP, но с большими возможностями и меньшим количеством шаблонного кода.",
+            comment: ""
+        )
         labelView.textAlignment = .center
         labelView.textColor = .black
         labelView.numberOfLines = 0
@@ -46,8 +49,8 @@ class MVVMViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 30)
         
-        plusButton.setTitle("Plus", for: .normal)
-        minusButton.setTitle("Minus", for: .normal)
+        plusButton.setTitle(NSLocalizedString("Плюс", comment: ""), for: .normal)
+        minusButton.setTitle(NSLocalizedString("Минус", comment: ""), for: .normal)
         
         plusButton.setTitleColor(.white, for: .normal)
         minusButton.setTitleColor(.white, for: .normal)
