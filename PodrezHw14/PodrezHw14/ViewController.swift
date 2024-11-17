@@ -14,10 +14,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
    
      var collectionView: UICollectionView?
      var backgroundImageView = UIImageView()
-    
-
-  
-    
     private let planets: [Planet] = [
         Planet(name: "Mercury", imageName: "mercury"),
         Planet(name: "Venus", imageName: "venus"),
