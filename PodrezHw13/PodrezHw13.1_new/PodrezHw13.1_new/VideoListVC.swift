@@ -50,10 +50,12 @@ extension VideoListVC: UITableViewDelegate, UITableViewDataSource {
         let video = videos[indexPath.row]
         cell.set(video: video)
         
-        cell.onImageTap = {
+        cell.onImageTap = { [weak self] in
+            guard let self = self else { return }
             self.presentFullTextVC(with: video)
         }
-        cell.onTextTap = {
+        cell.onTextTap = { [weak self] in
+            guard let self = self else { return }
             self.presentFullTextVC(with: video)
         }
         
