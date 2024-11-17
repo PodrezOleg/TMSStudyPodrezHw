@@ -12,12 +12,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     lazy var blurEffect = UIBlurEffect(style: .light)
     lazy var blurEffectView = UIVisualEffectView(effect: blurEffect)
    
-     var collectionView: UICollectionView?
+lazy  var collectionView: UICollectionView = {
+    return UICollectionView()
+}()
      var backgroundImageView = UIImageView()
-    
-
-  
-    
     private let planets: [Planet] = [
         Planet(name: "Mercury", imageName: "mercury"),
         Planet(name: "Venus", imageName: "venus"),
@@ -30,10 +28,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
-       
-     
         backgroundImageView.image = UIImage(named: "sky_4")
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.frame = view.bounds
