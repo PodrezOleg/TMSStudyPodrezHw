@@ -14,20 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
-        
         let window = UIWindow(windowScene: scene as! UIWindowScene)
-        let tabBarController = UITabBarController()
-        let mvpViewController = MVPViewController()
-        mvpViewController.tabBarItem = UITabBarItem(title: "MVP", image: nil, tag: 0)
-        
-        let vipViewController = VIPRouter.createModule()
-        vipViewController.tabBarItem = UITabBarItem(title: "VIP", image: nil, tag: 1)
-        
-        let MVVMViewController = MVVMViewController()
-        MVVMViewController.tabBarItem = UITabBarItem(title: "MVVM", image: nil, tag: 2)
-        tabBarController.viewControllers = [mvpViewController, vipViewController, MVVMViewController]
-        tabBarController.tabBar.backgroundColor = .systemFill
-        window.rootViewController = tabBarController
+        window.rootViewController = TabBarFactoryForController.build()
         self.window = window
         window.makeKeyAndVisible()
         
