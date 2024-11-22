@@ -8,21 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    let tabs = ["Главная", "Профиль", "Настройки"]
+    let tabs = ["Звезда", "Круг", "Квадрат"]
     let icon = ["star.fill", "circle.fill", "square.fill"]
 
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.quaternarySystemFill
+       }
     var body: some View {
+        
         TabView {
-            ForEach(Array(tabs.enumerated()), id: \.element) {index, tab in
-                Text("\(tab) экран")
+            StarView()
                     .tabItem {
-                        Image(systemName: icon[index])
-                        Text(tab)
+                        Image(systemName: icon[0])
+                        Text(tabs[0])
                     }
+            
+            CircleView()
+                .tabItem {
+                    Image(systemName: icon[1])
+                    Text(tabs[1])
+                }
+            
+            SquareView()
+                .tabItem {
+                    Image(systemName: icon[2])
+                    Text(tabs[2])
+                }
             }
         }
     }
-}
 
 #Preview {
     ContentView()

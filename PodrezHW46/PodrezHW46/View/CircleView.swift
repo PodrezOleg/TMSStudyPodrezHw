@@ -7,12 +7,23 @@
 
 import SwiftUI
 
-struct circleView: View {
+struct CircleView: View {
     var body: some View {
-        Text("Hello Circle")
+        
+        ZStack(alignment: .bottomTrailing) {
+            Image("Oleg")
+                .resizable()
+                .frame(width: 200, height: 200)
+                .scaledToFit()
+                .cornerRadius(30)
+            
+            Text("Макет где?")
+                .padding()
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+        }
     }
 }
-
     #Preview {
-        circleView()
+        CircleView()
     }
