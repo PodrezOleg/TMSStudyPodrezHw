@@ -9,12 +9,11 @@ import SwiftUI
 import Charts
 
 struct ContentView: View {
-
-    @State var number: Int = 0
+    
     @State  var data: [ChartData] = [
         ChartData(value: 5, label: "Mon"),
         ChartData(value: 10, label: "Tue"),
-        ChartData(value: 223, label: "Wed"),
+        ChartData(value: 95, label: "Wed"),
         ChartData(value: 20, label: "Thu"),
         ChartData(value: 79, label: "Fri"),
         ChartData(value: 30, label: "Sat"),
@@ -22,7 +21,7 @@ struct ContentView: View {
     ]
     var body: some View {
         VStack {
-                    Chart {
+            Chart {
                 ForEach(data) { entry in
                     BarMark(
                         x: .value("Day", entry.label),
@@ -34,38 +33,46 @@ struct ContentView: View {
             .frame(height: 200)
             .padding()
             
-            HStack {
-                MinusButton(data: $data)
-                NumberView(data: data)
-                PlusButton(data: $data)
-            }
-        }
-    }
-    
-    struct NumberView: View {
-        var data: [ChartData]
-
-        var body: some View {
-            VStack {
-                Text("Current Values")
+            VStack (alignment: .center) {
+                Text("Curent Value")
                     .font(.headline)
-                ForEach(data) { entry in
-                    Text("\(entry.label): \(String(format: "%.2f", entry.value))")
+                
+                ForEach(data.indices, id: \.self) { index in
+                    DataRowView(data: $data[index])
                 }
             }
-            .padding()
         }
+        Spacer()
     }
+}
+            
+struct DataRowView: View {
+    @Binding var data: ChartData
     
-    struct PlusButton: View {
-        @Binding var data: [ChartData]
-        var body: some View {
+    var body: some View {
+        HStack (alignment: .center) {
+            
             Button(action: {
-                for i in data.indices {
-                    data[i].value += 1
-                }
+                data.value -= 1
+            }) {
+                Text("-")
+                    .frame(width: 10, height: 20)
+                    .font(.title)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.red)
+                    .cornerRadius(10)
+                    
+            }
+            Text("\(data.label): \(String(format: "%.0f", data.value))")
+                .font(.body)
+                .padding(.horizontal)
+            
+            Button(action: {
+                data.value += 1
             }) {
                 Text("+")
+                    .frame(width: 10, height: 20)
                     .font(.title)
                     .padding()
                     .foregroundColor(.white)
@@ -73,28 +80,11 @@ struct ContentView: View {
                     .cornerRadius(10)
             }
         }
+    
     }
     
-    
-    struct MinusButton: View {
-        @Binding var data: [ChartData]
-        var body: some View {
-            Button(action: {
-                for i in data.indices {
-                    data[i].value -= 1
-                }
-            }) {
-                Text("-")
-                    .font(.title)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.red)
-                    .cornerRadius(10)
-            }
-        }
-    }
 }
-
+    
 struct ChartData: Identifiable {
     let id: UUID = UUID()
     var value: Double
