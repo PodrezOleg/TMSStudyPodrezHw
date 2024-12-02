@@ -21,7 +21,7 @@ struct ContentView: View {
             Tab("Sqyare", systemImage: "square.fill") {
                 SquareView()
             }
-            Tab("Star", systemImage: "star.fill") {
+            Tab("Star", systemImage: "Star.fill") {
                 StarView()
             }
         }
