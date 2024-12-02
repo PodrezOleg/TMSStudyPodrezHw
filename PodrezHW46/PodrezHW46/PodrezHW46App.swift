@@ -11,7 +11,7 @@ import SwiftUI
 struct PodrezHW46App: App {
     var body: some Scene {
         WindowGroup {
-            MainViewButtons()
+            ContentView()
         }
     }
 }
