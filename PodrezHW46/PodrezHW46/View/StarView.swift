@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StarView: View {
-    @State private var isPresented: Bool = false
     var body: some View {
         VStack {
         Rectangle()
