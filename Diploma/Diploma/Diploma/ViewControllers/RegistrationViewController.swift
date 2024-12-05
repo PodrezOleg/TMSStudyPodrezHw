@@ -15,7 +15,7 @@
 import UIKit
 
 class RegistrationViewController: UIViewController {
-    // UI-компоненты
+  
     private let appImageView = UIImageView()
     private let nameTextField = UITextField()
     private let datePicker = UIDatePicker()
@@ -28,6 +28,7 @@ class RegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UISetup.setupAnimatedBackground(for: view)
         setupUI()
     }
 
@@ -35,20 +36,20 @@ class RegistrationViewController: UIViewController {
         title = "Регистрация"
         view.backgroundColor = .white
 
-        // Настраиваем верхнюю картинку
-        appImageView.image = UIImage(named: "app_logo") // Замените на своё изображение
+     
+        appImageView.image = UIImage(named: "Logo") // Замените на своё изображение
         appImageView.contentMode = .scaleAspectFit
         appImageView.translatesAutoresizingMaskIntoConstraints = false
 
-        // Настраиваем текстовое поле для имени
+   
         nameTextField.placeholder = "Введите имя"
         nameTextField.borderStyle = .roundedRect
 
-        // Настраиваем DatePicker для даты рождения
+        
         datePicker.datePickerMode = .date
         datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -16, to: Date())
 
-        // Настраиваем UIPickerView для роста, веса и аллергий
+       
         heightPicker.dataSource = self
         heightPicker.delegate = self
 
@@ -62,14 +63,14 @@ class RegistrationViewController: UIViewController {
         allergiesPicker.delegate = self
         allergiesPicker.dataSource = self
 
-        // Настраиваем кнопку регистрации
+     
         registerButton.setTitle("Регистрация", for: .normal)
         registerButton.backgroundColor = .systemBlue
         registerButton.setTitleColor(.white, for: .normal)
         registerButton.layer.cornerRadius = 5
         registerButton.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
 
-        // Создаём UIStackView для всех элементов
+   
         let stackView = UIStackView(arrangedSubviews: [
             nameTextField,
             datePicker,
@@ -82,22 +83,22 @@ class RegistrationViewController: UIViewController {
         stackView.spacing = 5
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        // Добавляем элементы на экран
+     
         view.addSubview(appImageView)
         view.addSubview(stackView)
 
-        // Устанавливаем ограничения
+      
         NSLayoutConstraint.activate([
-            // Картинка приложения сверху
-            appImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            appImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            appImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            appImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25), // 25% высоты экрана
+          
+            appImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.logoTopAnchot),
+            appImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            appImageView.widthAnchor.constraint(equalToConstant: 150),
+            appImageView.heightAnchor.constraint(equalToConstant: 150),
 
-            // StackView снизу
+         
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            stackView.topAnchor.constraint(equalTo: appImageView.bottomAnchor, constant: 10)
+            stackView.topAnchor.constraint(equalTo: appImageView.bottomAnchor, constant: 20)
         ])
     }
 
