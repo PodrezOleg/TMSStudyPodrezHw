@@ -26,6 +26,7 @@ class CustomButton: UIButton {
         self.backgroundColor = UIColor.purple.withAlphaComponent(LayoutConstants.mainAlpha)
         self.layer.cornerRadius = LayoutConstants.cornerRadiusButton
         self.layer.shadowColor = UIColor.blue.cgColor
+        
       
     }
 }

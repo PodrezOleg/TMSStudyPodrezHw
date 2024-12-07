@@ -19,11 +19,11 @@ class RegistrationViewController: UIViewController {
     private let appImageView = UIImageView()
     private let nameTextField = UITextField()
     private let datePicker = UIDatePicker()
-    private let heightPicker = UIPickerView()
-    private let weightPicker = UIPickerView()
+    private let heightTextField = UITextField()
+    private let weightTextField = UITextField()
     private let allergiesTextField = UITextField()
     private let allergiesPicker = UIPickerView()
-    private let registerButton = UIButton(type: .system)
+    private let registerButton = CustomButton()
     private let viewModel = RegistrationViewModel()
 
     override func viewDidLoad() {
@@ -34,72 +34,115 @@ class RegistrationViewController: UIViewController {
 
     private func setupUI() {
         title = "Регистрация"
-        view.backgroundColor = .white
 
-     
-        appImageView.image = UIImage(named: "Logo") // Замените на своё изображение
+        // Логотип
+        appImageView.image = UIImage(named: "Logo")
         appImageView.contentMode = .scaleAspectFit
         appImageView.translatesAutoresizingMaskIntoConstraints = false
 
-   
+        // Имя
         nameTextField.placeholder = "Введите имя"
         nameTextField.borderStyle = .roundedRect
 
-        
+        // Дата рождения
         datePicker.datePickerMode = .date
         datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -16, to: Date())
+        datePicker.preferredDatePickerStyle = .compact
+        datePicker.calendar = .autoupdatingCurrent
 
-       
-        heightPicker.dataSource = self
-        heightPicker.delegate = self
+        // Рост
+        heightTextField.placeholder = "Выберите рост"
+        heightTextField.borderStyle = .roundedRect
+        heightTextField.inputView = createPicker(for: .height)
+        heightTextField.inputAccessoryView = createToolbar()
 
-        weightPicker.dataSource = self
-        weightPicker.delegate = self
+        // Вес
+        weightTextField.placeholder = "Выберите вес"
+        weightTextField.borderStyle = .roundedRect
+        weightTextField.inputView = createPicker(for: .weight)
+        weightTextField.inputAccessoryView = createToolbar()
 
+        // Аллергии
         allergiesTextField.placeholder = "Добавить аллергию"
         allergiesTextField.borderStyle = .roundedRect
         allergiesTextField.inputView = allergiesPicker
+        allergiesTextField.inputAccessoryView = createToolbar()
 
         allergiesPicker.delegate = self
         allergiesPicker.dataSource = self
 
-     
+        // Кнопка регистрации
         registerButton.setTitle("Регистрация", for: .normal)
-        registerButton.backgroundColor = .systemBlue
-        registerButton.setTitleColor(.white, for: .normal)
-        registerButton.layer.cornerRadius = 5
         registerButton.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
 
-   
+        // StackView
         let stackView = UIStackView(arrangedSubviews: [
             nameTextField,
             datePicker,
-            heightPicker,
-            weightPicker,
+            heightTextField,
+            weightTextField,
             allergiesTextField,
             registerButton
         ])
         stackView.axis = .vertical
-        stackView.spacing = 5
+        stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
-     
+        // Добавляем элементы на экран
         view.addSubview(appImageView)
         view.addSubview(stackView)
 
-      
         NSLayoutConstraint.activate([
-          
-            appImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.logoTopAnchot),
+            appImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             appImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             appImageView.widthAnchor.constraint(equalToConstant: 150),
             appImageView.heightAnchor.constraint(equalToConstant: 150),
 
-         
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             stackView.topAnchor.constraint(equalTo: appImageView.bottomAnchor, constant: 20)
         ])
+    }
+
+    private func createPicker(for type: PickerType) -> UIPickerView {
+        let picker = UIPickerView()
+        picker.dataSource = self
+        picker.delegate = self
+        picker.tag = type.rawValue
+        return picker
+    }
+
+    private func createToolbar() -> UIToolbar {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        // Кнопка "Готово"
+        let doneButton = UIBarButtonItem(title: "Готово", style: .done, target: self, action: #selector(doneButtonTapped))
+        
+        // Кнопка "Отмена"
+        let cancelButton = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        
+        // Добавляем кнопки на toolbar
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([cancelButton, spacer, doneButton], animated: true)
+        
+        return toolbar
+    }
+
+    @objc private func doneButtonTapped() {
+        view.endEditing(true) // Закрывает пикер
+    }
+
+    @objc private func cancelButtonTapped() {
+        // Сбрасываем текст в активном поле
+        if heightTextField.isFirstResponder {
+            heightTextField.text = ""
+        } else if weightTextField.isFirstResponder {
+            weightTextField.text = ""
+        } else if allergiesTextField.isFirstResponder {
+            allergiesTextField.text = ""
+        }
+        view.endEditing(true) // Закрывает пикер
     }
 
     @objc private func registrationButtonTapped() {
@@ -109,10 +152,16 @@ class RegistrationViewController: UIViewController {
         }
 
         let dateOfBirth = datePicker.date
-        let height = viewModel.heightOptions[heightPicker.selectedRow(inComponent: 0)]
-        let weight = viewModel.weightOptions[weightPicker.selectedRow(inComponent: 0)]
-        let allergy = viewModel.allergyOptions[allergiesPicker.selectedRow(inComponent: 0)]
 
+        // Преобразуем текстовые значения в числа
+        guard let height = Int(heightTextField.text ?? ""), let weight = Int(weightTextField.text ?? "") else {
+            print("Введите корректные значения роста и веса")
+            return
+        }
+
+        let allergy = allergiesTextField.text ?? ""
+
+        // Передаем данные в ViewModel
         viewModel.registerUser(
             name: name,
             dateOfBirth: dateOfBirth,
@@ -120,7 +169,7 @@ class RegistrationViewController: UIViewController {
             weight: weight,
             allergy: allergy
         )
-        print("Зарегистрирован")
+        print("Пользователь зарегистрирован")
     }
 }
 
@@ -130,9 +179,9 @@ extension RegistrationViewController: UIPickerViewDataSource, UIPickerViewDelega
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == heightPicker {
+        if pickerView.tag == PickerType.height.rawValue {
             return viewModel.heightOptions.count
-        } else if pickerView == weightPicker {
+        } else if pickerView.tag == PickerType.weight.rawValue {
             return viewModel.weightOptions.count
         } else if pickerView == allergiesPicker {
             return viewModel.allergyOptions.count
@@ -141,9 +190,9 @@ extension RegistrationViewController: UIPickerViewDataSource, UIPickerViewDelega
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == heightPicker {
+        if pickerView.tag == PickerType.height.rawValue {
             return "\(viewModel.heightOptions[row]) см"
-        } else if pickerView == weightPicker {
+        } else if pickerView.tag == PickerType.weight.rawValue {
             return "\(viewModel.weightOptions[row]) кг"
         } else if pickerView == allergiesPicker {
             return viewModel.allergyOptions[row]
@@ -152,8 +201,17 @@ extension RegistrationViewController: UIPickerViewDataSource, UIPickerViewDelega
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == allergiesPicker {
+        if pickerView.tag == PickerType.height.rawValue {
+            heightTextField.text = "\(viewModel.heightOptions[row]) см"
+        } else if pickerView.tag == PickerType.weight.rawValue {
+            weightTextField.text = "\(viewModel.weightOptions[row]) кг"
+        } else if pickerView == allergiesPicker {
             allergiesTextField.text = viewModel.allergyOptions[row]
         }
     }
+}
+
+enum PickerType: Int {
+    case height = 1
+    case weight
 }
