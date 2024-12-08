@@ -10,6 +10,8 @@ import UIKit
 class CustomButton: UIButton {
     
     private var shapeLayers: CAShapeLayer?
+    private let buttonWidth: CGFloat = LayoutConstants.buttonWidth
+    private let buttonHeight: CGFloat = LayoutConstants.buttonHeight
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -23,10 +25,17 @@ class CustomButton: UIButton {
     
     func setupButton() {
         self.setTitleColor(.white, for: .normal)
-        self.backgroundColor = UIColor.purple.withAlphaComponent(LayoutConstants.mainAlpha)
+        self.backgroundColor = UIColor(red: 76/255, green: 175/255, blue: 80/255, alpha: 0.6) // #4CAF50
         self.layer.cornerRadius = LayoutConstants.cornerRadiusButton
         self.layer.shadowColor = UIColor.blue.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+               self.layer.shadowOpacity = 0.3
+               self.layer.shadowRadius = 4
         
-      
+        NSLayoutConstraint.activate([
+            self.widthAnchor.constraint(equalToConstant: LayoutConstants.buttonWidth),
+            self.heightAnchor.constraint(equalToConstant: LayoutConstants.buttonHeight)
+        ])
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

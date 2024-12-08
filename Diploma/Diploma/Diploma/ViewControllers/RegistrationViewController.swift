@@ -18,6 +18,7 @@ class RegistrationViewController: UIViewController {
   
     private let appImageView = UIImageView()
     private let nameTextField = UITextField()
+    private let passTextField = UITextField()
     private let datePicker = UIDatePicker()
     private let heightTextField = UITextField()
     private let weightTextField = UITextField()
@@ -92,8 +93,13 @@ class RegistrationViewController: UIViewController {
         view.addSubview(appImageView)
         view.addSubview(stackView)
 
-        NSLayoutConstraint.activate([
-            appImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+        NSLayoutConstraint.activate(
+[
+            appImageView.topAnchor
+                .constraint(
+                    equalTo: view.safeAreaLayoutGuide.topAnchor,
+                    constant: LayoutConstants.logoTopAnchor
+                ),
             appImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             appImageView.widthAnchor.constraint(equalToConstant: 150),
             appImageView.heightAnchor.constraint(equalToConstant: 150),
@@ -101,7 +107,8 @@ class RegistrationViewController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             stackView.topAnchor.constraint(equalTo: appImageView.bottomAnchor, constant: 20)
-        ])
+        ]
+)
     }
 
     private func createPicker(for type: PickerType) -> UIPickerView {
