@@ -13,7 +13,7 @@ class DemoReportsViewController: UIViewController {
         setupUIWelcomeController()
     }
     private func setupUIWelcomeController() {
-        
+        title = "Отчеты ДЕМО РЕЖИМ"
         UISetup.setupAnimatedBackground(for: view)
         
     }

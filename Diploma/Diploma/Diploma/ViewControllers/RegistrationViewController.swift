@@ -89,7 +89,6 @@ class RegistrationViewController: UIViewController {
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        // Добавляем элементы на экран
         view.addSubview(appImageView)
         view.addSubview(stackView)
 
@@ -137,11 +136,11 @@ class RegistrationViewController: UIViewController {
     }
 
     @objc private func doneButtonTapped() {
-        view.endEditing(true) // Закрывает пикер
+        view.endEditing(true)
     }
 
     @objc private func cancelButtonTapped() {
-        // Сбрасываем текст в активном поле
+ 
         if heightTextField.isFirstResponder {
             heightTextField.text = ""
         } else if weightTextField.isFirstResponder {
@@ -149,7 +148,7 @@ class RegistrationViewController: UIViewController {
         } else if allergiesTextField.isFirstResponder {
             allergiesTextField.text = ""
         }
-        view.endEditing(true) // Закрывает пикер
+        view.endEditing(true)
     }
 
     @objc private func registrationButtonTapped() {

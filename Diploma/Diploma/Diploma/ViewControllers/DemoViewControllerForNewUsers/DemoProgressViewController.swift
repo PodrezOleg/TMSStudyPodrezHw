@@ -14,7 +14,7 @@ class DemoProgressViewController: UIViewController {
         setupUIWelcomeController()
     }
     private func setupUIWelcomeController() {
-        
+        title = "Прогресс ДЕМО РЕЖИМ"
         UISetup.setupAnimatedBackground(for: view)
         
     }

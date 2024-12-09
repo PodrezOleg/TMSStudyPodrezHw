@@ -10,7 +10,7 @@ import UIKit
 class FadeInAnimationViewController: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5 // Длительность анимации
+        return 0.5
     }
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
      
@@ -25,9 +25,9 @@ class FadeInAnimationViewController: NSObject, UIViewControllerAnimatedTransitio
         containerView.addSubview(toView)
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-            toView.alpha = 1 // Полностью непрозрачный экран
+            toView.alpha = 1
         }) { completed in
-            transitionContext.completeTransition(completed) // Завершение анимации
+            transitionContext.completeTransition(completed)
         }
     }
 }
