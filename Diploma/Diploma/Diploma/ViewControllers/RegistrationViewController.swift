@@ -13,6 +13,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RegistrationViewController: UIViewController {
   

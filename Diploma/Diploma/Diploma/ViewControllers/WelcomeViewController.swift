@@ -171,7 +171,7 @@ extension WelcomeViewController: UINavigationControllerDelegate {
                               from fromVC: UIViewController,
                               to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if operation == .push {
-            return FadeInAnimationViewController()
+            return FadeInAnimation()
         }
         return nil
     }
