@@ -26,7 +26,7 @@ class CustomButton: UIButton {
     func setupButton() {
         self.setTitleColor(.white, for: .normal)
         self.backgroundColor = UIColor(red: 76/255, green: 175/255, blue: 80/255, alpha: 0.4)
-        self.layer.cornerRadius = LayoutConstants.cornerRadiusButton
+        self.layer.cornerRadius = LayoutConstants.cornerRadiusGeneral
         self.layer.shadowColor = UIColor.blue.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
                self.layer.shadowOpacity = 0.3

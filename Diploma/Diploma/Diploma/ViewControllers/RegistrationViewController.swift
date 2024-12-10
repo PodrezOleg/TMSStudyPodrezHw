@@ -101,12 +101,13 @@ class RegistrationViewController: UIViewController {
                     constant: LayoutConstants.logoTopAnchor
                 ),
             appImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            appImageView.widthAnchor.constraint(equalToConstant: 150),
-            appImageView.heightAnchor.constraint(equalToConstant: 150),
+            appImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.logoTopAnchor),
+            appImageView.widthAnchor.constraint(equalToConstant: LayoutConstants.logoSizeWidth),
+            appImageView.heightAnchor.constraint(equalToConstant: LayoutConstants.logoSizeHeight),
 
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            stackView.topAnchor.constraint(equalTo: appImageView.bottomAnchor, constant: 20)
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingLayoutConstant),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant),
+            stackView.topAnchor.constraint(equalTo: appImageView.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements)
         ]
 )
     }
