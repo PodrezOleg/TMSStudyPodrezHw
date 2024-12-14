@@ -13,7 +13,7 @@ class CoreDataManager {
     
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Diploma") // Имя должно совпадать с названием вашей модели Core Data
+        let container = NSPersistentContainer(name: "Diploma") 
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Ошибка загрузки Core Data: \(error), \(error.userInfo)")

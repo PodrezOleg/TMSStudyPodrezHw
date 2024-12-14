@@ -41,7 +41,7 @@ struct Nutriments: Codable {
     let salt: Double?
 
     enum CodingKeys: String, CodingKey {
-        case energy = "energy-kj"  // Соответствует energy_kj из JSON
+        case energy = "energy-kj"  
         case fat = "fat_100g"
         case carbohydrates = "carbohydrates_100g"
         case proteins = "proteins_100g"

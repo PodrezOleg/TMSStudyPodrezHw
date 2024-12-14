@@ -21,7 +21,7 @@ class NutritionViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.backgroundColor = .white
+        UISetup.setupAnimatedBackground(for: view)
         title = "Поиск Продукта"
 
         searchField.placeholder = "Введите название продукта"
@@ -65,7 +65,10 @@ class NutritionViewController: UIViewController {
 
     @objc private func searchTapped() {
         guard let text = searchField.text, !text.isEmpty else { return }
-        viewModel.searchProduct(named: text)
+        
+        Task {
+            await viewModel.searchProduct(named: text)
+        }
     }
 
     private func displayProductInfo(_ products: [Product]) {

@@ -11,20 +11,18 @@ import Foundation
 class NutritionViewModel {
     private let service = OpenFoodService()
     
-    // Теперь передаем массив продуктов вместо одного
     var onDataFetched: (([Product]) -> Void)?
     var onError: ((Error) -> Void)?
     
-    func searchProduct(named name: String) {
-        service.fetchProduct(by: name) { [weak self] result in
+    func searchProduct(named name: String) async {
+        do {
+            let products = try await service.fetchProduct(by: name)
             DispatchQueue.main.async {
-                switch result {
-                case .success(let products):
-                    // Передаем все продукты
-                    self?.onDataFetched?(products)
-                case .failure(let error):
-                    self?.onError?(error)
-                }
+                self.onDataFetched?(products)
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.onError?(error)
             }
         }
     }

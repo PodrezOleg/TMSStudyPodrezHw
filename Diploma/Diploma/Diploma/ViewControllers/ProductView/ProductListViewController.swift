@@ -14,9 +14,9 @@ class ProductListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        UISetup.setupAnimatedBackground(for: view)
         setupCollectionView()
-        collectionView.reloadData() // Перезагружаем данные после инициализации
+        collectionView.reloadData()
     }
 
     func setProducts(_ products: [Product]) {
