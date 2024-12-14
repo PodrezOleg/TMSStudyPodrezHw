@@ -34,7 +34,7 @@ class WelcomeViewController: UIViewController {
     private let loginButton = CustomButton()
     
     private let features = [
-        (text: "Подсчет калорий", imageName: "ScrollViewBackground1"),
+        (text: "Продукты", imageName: "ScrollViewBackground1"),
         (text: "Подсчет ЖБУ", imageName: "ScrollViewBackground2"),
         (text: "Прогресс", imageName: "ScrollViewBackground3"),
         (text: "Ежедневные отчеты", imageName: "ScrollViewBackground4")
@@ -152,7 +152,8 @@ extension WelcomeViewController: UICollectionViewDataSource, UICollectionViewDel
                 withReuseIdentifier: CarouselCellColletionView.reuseIdentifier,
                 for: indexPath
         ) as? CarouselCellColletionView else {
-            fatalError("Unable to dequeue FeatureCell")
+            print("Error: Unable to dequeue CarouselCellColletionView. Returning a default cell.")
+            return UICollectionViewCell()
         }
         
         let feature = features[indexPath.item]
@@ -163,7 +164,7 @@ extension WelcomeViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
         case 0:
-            navigationController?.pushViewController(DemoProductsViewController(), animated: true)
+            navigationController?.pushViewController(NutritionViewController(), animated: true)
         case 1:
             navigationController?.pushViewController(DemoFPSViewController(), animated: true)
         case 2:

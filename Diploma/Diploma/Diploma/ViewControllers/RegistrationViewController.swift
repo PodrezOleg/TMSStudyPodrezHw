@@ -1,11 +1,4 @@
-//
-//  ViewController.swift
-//  Diploma
-//
-//  Created by Oleg Podrez on 3.12.24.
-//
 
-//
 //  ViewController.swift
 //  Diploma
 //
@@ -20,6 +13,7 @@ class RegistrationViewController: UIViewController {
     private let appImageView = UIImageView()
     private let nameTextField = UITextField()
     private let passTextField = UITextField()
+    private let dateTextField = UITextField()
     private let datePicker = UIDatePicker()
     private let heightTextField = UITextField()
     private let weightTextField = UITextField()
