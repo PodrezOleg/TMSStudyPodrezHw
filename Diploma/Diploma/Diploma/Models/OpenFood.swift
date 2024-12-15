@@ -22,12 +22,14 @@ struct OpenFood: Codable {
 struct Product: Codable {
     let productName: String?
     let nutriscoreGrade: String?
+    let image_front_url: String?
     let nutriments: Nutriments?
 
     enum CodingKeys: String, CodingKey {
         case productName = "product_name"
         case nutriscoreGrade = "nutriscore_grade"
         case nutriments
+        case image_front_url = "image_front_url"
     }
 }
 

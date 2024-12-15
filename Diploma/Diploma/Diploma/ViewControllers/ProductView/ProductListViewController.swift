@@ -14,7 +14,6 @@ class ProductListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UISetup.setupAnimatedBackground(for: view)
         setupCollectionView()
         collectionView.reloadData()
     }
@@ -28,16 +27,18 @@ class ProductListViewController: UIViewController {
 
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.frame.width / 2 - 16, height: 150)
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 8
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        layout.itemSize = CGSize(width: view.frame.width - 10, height: 100)
+        layout.minimumLineSpacing = 8
+
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        layout.sectionFootersPinToVisibleBounds = true
 
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
+//        collectionView.backgroundColor = UIColor.UISetup.setupAnimatedBackground(for: collectionView)
         collectionView.register(ProductCell.self, forCellWithReuseIdentifier: "ProductCell")
 
         view.addSubview(collectionView)
@@ -56,7 +57,9 @@ extension ProductListViewController: UICollectionViewDelegate, UICollectionViewD
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as! ProductCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCell else {
+            fatalError("Could not dequeue ProductCell")
+        }
         let product = products[indexPath.row]
         cell.configure(with: product)
         return cell
