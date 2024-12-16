@@ -24,7 +24,6 @@ class OpenFoodService {
                 throw URLError(.badServerResponse, userInfo: [NSLocalizedDescriptionKey: "Server returned status code \(httpResponse.statusCode)"])
             }
             
-          
             let openFoodResponse = try JSONDecoder().decode(OpenFood.self, from: data)
             print("Decoded Response: \(openFoodResponse)")
             

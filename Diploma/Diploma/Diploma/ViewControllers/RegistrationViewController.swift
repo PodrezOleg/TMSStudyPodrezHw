@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import CoreData
 
 class RegistrationViewController: UIViewController {
-    // MARK: - UI Components
     private let appImageView = UIImageView()
     private let nameTextField = UITextField()
     private let passTextField = UITextField()
@@ -18,10 +18,9 @@ class RegistrationViewController: UIViewController {
     private let allergiesTextField = UITextField()
     private let allergiesPicker = UIPickerView()
     private let registerButton = UIButton()
-    
     private let viewModel = RegistrationViewModel()
     
-    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupKeyboardHandling()
@@ -30,51 +29,56 @@ class RegistrationViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        removeKeyboardHandling() // Убираем обработку клавиатуры при выходе
+        removeKeyboardHandling()
     }
     
-    // MARK: - UI Setup
+   
     private func setupUI() {
         title = "Регистрация"
         view.backgroundColor = .white
         
-        // Логотип
+     
         appImageView.image = UIImage(named: "Logo")
         appImageView.contentMode = .scaleAspectFit
         appImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        // Текстовые поля
+     
         nameTextField.placeholder = "Имя"
         nameTextField.borderStyle = .roundedRect
+        nameTextField.delegate = self
         
         passTextField.placeholder = "Пароль"
         passTextField.borderStyle = .roundedRect
         passTextField.isSecureTextEntry = true
+        passTextField.delegate = self
         
         heightTextField.placeholder = "Рост (см)"
         heightTextField.borderStyle = .roundedRect
         heightTextField.keyboardType = .numberPad
+        heightTextField.delegate = self
         
         weightTextField.placeholder = "Вес (кг)"
         weightTextField.borderStyle = .roundedRect
-        heightTextField.keyboardType = .numberPad
-        
+        weightTextField.keyboardType = .numberPad
+        weightTextField.delegate = self
+    
         allergiesTextField.placeholder = "Аллергии"
         allergiesTextField.borderStyle = .roundedRect
+       
         
-        // Дата рождения
+       
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -16, to: Date())
         
-        // Кнопка регистрации
+    
         registerButton.setTitle("Зарегистрироваться", for: .normal)
         registerButton.backgroundColor = .systemBlue
         registerButton.layer.cornerRadius = 10
         registerButton.setTitleColor(.white, for: .normal)
         registerButton.addTarget(self, action: #selector(registerTapped), for: .touchUpInside)
         
-        // StackView
+ 
         let stackView = UIStackView(arrangedSubviews: [
             appImageView, nameTextField, passTextField,
             datePicker, heightTextField, weightTextField,
@@ -84,10 +88,10 @@ class RegistrationViewController: UIViewController {
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        // Добавление на экран
+ 
         view.addSubview(stackView)
         
-        // Layout
+ 
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -96,7 +100,7 @@ class RegistrationViewController: UIViewController {
         ])
     }
     
-    // MARK: - Registration Action
+
     @objc private func registerTapped() {
         guard let name = nameTextField.text, !name.isEmpty else {
             showAlert(message: "Введите имя")
@@ -118,7 +122,7 @@ class RegistrationViewController: UIViewController {
         let dateOfBirth = datePicker.date
         let allergies = allergiesTextField.text ?? ""
         
-        // Сохранение пользователя
+   
         viewModel.registerUser(
             name: name,
             password: password,
@@ -131,10 +135,16 @@ class RegistrationViewController: UIViewController {
         showAlert(message: "Пользователь успешно зарегистрирован!")
     }
     
-    // MARK: - Helpers
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Сообщение", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+}
+
+extension RegistrationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

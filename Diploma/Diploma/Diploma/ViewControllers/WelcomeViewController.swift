@@ -81,33 +81,24 @@ class WelcomeViewController: UIViewController {
         view.addSubview(loginButton)
         
         NSLayoutConstraint.activate([
-            // Логотип
+        
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.logoTopAnchor),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: LayoutConstants.logoSizeWidth),
             logoImageView.heightAnchor.constraint(equalToConstant: LayoutConstants.logoSizeHeight),
-            
-            // Текст
             titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingLayoutConstant),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant),
-            
             titleDescriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             titleDescriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingLayoutConstant),
             titleDescriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant),
-            
-            // Карусель
             featuresCollectionView.topAnchor.constraint(equalTo: titleDescriptionLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             featuresCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingLayoutConstant),
             featuresCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant),
             featuresCollectionView.heightAnchor.constraint(equalToConstant: 250),
-            
-            // Кнопка "Зарегистрироваться"
             registrationButton.topAnchor.constraint(equalTo: featuresCollectionView.bottomAnchor, constant: 20),
             registrationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingLayoutConstant),
             registrationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant),
-            
-            // Кнопка "Вход"
             loginButton.topAnchor.constraint(equalTo: registrationButton.bottomAnchor, constant: 10),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingLayoutConstant),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant)
@@ -128,7 +119,7 @@ class WelcomeViewController: UIViewController {
     
 }
 
-//MARK:  Своя анимации перехода ( по вопросом)
+//MARK:  Своя анимации перехода ( под вопросом)
 extension WelcomeViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController,
                               animationControllerFor operation: UINavigationController.Operation,

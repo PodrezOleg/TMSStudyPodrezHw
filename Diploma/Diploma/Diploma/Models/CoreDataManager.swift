@@ -13,7 +13,7 @@ class CoreDataManager {
     
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Diploma") 
+        let container = NSPersistentContainer(name: "Model")
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Ошибка загрузки Core Data: \(error), \(error.userInfo)")
@@ -37,7 +37,6 @@ class CoreDataManager {
         
         saveContext()
     }
-    
     func saveContext() {
         if context.hasChanges{
             do {
@@ -55,7 +54,7 @@ class CoreDataManager {
 
         do {
             let users = try context.fetch(fetchRequest)
-            return !users.isEmpty  // Если найден хотя бы один пользователь
+            return !users.isEmpty
         } catch {
             print("Ошибка при аутентификации: \(error)")
             return false
