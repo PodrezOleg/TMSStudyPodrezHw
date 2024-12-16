@@ -12,9 +12,10 @@ class RegistrationViewModel {
     let weightOptions = Array(30...250)
     let allergyOptions = ["Нет аллергий", "Глютен", "Орехи", "Молочные продукты", "Фрукты","Морепродукты"]
     
-    func registerUser(name: String, dateOfBirth: Date, height: Int, weight: Int, allergy: String){
+    func registerUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int, allergy: String){
         CoreDataManager.shared.createUser(
                   name: name,
+                  password: password,
                   dateOfBirth: dateOfBirth,
                   height: height,
                   weight: weight,
@@ -22,6 +23,9 @@ class RegistrationViewModel {
               )
     }
     
+    func loginUser(name: String, password: String) -> Bool {
+        return CoreDataManager.shared.authenticateUser(name: name, password: password)
+    }
 }
 
 

@@ -121,7 +121,7 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc private func logInButtonTapped() {
-        let loginViewControler = LoginViewControler()
+        let loginViewControler = LoginViewController()
         navigationController?.delegate = self
         navigationController?.pushViewController(loginViewControler, animated: true)
     }

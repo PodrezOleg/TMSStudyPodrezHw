@@ -18,6 +18,7 @@ class NutritionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupKeyboardHandling()
         setupBindings()
     }
 
@@ -106,7 +107,6 @@ class NutritionViewController: UIViewController {
         Белки (на 100г): \(nutriments?.proteins ?? 0) г
         Жиры (на 100г): \(nutriments?.fat ?? 0) г
         Углеводы (на 100г): \(nutriments?.carbohydrates ?? 0) г
-        Индекс полезности: \(product.nutriscoreGrade ?? "Неизвестен")
         """
         if let imageUrlString = product.image_front_url, let imageUrl = URL(string: imageUrlString) {
             loadImage(from: imageUrl)

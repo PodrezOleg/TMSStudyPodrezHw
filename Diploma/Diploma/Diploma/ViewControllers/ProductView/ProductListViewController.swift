@@ -15,6 +15,7 @@ class ProductListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        setupKeyboardHandling()
         collectionView.reloadData()
     }
 

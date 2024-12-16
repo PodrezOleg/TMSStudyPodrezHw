@@ -26,9 +26,10 @@ class CoreDataManager {
         persistentContainer.viewContext
     }
     
-    func createUser(name: String, dateOfBirth: Date, height: Int, weight: Int, allergies: String) {
+    func createUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int, allergies: String) {
         let user = User(context: context)
         user.name = name
+        user.password = password
         user.dateOfBirth = dateOfBirth
         user.height = Int16(height)
         user.weight = Int16(weight)
@@ -45,6 +46,19 @@ class CoreDataManager {
                 let nserror = error as NSError
                 fatalError(" Ошибка Сохранения: \(nserror), \(nserror.userInfo)")
             }
+        }
+    }
+    
+    func authenticateUser(name: String, password: String) -> Bool {
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@ AND password == %@", name, password)
+
+        do {
+            let users = try context.fetch(fetchRequest)
+            return !users.isEmpty  // Если найден хотя бы один пользователь
+        } catch {
+            print("Ошибка при аутентификации: \(error)")
+            return false
         }
     }
 }
