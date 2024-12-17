@@ -1,20 +1,21 @@
 //
-//  DemoFPSViewController.swift
+//  DemoProgressViewController.swift
 //  Diploma
 //
-//  Created by Oleg Podrez on 9.12.24.
+//  Created by Oleg Podrez on 17.12.2024.
 //
 
 import UIKit
 
-class DemoFPSViewController: UIViewController {
+class DemoProgressViewController: UIViewController {
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIWelcomeController()
     }
     private func setupUIWelcomeController() {
-        title = "Подсчет ЖБУ ДЕМО РЕЖИМ"
+        title = "Прогресс ДЕМО РЕЖИМ"
         UISetup.setupAnimatedBackground(for: view)
-
+        
     }
 }

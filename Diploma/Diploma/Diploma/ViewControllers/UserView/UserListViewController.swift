@@ -26,7 +26,7 @@ class UserListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Пользователи"
-        view.backgroundColor = .white
+        UISetup.setupAnimatedBackground(for: view)
         
         setupCollectionView()
         fetchUsers()

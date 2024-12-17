@@ -18,8 +18,7 @@ class RegistrationViewModel {
                   password: password,
                   dateOfBirth: dateOfBirth,
                   height: height,
-                  weight: weight,
-                  allergies: allergy
+                  weight: weight
               )
     }
     

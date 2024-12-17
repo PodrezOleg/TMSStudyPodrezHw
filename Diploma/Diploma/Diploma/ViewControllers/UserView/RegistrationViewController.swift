@@ -15,8 +15,6 @@ class RegistrationViewController: UIViewController {
     private let datePicker = UIDatePicker()
     private let heightTextField = UITextField()
     private let weightTextField = UITextField()
-    private let allergiesTextField = UITextField()
-    private let allergiesPicker = UIPickerView()
     private let registerButton = CustomButton()
     private let viewModel = RegistrationViewModel()
     
@@ -62,8 +60,7 @@ class RegistrationViewController: UIViewController {
         weightTextField.keyboardType = .numberPad
         weightTextField.delegate = self
     
-        allergiesTextField.placeholder = "Аллергии"
-        allergiesTextField.borderStyle = .roundedRect
+       
        
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
@@ -71,8 +68,7 @@ class RegistrationViewController: UIViewController {
         
         let stackView = UIStackView(arrangedSubviews: [
             appImageView, nameTextField, passTextField,
-            datePicker, heightTextField, weightTextField,
-            allergiesTextField
+            datePicker, heightTextField, weightTextField
         ])
         stackView.axis = .vertical
         stackView.spacing = 10
@@ -90,8 +86,9 @@ class RegistrationViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.minusWelcomeViewBetweenElements),
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             appImageView.heightAnchor.constraint(equalToConstant: 100),
-            registerButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
-            registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            registerButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: LayoutConstants.buttonForRegisterConstant),
+            registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+           
         ])
     }
 
@@ -114,7 +111,6 @@ class RegistrationViewController: UIViewController {
             return
         }
         
-        let allergy = allergiesTextField.text ?? ""
         
     
        let user = CoreDataManager.shared.createUser(
@@ -122,8 +118,7 @@ class RegistrationViewController: UIViewController {
             password: password,
             dateOfBirth: dateOfBirth,
             height: height,
-            weight: weight,
-            allergies: allergy
+            weight: weight
         )
         
         let profileVC = ProfileViewController()

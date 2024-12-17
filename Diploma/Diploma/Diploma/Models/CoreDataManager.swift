@@ -25,15 +25,14 @@ class CoreDataManager {
         persistentContainer.viewContext
     }
     
-    func createUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int, allergies: String) -> User {
+    func createUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int) -> User {
         let user = User(context: context)
         user.name = name
         user.password = password
         user.dateOfBirth = dateOfBirth
         user.height = Int16(height)
         user.weight = Int16(weight)
-        user.allergies = allergies
-        
+       
         saveContext()
         return user 
     }

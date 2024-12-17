@@ -12,14 +12,14 @@ class ProfileViewController: UIViewController {
     
     var user: User?
     private var products: [Product] = []
-    
     private let tableView = UITableView()
     private let addProductButton = CustomButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Профиль"
         UISetup.setupAnimatedBackground(for: view)
+        title = "Профиль"
+        
         
         if let user = user {
             print("Имя пользователя: \(user.name ?? "Неизвестно")")
@@ -27,9 +27,11 @@ class ProfileViewController: UIViewController {
             print("Вес: \(user.weight)")
             print("Дата рождения: \(user.dateOfBirth)")
         }
+
         setupUI()
+        
     }
-    
+
     private func setupUI() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
@@ -54,6 +56,7 @@ class ProfileViewController: UIViewController {
             addProductButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+    
     
     @objc private func addProductTapped() {
         let alert = UIAlertController(title: "Добавить продукт", message: "Введите данные продукта", preferredStyle: .alert)
@@ -87,7 +90,6 @@ extension ProfileViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let product = products[indexPath.row] as! ProductCD
         cell.textLabel?.text = "\(product.productName ?? "") - Б: \(product.proteins), Ж: \(product.fats), У: \(product.carbohydrates)"
-        cell.backgroundColor = .clear
         return cell
     }
 }

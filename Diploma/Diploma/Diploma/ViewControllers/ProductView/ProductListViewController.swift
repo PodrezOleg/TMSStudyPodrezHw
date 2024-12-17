@@ -39,7 +39,6 @@ class ProductListViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.backgroundColor = UIColor.UISetup.setupAnimatedBackground(for: collectionView)
         collectionView.register(ProductCell.self, forCellWithReuseIdentifier: "ProductCell")
 
         view.addSubview(collectionView)

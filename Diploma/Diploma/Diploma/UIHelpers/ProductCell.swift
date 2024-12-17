@@ -53,8 +53,9 @@ class ProductCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
         contentView.layer.cornerRadius = 8
+        contentView.layer.borderWidth = 1
         contentView.layer.masksToBounds = true
 
         setupViews()

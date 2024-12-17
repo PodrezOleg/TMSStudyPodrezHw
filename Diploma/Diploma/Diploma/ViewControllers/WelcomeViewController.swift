@@ -35,7 +35,7 @@ class WelcomeViewController: UIViewController {
     private let loginButton = CustomButton()
     
     private let features = [
-        (centerText: "Доступно по подписке", bottomText: "Продукты", imageName: "ScrollViewBackground1"),
+        (centerText: "Доступно уже сейчас", bottomText: "Продукты", imageName: "ScrollViewBackground1"),
         (centerText: "Скоро в обновлениях", bottomText: "Подсчет ЖБУ" , imageName: "ScrollViewBackground2"),
         (centerText: "Следите за изменениями", bottomText: "Прогресс", imageName: "ScrollViewBackground3"),
         (centerText: "Больше статистики", bottomText: "Ежедневные отчеты", imageName: "ScrollViewBackground4")
@@ -160,7 +160,7 @@ extension WelcomeViewController: UICollectionViewDataSource, UICollectionViewDel
         case 1:
             navigationController?.pushViewController(DemoFPSViewController(), animated: true)
         case 2:
-            navigationController?.pushViewController(DemoProgressViewController(), animated: true)
+            navigationController?.pushViewController(CustomBrowserViewController(), animated: true)
         case 3:
             navigationController?.pushViewController(DemoReportsViewController(), animated: true)
         default:

@@ -13,7 +13,9 @@ struct LayoutConstants {
     static let titleDescriptionFontSize: CGFloat = 15
     static let buttonFontSize: CGFloat = 20
     static let labelCarouselFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .medium)
-    static let labelCarouselFontMedium: CGFloat = 10
+    static let labelCarouselFontMedium: UIFont = UIFont.systemFont(ofSize: 10, weight: .ultraLight)
+    static let labelGeneralFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+    static let labelCountDownFont: UIFont = UIFont.systemFont(ofSize: 20, weight: .bold)
     
     // Cell size
     static let cellWidth: CGFloat = 200
@@ -36,6 +38,7 @@ struct LayoutConstants {
     //Buttons
     static let buttonWidth: CGFloat = 200
     static let buttonHeight: CGFloat = 50
+    static let buttonForRegisterConstant: CGFloat = 100
     
     //Layouts
     static let welcomeViewBetweenElements: CGFloat = 20
