@@ -10,6 +10,7 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
     private let logoImageView = UIImageView()
+    private let textOnImageView = UILabel()
     private let titleLabel = UILabel()
     private let titleDescriptionLabel = UILabel()
     
@@ -34,10 +35,10 @@ class WelcomeViewController: UIViewController {
     private let loginButton = CustomButton()
     
     private let features = [
-        (text: "Продукты", imageName: "ScrollViewBackground1"),
-        (text: "Подсчет ЖБУ", imageName: "ScrollViewBackground2"),
-        (text: "Прогресс", imageName: "ScrollViewBackground3"),
-        (text: "Ежедневные отчеты", imageName: "ScrollViewBackground4")
+        (centerText: "Доступно по подписке", bottomText: "Продукты", imageName: "ScrollViewBackground1"),
+        (centerText: "Скоро в обновлениях", bottomText: "Подсчет ЖБУ" , imageName: "ScrollViewBackground2"),
+        (centerText: "Следите за изменениями", bottomText: "Прогресс", imageName: "ScrollViewBackground3"),
+        (centerText: "Больше статистики", bottomText: "Ежедневные отчеты", imageName: "ScrollViewBackground4")
     ]
     
     override func viewDidLoad() {
@@ -97,11 +98,10 @@ class WelcomeViewController: UIViewController {
             featuresCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant),
             featuresCollectionView.heightAnchor.constraint(equalToConstant: 250),
             registrationButton.topAnchor.constraint(equalTo: featuresCollectionView.bottomAnchor, constant: 20),
-            registrationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingLayoutConstant),
-            registrationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant),
-            loginButton.topAnchor.constraint(equalTo: registrationButton.bottomAnchor, constant: 10),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingLayoutConstant),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant)
+            registrationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.topAnchor.constraint(equalTo: registrationButton.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+           
         ])
     }
     
@@ -112,12 +112,13 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc private func logInButtonTapped() {
-        let loginViewControler = LoginViewController()
+        let userListVC = UserListViewController()
         navigationController?.delegate = self
-        navigationController?.pushViewController(loginViewControler, animated: true)
+        navigationController?.pushViewController(userListVC, animated: true)
+    }
     }
     
-}
+
 
 //MARK:  Своя анимации перехода ( под вопросом)
 extension WelcomeViewController: UINavigationControllerDelegate {

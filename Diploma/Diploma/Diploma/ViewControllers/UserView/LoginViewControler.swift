@@ -12,7 +12,7 @@ import UIKit
 class LoginViewController: UIViewController {
     private let nameTextField = UITextField()
     private let passwordTextField = UITextField()
-    private let loginButton = UIButton(type: .system)
+    private let loginButton = CustomButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,20 +31,23 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
         passwordTextField.borderStyle = .roundedRect
 
-        loginButton.setTitle("Войти", for: .normal)
+        loginButton.setTitle("Log in", for: .normal)
         loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
 
-        let stackView = UIStackView(arrangedSubviews: [nameTextField, passwordTextField, loginButton])
+        let stackView = UIStackView(arrangedSubviews: [nameTextField, passwordTextField])
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
+        view.addSubview(loginButton)
         view.addSubview(stackView)
 
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.minusWelcomeViewBetweenElements),
+            loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 
@@ -68,4 +71,6 @@ class LoginViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "ОК", style: .default))
         present(alert, animated: true)
     }
+    
+    
 }

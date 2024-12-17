@@ -7,11 +7,12 @@
 
 
 import UIKit
+import CoreData
 
 class NutritionViewController: UIViewController {
     private let viewModel = NutritionViewModel()
     private let searchField = UITextField()
-    private let searchButton = UIButton(type: .system)
+    private let searchButton = CustomButton()
     private let resultLabel = UILabel()
     private let productImageView = UIImageView()
 
@@ -45,8 +46,6 @@ class NutritionViewController: UIViewController {
         view.addSubview(resultLabel)
         view.addSubview(productImageView)
         
-        
-
         NSLayoutConstraint.activate([
             searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             searchField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -128,7 +127,6 @@ class NutritionViewController: UIViewController {
             }
         }.resume()
     }
-
     private func displayError(_ error: Error) {
         resultLabel.text = "Ошибка: \(error.localizedDescription)"
         productImageView.image = nil

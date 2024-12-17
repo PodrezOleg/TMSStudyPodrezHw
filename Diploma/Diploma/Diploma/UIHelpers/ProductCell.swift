@@ -7,7 +7,6 @@
 import UIKit
 
 class ProductCell: UICollectionViewCell {
-    // MARK: - UI Elements
 
     private let productImageView: UIImageView = {
         let imageView = UIImageView()
@@ -20,7 +19,7 @@ class ProductCell: UICollectionViewCell {
 
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: LayoutConstants.trailingLayoutConstant, weight: .semibold)
         label.numberOfLines = 2
         label.textAlignment = .left
         return label
@@ -28,7 +27,7 @@ class ProductCell: UICollectionViewCell {
 
     private let infoLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: LayoutConstants.titleDescriptionFontSize)
         label.textColor = .gray
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -52,8 +51,6 @@ class ProductCell: UICollectionViewCell {
         return stackView
     }()
 
-    // MARK: - Initialization
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .white
@@ -67,8 +64,6 @@ class ProductCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup Views and Constraints
-
     private func setupViews() {
         contentStackView.addArrangedSubview(nameLabel)
         contentStackView.addArrangedSubview(infoLabel)
@@ -81,7 +76,6 @@ class ProductCell: UICollectionViewCell {
         productImageView.translatesAutoresizingMaskIntoConstraints = false
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        
         NSLayoutConstraint.activate([
             productImageView.widthAnchor.constraint(equalToConstant: 80),
             productImageView.heightAnchor.constraint(equalToConstant: 80),
@@ -92,8 +86,6 @@ class ProductCell: UICollectionViewCell {
             mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
-
-    // MARK: - Configure Cell
 
     func configure(with product: Product) {
         nameLabel.text = product.productName ?? "Без названия"

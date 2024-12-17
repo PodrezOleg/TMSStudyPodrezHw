@@ -14,7 +14,7 @@ protocol FeaturesCarouselDelegate: AnyObject {
 class FeaturesCarousel: UIView {
     weak var delegate: FeaturesCarouselDelegate?
     
-    private var features: [(text: String, imageName: String)] = []
+    private var features: [(centerText: String, bottomText: String, imageName: String)] = []
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -52,10 +52,10 @@ class FeaturesCarousel: UIView {
          ])
      }
      
-     func configure(with features: [(text: String, imageName: String)]) {
-         self.features = features
-         collectionView.reloadData()
-     }
+    func configure(with features: [(centerText: String, bottomText: String, imageName: String)]) {
+        self.features = features
+        collectionView.reloadData()
+    }
  }
 
 extension FeaturesCarousel: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -76,7 +76,7 @@ extension FeaturesCarousel: UICollectionViewDataSource, UICollectionViewDelegate
         cell.configureCell(with: feature)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.featuresCarousel(self, didSelectFeatureAt: indexPath.item)
     }

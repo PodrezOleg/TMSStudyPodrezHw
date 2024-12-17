@@ -10,8 +10,7 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     private init() {}
     
-    
-    
+
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Model")
         container.loadPersistentStores { _, error in
@@ -26,7 +25,7 @@ class CoreDataManager {
         persistentContainer.viewContext
     }
     
-    func createUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int, allergies: String) {
+    func createUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int, allergies: String) -> User {
         let user = User(context: context)
         user.name = name
         user.password = password
@@ -36,7 +35,9 @@ class CoreDataManager {
         user.allergies = allergies
         
         saveContext()
+        return user 
     }
+    
     func saveContext() {
         if context.hasChanges{
             do {
@@ -46,6 +47,11 @@ class CoreDataManager {
                 fatalError(" Ошибка Сохранения: \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func deleteUser(_ user: User) {
+        context.delete(user)
+        saveContext()
     }
     
     func authenticateUser(name: String, password: String) -> Bool {
@@ -61,3 +67,4 @@ class CoreDataManager {
         }
     }
 }
+

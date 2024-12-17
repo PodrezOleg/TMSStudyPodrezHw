@@ -15,13 +15,13 @@ class CustomButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        
         setupButton()
     }
     
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) {
+           super.init(coder: coder)
+           setupButton()
+       }
     
     func setupButton() {
         self.setTitleColor(.white, for: .normal)
@@ -31,11 +31,10 @@ class CustomButton: UIButton {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
                self.layer.shadowOpacity = 0.3
                self.layer.shadowRadius = 4
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: LayoutConstants.buttonWidth),
             self.heightAnchor.constraint(equalToConstant: LayoutConstants.buttonHeight)
         ])
-        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

@@ -17,7 +17,7 @@ class RegistrationViewController: UIViewController {
     private let weightTextField = UITextField()
     private let allergiesTextField = UITextField()
     private let allergiesPicker = UIPickerView()
-    private let registerButton = UIButton()
+    private let registerButton = CustomButton()
     private let viewModel = RegistrationViewModel()
     
 
@@ -41,8 +41,7 @@ class RegistrationViewController: UIViewController {
         appImageView.image = UIImage(named: "Logo")
         appImageView.contentMode = .scaleAspectFit
         appImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-     
+    
         nameTextField.placeholder = "Имя"
         nameTextField.borderStyle = .roundedRect
         nameTextField.delegate = self
@@ -50,6 +49,7 @@ class RegistrationViewController: UIViewController {
         passTextField.placeholder = "Пароль"
         passTextField.borderStyle = .roundedRect
         passTextField.isSecureTextEntry = true
+        passTextField.textContentType = .none
         passTextField.delegate = self
         
         heightTextField.placeholder = "Рост (см)"
@@ -65,74 +65,70 @@ class RegistrationViewController: UIViewController {
         allergiesTextField.placeholder = "Аллергии"
         allergiesTextField.borderStyle = .roundedRect
        
-        
-       
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -16, to: Date())
         
-    
-        registerButton.setTitle("Зарегистрироваться", for: .normal)
-        registerButton.backgroundColor = .systemBlue
-        registerButton.layer.cornerRadius = 10
-        registerButton.setTitleColor(.white, for: .normal)
-        registerButton.addTarget(self, action: #selector(registerTapped), for: .touchUpInside)
-        
- 
         let stackView = UIStackView(arrangedSubviews: [
             appImageView, nameTextField, passTextField,
             datePicker, heightTextField, weightTextField,
-            allergiesTextField, registerButton
+            allergiesTextField
         ])
         stackView.axis = .vertical
         stackView.spacing = 10
+        stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
- 
+        registerButton.setTitle("Sing up", for: .normal)
+        registerButton.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
+          
+        view.addSubview(registerButton)
         view.addSubview(stackView)
         
- 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            appImageView.heightAnchor.constraint(equalToConstant: 100)
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.minusWelcomeViewBetweenElements),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            appImageView.heightAnchor.constraint(equalToConstant: 100),
+            registerButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
-    
 
-    @objc private func registerTapped() {
+    @objc private func registrationButtonTapped() {
         guard let name = nameTextField.text, !name.isEmpty else {
             showAlert(message: "Введите имя")
             return
         }
+        
         guard let password = passTextField.text, !password.isEmpty else {
             showAlert(message: "Введите пароль")
             return
         }
-        guard let height = Int(heightTextField.text ?? ""), height > 0 else {
-            showAlert(message: "Введите корректный рост")
-            return
-        }
-        guard let weight = Int(weightTextField.text ?? ""), weight > 0 else {
-            showAlert(message: "Введите корректный вес")
-            return
-        }
         
         let dateOfBirth = datePicker.date
-        let allergies = allergiesTextField.text ?? ""
         
-   
-        viewModel.registerUser(
+        guard let height = Int(heightTextField.text ?? ""),
+              let weight = Int(weightTextField.text ?? "") else {
+            showAlert(message: "Введите корректные значения роста и веса")
+            return
+        }
+        
+        let allergy = allergiesTextField.text ?? ""
+        
+    
+       let user = CoreDataManager.shared.createUser(
             name: name,
             password: password,
             dateOfBirth: dateOfBirth,
             height: height,
             weight: weight,
-            allergy: allergies
+            allergies: allergy
         )
         
-        showAlert(message: "Пользователь успешно зарегистрирован!")
+        let profileVC = ProfileViewController()
+        profileVC.user = user
+        navigationController?.pushViewController(profileVC, animated: true)
     }
     
     private func showAlert(message: String) {

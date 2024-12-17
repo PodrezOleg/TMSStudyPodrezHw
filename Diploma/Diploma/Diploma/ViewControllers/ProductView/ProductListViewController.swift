@@ -61,7 +61,7 @@ extension ProductListViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCell else {
             fatalError("Could not dequeue ProductCell")
         }
-        let product = products[indexPath.row]
+        let product = products[indexPath.row] 
         cell.configure(with: product)
         return cell
     }

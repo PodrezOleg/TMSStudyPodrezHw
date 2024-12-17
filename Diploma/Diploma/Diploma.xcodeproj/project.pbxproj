@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FF97DC9D2D10E41600052667 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF97DC9B2D10E41600052667 /* Model.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		FF696C552CFF9ED7002A5969 /* Diploma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diploma.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF97DC9C2D10E41600052667 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +50,7 @@
 		FF696C4C2CFF9ED7002A5969 = {
 			isa = PBXGroup;
 			children = (
+				FF97DC9B2D10E41600052667 /* Model.xcdatamodeld */,
 				FF696C572CFF9ED7002A5969 /* Diploma */,
 				FF696C562CFF9ED7002A5969 /* Products */,
 			);
@@ -132,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF97DC9D2D10E41600052667 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +356,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF97DC9B2D10E41600052667 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF97DC9C2D10E41600052667 /* Model.xcdatamodel */,
+			);
+			currentVersion = FF97DC9C2D10E41600052667 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FF696C4D2CFF9ED7002A5969 /* Project object */;
 }

@@ -8,48 +8,71 @@
 import UIKit
 
 class CarouselCellColletionView: UICollectionViewCell {
-    static let reuseIdentifier = "CarouselCell"
+    
+    static let reuseIdentifier = "CarouselCellColletionView"
     
     private let imageView = UIImageView()
-    private let label = UILabel()
+    private let centerTextLabel = UILabel() 
+    private let bottomTextLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        setupCellUI()
     }
     
-    required init? (coder: NSCoder) {
-        super.init(coder: coder)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupUI() {
+    private func setupCellUI() {
+        
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = LayoutConstants.cornerRadiusGeneral
-        label.font = LayoutConstants.labelCarouselFont
-        label.textColor = .white
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
+        centerTextLabel.textAlignment = .center
+        centerTextLabel.textColor = .white
+        centerTextLabel.font = UIFont.systemFont(ofSize: LayoutConstants.titleDescriptionFontSize, weight: .bold)
+        centerTextLabel.numberOfLines = 0
+        centerTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        bottomTextLabel.textAlignment = .center
+        bottomTextLabel.textColor = .white
+        bottomTextLabel.font = UIFont.systemFont(ofSize: LayoutConstants.titleDescriptionFontSize, weight: .light)
+        bottomTextLabel.numberOfLines = 1
+        bottomTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         contentView.addSubview(imageView)
-        contentView.addSubview(label)
+        imageView.addSubview(centerTextLabel)
+        imageView.addSubview(bottomTextLabel)
         
         NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: LayoutConstants.cellLabelBottomConstant)
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
+        NSLayoutConstraint.activate([
+            centerTextLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            centerTextLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
+            centerTextLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
+            centerTextLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10)
+        ])
+        
+        // AutoLayout для bottomTextLabel (внизу изображения)
+        NSLayoutConstraint.activate([
+            bottomTextLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
+            bottomTextLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            bottomTextLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
+            bottomTextLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10)
+        ])
     }
     
-    func configureCell(with cellSetup: (text: String, imageName: String)) {
-        label.text = cellSetup.text
-        imageView.image = UIImage(named: cellSetup.imageName)
+    func configureCell(with feature: (centerText: String, bottomText: String, imageName: String)) {
+        imageView.image = UIImage(named: feature.imageName)
+        centerTextLabel.text = feature.centerText
+        bottomTextLabel.text = feature.bottomText
     }
 }
