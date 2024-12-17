@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class NutritionViewController: UIViewController {
+    var onCarbsUpdated: ((Double) -> Void)? 
     private let viewModel = NutritionViewModel()
     private let searchField = UITextField()
     private let searchButton = CustomButton()

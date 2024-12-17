@@ -10,7 +10,7 @@ import CoreData
 
 class UserListViewController: UIViewController {
     
-    private var users: [User] = [] // Хранение списка пользователей из Core Data
+    private var users: [User] = []
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -30,6 +30,7 @@ class UserListViewController: UIViewController {
         
         setupCollectionView()
         fetchUsers()
+        setupLongPressGesture()
     }
     
     private func setupCollectionView() {
@@ -63,6 +64,38 @@ class UserListViewController: UIViewController {
         users.remove(at: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
     }
+    
+    private func setupLongPressGesture() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        collectionView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc private func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let point = gesture.location(in: collectionView)
+            if let indexPath = collectionView.indexPathForItem(at: point) {
+                showDeleteConfirmation(at: indexPath)
+            }
+        }
+    }
+    
+    private func showDeleteConfirmation(at indexPath: IndexPath) {
+        let userToDelete = users[indexPath.row]
+        let alert = UIAlertController(
+            title: "Удалить пользователя?",
+            message: "Вы уверены, что хотите удалить пользователя \(userToDelete.name ?? "Неизвестно")?",
+            preferredStyle: .alert
+        )
+        
+        let confirmAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+            self.deleteUser(at: indexPath)
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
 }
 
 extension UserListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -88,14 +121,14 @@ extension UserListViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView,
                         trailingSwipeActionsConfigurationForItemAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") { _, _, completionHandler in
-            self.deleteUser(at: indexPath)
+            self.showDeleteConfirmation(at: indexPath)
             completionHandler(true)
         }
         deleteAction.backgroundColor = .systemRed
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        return configuration
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
+
 
 extension UserListViewController {
     private func promptForPassword(for user: User) {

@@ -52,16 +52,14 @@ class RegistrationViewController: UIViewController {
         
         heightTextField.placeholder = "Рост (см)"
         heightTextField.borderStyle = .roundedRect
-        heightTextField.keyboardType = .numberPad
+        heightTextField.keyboardType = .numbersAndPunctuation
         heightTextField.delegate = self
         
         weightTextField.placeholder = "Вес (кг)"
         weightTextField.borderStyle = .roundedRect
-        weightTextField.keyboardType = .numberPad
+        weightTextField.keyboardType = .numbersAndPunctuation
         weightTextField.delegate = self
     
-       
-       
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -16, to: Date())
