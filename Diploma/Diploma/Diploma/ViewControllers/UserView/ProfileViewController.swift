@@ -12,12 +12,13 @@ class ProfileViewController: UIViewController {
     var user: User?
     private var totalCarbohydrates: Double = 0.0
     private let addProductButton = CustomButton()
-    
+    private var selectedProducts: [Product] = []
     private let avatarImageView = UIImageView()
     private let nameLabel = UILabel()
     private let birthDateLabel = UILabel()
     private let heightWeightLabel = UILabel()
     private let progressCircleLayer = CAShapeLayer()
+    private let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +122,11 @@ class ProfileViewController: UIViewController {
         progressCircleLayer.strokeEnd = 0
         view.layer.addSublayer(progressCircleLayer)
     }
+    private func setupTableView() {
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProductCell")
+        }
     
     private func updateProgressCircle() {
         
@@ -130,19 +136,32 @@ class ProfileViewController: UIViewController {
     }
    
     @objc private func addProductTapped() {
-        let nutritionVC = NutritionViewController()
-        nutritionVC.onCarbsUpdated = { [weak self] carbs in
-            self?.totalCarbohydrates += carbs
-            self?.updateProgressCircle()
-        }
-        nutritionVC.modalPresentationStyle = .pageSheet
-        present(nutritionVC, animated: true)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+         let nutritionVC = NutritionViewController()
+         nutritionVC.onProductSelected = { [weak self] product in
+             guard let self = self else { return }
+             self.selectedProducts.append(product)
+             self.totalCarbohydrates += product.nutriments?.carbohydrates ?? 0.0
+             self.updateProgressCircle()
+             self.tableView.reloadData()
+         }
+         navigationController?.pushViewController(nutritionVC, animated: true)
+     }
+ }
 
-        if self.isMovingFromParent {
-            navigationController?.popToRootViewController(animated: true)
-        }
+
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return selectedProducts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath)
+        let product = selectedProducts[indexPath.row]
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.text = """
+        \(product.productName ?? "Неизвестно")
+        Белки: \(product.nutriments?.proteins ?? 0.0) г | Жиры: \(product.nutriments?.fat ?? 0.0) г | Углеводы: \(product.nutriments?.carbohydrates ?? 0.0) г
+        """
+        return cell
     }
 }

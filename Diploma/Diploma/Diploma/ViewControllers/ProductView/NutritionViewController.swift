@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class NutritionViewController: UIViewController {
-    var onCarbsUpdated: ((Double) -> Void)?
+    var onProductSelected: ((Product) -> Void)?
     private let viewModel = NutritionViewModel()
     private let searchField = UITextField()
     private let searchButton = CustomButton()
@@ -71,9 +71,9 @@ class NutritionViewController: UIViewController {
             self?.displayProductInfo(products)
         }
 
-        viewModel.onError = { [weak self] error in
-            self?.displayError(error)
-        }
+//        viewModel.onError = { [weak self] error in
+//            self?.displayError(error)
+//        }
     }
 
     @objc private func searchTapped() {
@@ -101,34 +101,22 @@ class NutritionViewController: UIViewController {
 
     private func showProductDetails(_ product: Product) {
         let nutriments = product.nutriments
-        resultLabel.text = """
-        Название: \(product.productName ?? "Неизвестно")
-        Белки (на 100г): \(nutriments?.proteins ?? 0) г
-        Жиры (на 100г): \(nutriments?.fat ?? 0) г
-        Углеводы (на 100г): \(nutriments?.carbohydrates ?? 0) г
-        """
-        if let imageUrlString = product.image_front_url, let imageUrl = URL(string: imageUrlString) {
-            loadImage(from: imageUrl)
-        } else {
-            productImageView.image = UIImage(named: "placeholder")
-        }
-    }
-
-    private func loadImage(from url: URL) {
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            if let data = data, error == nil {
-                DispatchQueue.main.async {
-                    self.productImageView.image = UIImage(data: data)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.productImageView.image = UIImage(named: "placeholder")
-                }
-            }
-        }.resume()
-    }
-    private func displayError(_ error: Error) {
-        resultLabel.text = "Ошибка: \(error.localizedDescription)"
-        productImageView.image = nil
+        onProductSelected?(product) // Передача продукта
+        navigationController?.popViewController(animated: true)
     }
 }
+
+//    private func loadImage(from url: URL) {
+//        URLSession.shared.dataTask(with: url) { data, _, error in
+//            if let data = data, error == nil {
+//                DispatchQueue.main.async {
+//                    self.productImageView.image = UIImage(data: data)
+//                }
+//            } else {
+//                DispatchQueue.main.async {
+//                    self.productImageView.image = UIImage(named: "placeholder")
+//                }
+//            }
+//        }.resume()
+//    }
+
