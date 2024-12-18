@@ -6,19 +6,21 @@
 //
 
 import Foundation
+import UIKit
 
 class RegistrationViewModel {
     let heightOptions = Array(100...250)
     let weightOptions = Array(30...250)
     let allergyOptions = ["Нет аллергий", "Глютен", "Орехи", "Молочные продукты", "Фрукты","Морепродукты"]
     
-    func registerUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int, allergy: String){
+    func registerUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int, allergy: String, image: UIImage){
         CoreDataManager.shared.createUser(
                   name: name,
                   password: password,
                   dateOfBirth: dateOfBirth,
                   height: height,
-                  weight: weight
+                  weight: weight,
+                  image: image
               )
     }
     

@@ -16,6 +16,7 @@ struct LayoutConstants {
     static let labelCarouselFontMedium: UIFont = UIFont.systemFont(ofSize: 10, weight: .ultraLight)
     static let labelGeneralFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .regular)
     static let labelCountDownFont: UIFont = UIFont.systemFont(ofSize: 20, weight: .bold)
+    static let labelNameProfile: UIFont = UIFont.systemFont(ofSize: 26, weight: .bold)
     
     // Cell size
     static let cellWidth: CGFloat = 200
@@ -48,5 +49,9 @@ struct LayoutConstants {
     static let heightScrolView: CGFloat = 200
     static let widthScrolView: CGFloat = 200
     static let imageCornerRadius: CGFloat = 100
+    static let avaterCornerRadius: CGFloat = 50
+    
+    //avatar
+    static let avatarSize: CGFloat = 150
     
 }

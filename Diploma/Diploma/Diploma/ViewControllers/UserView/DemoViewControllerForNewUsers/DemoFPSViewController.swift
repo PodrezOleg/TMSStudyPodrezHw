@@ -82,7 +82,6 @@ class DemoFPSViewController: UIViewController {
             """
         }
     }
-    
     deinit {
         timer?.invalidate()
     }

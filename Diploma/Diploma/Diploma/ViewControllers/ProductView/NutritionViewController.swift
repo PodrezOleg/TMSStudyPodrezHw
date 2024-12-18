@@ -16,7 +16,8 @@ class NutritionViewController: UIViewController {
     private let searchButton = CustomButton()
     private let resultLabel = UILabel()
     private let productImageView = UIImageView()
-
+    private var products: [Product] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

@@ -6,6 +6,8 @@
 //
 
 import CoreData
+import UIKit
+
 class CoreDataManager {
     static let shared = CoreDataManager()
     private init() {}
@@ -25,13 +27,16 @@ class CoreDataManager {
         persistentContainer.viewContext
     }
     
-    func createUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int) -> User {
+    func createUser(name: String, password: String, dateOfBirth: Date, height: Int, weight: Int, image: UIImage?) -> User {
         let user = User(context: context)
         user.name = name
         user.password = password
         user.dateOfBirth = dateOfBirth
         user.height = Int16(height)
         user.weight = Int16(weight)
+        if let imageData = image?.jpegData(compressionQuality: 0.8) {
+                 user.avatar = imageData
+             }
        
         saveContext()
         return user 

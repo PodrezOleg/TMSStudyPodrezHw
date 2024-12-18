@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     
     var user: User?
     private var totalCarbohydrates: Double = 0.0
-    private let tableView = UITableView()
+//    private let tableView = UITableView()
     private let addProductButton = CustomButton()
     
     private let avatarImageView = UIImageView()
@@ -28,26 +28,30 @@ class ProfileViewController: UIViewController {
         
         setupUI()
         loadUserData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         drawProgressCircle()
     }
     
     private func setupUI() {
-        avatarImageView.image = UIImage(named: "placeholder") // Заглушка аватара
+        avatarImageView.image = UIImage(named: "placeholder")
         avatarImageView.contentMode = .scaleAspectFill
-        avatarImageView.layer.cornerRadius = 75
+        avatarImageView.layer.cornerRadius = LayoutConstants.avaterCornerRadius
         avatarImageView.layer.masksToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         
         nameLabel.textAlignment = .center
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        nameLabel.font = LayoutConstants.labelNameProfile
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         birthDateLabel.textAlignment = .center
-        birthDateLabel.font = UIFont.systemFont(ofSize: 16)
+        birthDateLabel.font = LayoutConstants.labelCarouselFont
         birthDateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         heightWeightLabel.textAlignment = .center
-        heightWeightLabel.font = UIFont.systemFont(ofSize: 16)
+        heightWeightLabel.font = LayoutConstants.labelCarouselFont
         heightWeightLabel.translatesAutoresizingMaskIntoConstraints = false
         
         addProductButton.setTitle("Добавить продукт", for: .normal)
@@ -59,41 +63,43 @@ class ProfileViewController: UIViewController {
         view.addSubview(birthDateLabel)
         view.addSubview(heightWeightLabel)
         view.addSubview(addProductButton)
-        view.addSubview(tableView)
     
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 150),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 150),
-            
-            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 10),
+         
+            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            birthDateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
-            birthDateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            avatarImageView.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements * 2),
+            avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            avatarImageView.widthAnchor.constraint(equalToConstant: LayoutConstants.avatarSize),
+            avatarImageView.heightAnchor.constraint(equalToConstant: LayoutConstants.avatarSize),
             
-            heightWeightLabel.topAnchor.constraint(equalTo: birthDateLabel.bottomAnchor, constant: 5),
+            birthDateLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            birthDateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+    
+            heightWeightLabel.topAnchor.constraint(equalTo: birthDateLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             heightWeightLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            addProductButton.topAnchor.constraint(equalTo: heightWeightLabel.bottomAnchor, constant: 20),
-            addProductButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            tableView.topAnchor.constraint(equalTo: addProductButton.bottomAnchor, constant: 20),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+          
+            addProductButton.topAnchor.constraint(equalTo: heightWeightLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            addProductButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
     private func loadUserData() {
-        if let user = user {
-            nameLabel.text = user.name ?? "Неизвестно"
-            birthDateLabel.text = "Дата рождения: \(formatDate(user.dateOfBirth))"
-            heightWeightLabel.text = "Рост: \(user.height) см | Вес: \(user.weight) кг"
+        guard let user = user else {
+            print("Ошибка: пользователь не передан!")
+            return
+        }
+        nameLabel.text = user.name ?? "Неизвестно"
+        birthDateLabel.text = "Дата рождения: \(formatDate(user.dateOfBirth))"
+        heightWeightLabel.text = "Рост: \(user.height) см | Вес: \(user.weight) кг"
+        if let imageData = user.avatar, let avatarImage = UIImage(data: imageData) {
+            avatarImageView.image = avatarImage
+        } else {
+            avatarImageView.image = UIImage(named: "placeholder")
         }
     }
-    
     private func formatDate(_ date: Date?) -> String {
         guard let date = date else { return "Неизвестно" }
         let formatter = DateFormatter()
@@ -139,5 +145,12 @@ class ProfileViewController: UIViewController {
         }
         nutritionVC.modalPresentationStyle = .pageSheet
         present(nutritionVC, animated: true)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if self.isMovingFromParent {
+            navigationController?.popToRootViewController(animated: true)
+        }
     }
 }
