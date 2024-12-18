@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class LoginViewController: UIViewController {
     private let nameTextField = UITextField()
     private let passwordTextField = UITextField()

@@ -19,14 +19,15 @@ class ProfileViewController: UIViewController {
     private let heightWeightLabel = UILabel()
     private let progressCircleLayer = CAShapeLayer()
     private let tableView = UITableView()
+    private let headerLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UISetup.setupAnimatedBackground(for: view)
         title = "Профиль"
-        
         setupUI()
         loadUserData()
+        updateHeaderLabel()
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,14 +58,29 @@ class ProfileViewController: UIViewController {
         addProductButton.addTarget(self, action: #selector(addProductTapped), for: .touchUpInside)
         addProductButton.translatesAutoresizingMaskIntoConstraints = false
         
+        headerLabel.textAlignment = .center
+        headerLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel.textColor = .black
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .systemBackground
+        tableView.separatorStyle = .singleLine
+        tableView.layer.cornerRadius = LayoutConstants.cornerRadiusGeneral
+        tableView.alpha = LayoutConstants.mainAlpha
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProductCell")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(avatarImageView)
         view.addSubview(nameLabel)
         view.addSubview(birthDateLabel)
         view.addSubview(heightWeightLabel)
         view.addSubview(addProductButton)
-    
+        view.addSubview(headerLabel)
+        view.addSubview(tableView)
+        
         NSLayoutConstraint.activate([
-         
             nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             avatarImageView.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements * 2),
@@ -76,7 +92,15 @@ class ProfileViewController: UIViewController {
             heightWeightLabel.topAnchor.constraint(equalTo: birthDateLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             heightWeightLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             addProductButton.topAnchor.constraint(equalTo: heightWeightLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
-            addProductButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            addProductButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            tableView.topAnchor.constraint(equalTo: addProductButton.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            headerLabel.topAnchor.constraint(equalTo: addProductButton.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -116,39 +140,49 @@ class ProfileViewController: UIViewController {
         view.layer.addSublayer(backgroundCircle)
         
         progressCircleLayer.path = circlePath.cgPath
-        progressCircleLayer.strokeColor = UIColor.systemGreen.cgColor
+        progressCircleLayer.strokeColor = UIColor.systemCyan.cgColor
         progressCircleLayer.fillColor = UIColor.clear.cgColor
         progressCircleLayer.lineWidth = 10
         progressCircleLayer.strokeEnd = 0
         view.layer.addSublayer(progressCircleLayer)
     }
-    private func setupTableView() {
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProductCell")
-        }
+    
+    private func updateHeaderLabel() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        let currentDate = formatter.string(from: Date())
+        headerLabel.text = "Сегодняшняя дата: \(currentDate)"
+    }
+    
+    private func getCurrentDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: Date())
+    }
     
     private func updateProgressCircle() {
-        
-        let maxCarbs: Double = 300.0
+        let maxCarbs: Double = 100.0
         let progress = min(totalCarbohydrates / maxCarbs, 1.0)
-        progressCircleLayer.strokeEnd = CGFloat(progress)
+        DispatchQueue.main.async {
+            self.progressCircleLayer.strokeEnd = CGFloat(progress)
+        }
     }
-   
+    
     @objc private func addProductTapped() {
-         let nutritionVC = NutritionViewController()
-         nutritionVC.onProductSelected = { [weak self] product in
-             guard let self = self else { return }
-             self.selectedProducts.append(product)
-             self.totalCarbohydrates += product.nutriments?.carbohydrates ?? 0.0
-             self.updateProgressCircle()
-             self.tableView.reloadData()
-         }
-         navigationController?.pushViewController(nutritionVC, animated: true)
-     }
- }
+        let nutritionVC = NutritionViewController()
+        nutritionVC.onProductSelected = { [weak self] product in
+            guard let self = self else { return }
+            self.selectedProducts.append(product)
+            self.totalCarbohydrates += product.nutriments?.carbohydrates ?? 0.0
+            self.updateProgressCircle()
+            self.updateHeaderLabel()
+            self.tableView.reloadData()
+        
 
-
+        }
+        navigationController?.pushViewController(nutritionVC, animated: true)
+    }
+}
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedProducts.count

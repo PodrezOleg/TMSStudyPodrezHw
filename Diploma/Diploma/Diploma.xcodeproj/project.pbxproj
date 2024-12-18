@@ -26,6 +26,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		FF20357A2D12F86D00962ECC /* CoreDataMode */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CoreDataMode;
+			sourceTree = "<group>";
+		};
 		FF696C572CFF9ED7002A5969 /* Diploma */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -50,6 +55,7 @@
 		FF696C4C2CFF9ED7002A5969 = {
 			isa = PBXGroup;
 			children = (
+				FF20357A2D12F86D00962ECC /* CoreDataMode */,
 				FF97DD4D2D123B9300052667 /* Model.xcdatamodeld */,
 				FF696C572CFF9ED7002A5969 /* Diploma */,
 				FF696C562CFF9ED7002A5969 /* Products */,
@@ -80,6 +86,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				FF20357A2D12F86D00962ECC /* CoreDataMode */,
 				FF696C572CFF9ED7002A5969 /* Diploma */,
 			);
 			name = Diploma;

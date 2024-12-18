@@ -80,7 +80,6 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         view.addSubview(avatarImageView)
         view.addSubview(stackView)
         
-        
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.minusWelcomeViewBetweenElements),

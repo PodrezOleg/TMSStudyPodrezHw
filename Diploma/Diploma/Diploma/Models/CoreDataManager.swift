@@ -11,7 +11,6 @@ import UIKit
 class CoreDataManager {
     static let shared = CoreDataManager()
     private init() {}
-    
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Model")
@@ -41,7 +40,7 @@ class CoreDataManager {
         saveContext()
         return user 
     }
-    
+
     func saveContext() {
         if context.hasChanges{
             do {
@@ -52,7 +51,7 @@ class CoreDataManager {
             }
         }
     }
-    
+
     func deleteUser(_ user: User) {
         context.delete(user)
         saveContext()
@@ -68,6 +67,18 @@ class CoreDataManager {
         } catch {
             print("Ошибка при аутентификации: \(error)")
             return false
+        }
+    }
+    
+    struct CoreDataHelper {
+        static func saveProductToCoreData(_ product: Product) {
+            let context = CoreDataManager.shared.context
+            let productEntity = ProductCD(context: context)
+            productEntity.productName = product.productName
+            productEntity.carbohydrates = product.nutriments?.carbohydrates ?? 0.0
+            productEntity.proteins = product.nutriments?.proteins ?? 0.0
+            productEntity.fats = product.nutriments?.fat ?? 0.0
+            CoreDataManager.shared.saveContext()
         }
     }
 }

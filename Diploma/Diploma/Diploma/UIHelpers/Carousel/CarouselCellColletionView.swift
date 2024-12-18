@@ -12,7 +12,7 @@ class CarouselCellColletionView: UICollectionViewCell {
     static let reuseIdentifier = "CarouselCellColletionView"
     
     private let imageView = UIImageView()
-    private let centerTextLabel = UILabel() 
+    private let centerTextLabel = UILabel()
     private let bottomTextLabel = UILabel()
     
     override init(frame: CGRect) {
@@ -25,24 +25,20 @@ class CarouselCellColletionView: UICollectionViewCell {
     }
     
     private func setupCellUI() {
-        
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = LayoutConstants.cornerRadiusGeneral
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
         centerTextLabel.textAlignment = .center
         centerTextLabel.textColor = .white
         centerTextLabel.font = UIFont.systemFont(ofSize: LayoutConstants.titleDescriptionFontSize, weight: .bold)
         centerTextLabel.numberOfLines = 0
         centerTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         bottomTextLabel.textAlignment = .center
         bottomTextLabel.textColor = .white
         bottomTextLabel.font = UIFont.systemFont(ofSize: LayoutConstants.titleDescriptionFontSize, weight: .light)
         bottomTextLabel.numberOfLines = 1
         bottomTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         contentView.addSubview(imageView)
         imageView.addSubview(centerTextLabel)
         imageView.addSubview(bottomTextLabel)
@@ -51,21 +47,15 @@ class CarouselCellColletionView: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             centerTextLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
             centerTextLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
-            centerTextLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
-            centerTextLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10)
-        ])
-        
-        NSLayoutConstraint.activate([
-            bottomTextLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
+            centerTextLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: LayoutConstants.caruselLeadingConstant),
+            centerTextLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -LayoutConstants.caruselLeadingConstant),
+            bottomTextLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -LayoutConstants.caruselLeadingConstant),
             bottomTextLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
-            bottomTextLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
-            bottomTextLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10)
+            bottomTextLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: LayoutConstants.caruselLeadingConstant),
+            bottomTextLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -LayoutConstants.caruselLeadingConstant)
         ])
     }
     func configureCell(with feature: (centerText: String, bottomText: String, imageName: String)) {

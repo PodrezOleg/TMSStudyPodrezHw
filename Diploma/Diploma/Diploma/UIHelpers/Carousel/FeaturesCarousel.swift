@@ -12,7 +12,6 @@ protocol FeaturesCarouselDelegate: AnyObject {
 }
 class FeaturesCarousel: UIView {
     weak var delegate: FeaturesCarouselDelegate?
-    
     private var features: [(centerText: String, bottomText: String, imageName: String)] = []
     
     private lazy var collectionView: UICollectionView = {
@@ -39,10 +38,9 @@ class FeaturesCarousel: UIView {
         super.init(coder: coder)
     }
     
-    
     private func setupCollectionView() {
          addSubview(collectionView)
-         
+        
          NSLayoutConstraint.activate([
              collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
              collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),

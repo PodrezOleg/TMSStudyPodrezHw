@@ -10,7 +10,6 @@
 //
 //   let openFood = try? JSONDecoder().decode(OpenFood.self, from: jsonData)
 
-
 import Foundation
 
 // MARK: - OpenFood

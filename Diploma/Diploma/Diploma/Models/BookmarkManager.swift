@@ -17,7 +17,6 @@ class BookmarkManager {
     func loadBookmarks() -> [String] {
         return defaults.stringArray(forKey: key) ?? []
     }
-
     func saveBookmark(url: String) {
         var bookmarks = loadBookmarks()
         if !bookmarks.contains(url) {
@@ -25,7 +24,6 @@ class BookmarkManager {
             defaults.set(bookmarks, forKey: key)
         }
     }
-
     func removeBookmark(url: String) {
         var bookmarks = loadBookmarks()
         bookmarks.removeAll { $0 == url }

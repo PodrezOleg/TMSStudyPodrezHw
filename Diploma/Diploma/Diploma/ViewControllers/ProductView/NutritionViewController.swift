@@ -48,18 +48,18 @@ class NutritionViewController: UIViewController {
         view.addSubview(productImageView)
         
         NSLayoutConstraint.activate([
-            searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            searchField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            searchField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            searchField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            searchField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.welcomeViewBetweenElements),
 
-            searchButton.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 10),
+            searchButton.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements / 2),
             searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            resultLabel.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 20),
-            resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            resultLabel.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
+            resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.welcomeViewBetweenElements),
 
-            productImageView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10),
+            productImageView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements / 2),
             productImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             productImageView.heightAnchor.constraint(equalToConstant: 200),
             productImageView.widthAnchor.constraint(equalToConstant: 200)
@@ -70,10 +70,6 @@ class NutritionViewController: UIViewController {
         viewModel.onDataFetched = { [weak self] products in
             self?.displayProductInfo(products)
         }
-
-//        viewModel.onError = { [weak self] error in
-//            self?.displayError(error)
-//        }
     }
 
     @objc private func searchTapped() {
@@ -105,18 +101,3 @@ class NutritionViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 }
-
-//    private func loadImage(from url: URL) {
-//        URLSession.shared.dataTask(with: url) { data, _, error in
-//            if let data = data, error == nil {
-//                DispatchQueue.main.async {
-//                    self.productImageView.image = UIImage(data: data)
-//                }
-//            } else {
-//                DispatchQueue.main.async {
-//                    self.productImageView.image = UIImage(named: "placeholder")
-//                }
-//            }
-//        }.resume()
-//    }
-

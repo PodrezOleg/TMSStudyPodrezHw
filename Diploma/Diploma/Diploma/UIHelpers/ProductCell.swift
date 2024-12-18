@@ -68,10 +68,8 @@ class ProductCell: UICollectionViewCell {
     private func setupViews() {
         contentStackView.addArrangedSubview(nameLabel)
         contentStackView.addArrangedSubview(infoLabel)
-
         mainStackView.addArrangedSubview(productImageView)
         mainStackView.addArrangedSubview(contentStackView)
-
         contentView.addSubview(mainStackView)
 
         productImageView.translatesAutoresizingMaskIntoConstraints = false

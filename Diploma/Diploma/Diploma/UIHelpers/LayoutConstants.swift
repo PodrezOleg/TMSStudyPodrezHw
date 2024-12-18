@@ -50,6 +50,7 @@ struct LayoutConstants {
     static let widthScrolView: CGFloat = 200
     static let imageCornerRadius: CGFloat = 100
     static let avaterCornerRadius: CGFloat = 50
+    static let caruselLeadingConstant: CGFloat = 10
     
     //avatar
     static let avatarSize: CGFloat = 150
