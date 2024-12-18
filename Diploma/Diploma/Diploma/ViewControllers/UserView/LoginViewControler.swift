@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     private let nameTextField = UITextField()
     private let passwordTextField = UITextField()
     private let loginButton = CustomButton()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +20,6 @@ class LoginViewController: UIViewController {
         setupUI()
         setupKeyboardHandling()
     }
-
     private func setupUI() {
         title = "Авторизация"
 
@@ -59,7 +57,6 @@ class LoginViewController: UIViewController {
             return
         }
 
-       
         if CoreDataManager.shared.authenticateUser(name: name, password: password) {
             showAlert(message: "Успешный вход!")
         } else {
@@ -67,12 +64,9 @@ class LoginViewController: UIViewController {
         }
     }
 
-    
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Сообщение", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ОК", style: .default))
         present(alert, animated: true)
     }
-    
-    
 }

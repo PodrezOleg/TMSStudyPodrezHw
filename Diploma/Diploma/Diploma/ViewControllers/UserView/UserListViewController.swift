@@ -128,8 +128,6 @@ extension UserListViewController: UICollectionViewDataSource, UICollectionViewDe
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
-
-
 extension UserListViewController {
     private func promptForPassword(for user: User) {
         let alert = UIAlertController(title: "Введите пароль", message: "Введите пароль для пользователя \(user.name ?? "Неизвестно")", preferredStyle: .alert)

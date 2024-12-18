@@ -10,7 +10,6 @@ import UIKit
 protocol FeaturesCarouselDelegate: AnyObject {
     func featuresCarousel(_ carousel: FeaturesCarousel, didSelectFeatureAt index: Int)
 }
-
 class FeaturesCarousel: UIView {
     weak var delegate: FeaturesCarouselDelegate?
     

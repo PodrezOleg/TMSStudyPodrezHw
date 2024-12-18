@@ -33,7 +33,6 @@ class DemoFPSViewController: UIViewController {
         countdownLabel.translatesAutoresizingMaskIntoConstraints = false
         countdownLabel.text = "Обновление будет доступно..."
         
-      
         registrationButton.setTitle("Sign Up Now", for: .normal)
         registrationButton.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
         registrationButton.translatesAutoresizingMaskIntoConstraints = false
@@ -52,10 +51,9 @@ class DemoFPSViewController: UIViewController {
             countdownLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             registrationButton.topAnchor.constraint(equalTo: countdownLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             registrationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-           
         ])
     }
-    
+
     @objc private func registrationButtonTapped() {
         let registrationViewController = RegistrationViewController()
         navigationController?.pushViewController(registrationViewController, animated: true)
@@ -64,7 +62,6 @@ class DemoFPSViewController: UIViewController {
      
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
     }
-    
     @objc private func updateCountdown() {
         let calendar = Calendar.current
         let now = Date()

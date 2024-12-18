@@ -26,13 +26,10 @@ class BookmarksViewController: UIViewController {
         view.addSubview(tableView)
         tableView.frame = view.bounds
     }
-
     private func loadBookmarks() {
         bookmarks = BookmarkManager.shared.loadBookmarks()
         tableView.reloadData()
     }
-    
-    
 }
 
 extension BookmarksViewController: UITableViewDataSource, UITableViewDelegate {

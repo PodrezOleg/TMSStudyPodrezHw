@@ -4,7 +4,6 @@
 //
 //  Created by Oleg Podrez on 17.12.2024.
 //
-
 import UIKit
 import CoreData
 
@@ -12,7 +11,6 @@ class ProfileViewController: UIViewController {
     
     var user: User?
     private var totalCarbohydrates: Double = 0.0
-//    private let tableView = UITableView()
     private let addProductButton = CustomButton()
     
     private let avatarImageView = UIImageView()
@@ -68,19 +66,14 @@ class ProfileViewController: UIViewController {
          
             nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
             avatarImageView.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements * 2),
             avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             avatarImageView.widthAnchor.constraint(equalToConstant: LayoutConstants.avatarSize),
             avatarImageView.heightAnchor.constraint(equalToConstant: LayoutConstants.avatarSize),
-            
             birthDateLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             birthDateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-    
             heightWeightLabel.topAnchor.constraint(equalTo: birthDateLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             heightWeightLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-          
             addProductButton.topAnchor.constraint(equalTo: heightWeightLabel.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             addProductButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
@@ -106,7 +99,6 @@ class ProfileViewController: UIViewController {
         formatter.dateStyle = .medium
         return formatter.string(from: date)
     }
-    
     private func drawProgressCircle() {
         let center = CGPoint(x: avatarImageView.center.x, y: avatarImageView.center.y)
         let radius: CGFloat = 80

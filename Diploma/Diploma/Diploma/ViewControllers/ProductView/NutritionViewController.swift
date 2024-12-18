@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class NutritionViewController: UIViewController {
-    var onCarbsUpdated: ((Double) -> Void)? 
+    var onCarbsUpdated: ((Double) -> Void)?
     private let viewModel = NutritionViewModel()
     private let searchField = UITextField()
     private let searchButton = CustomButton()
@@ -24,7 +24,6 @@ class NutritionViewController: UIViewController {
         setupKeyboardHandling()
         setupBindings()
     }
-
     private func setupUI() {
         UISetup.setupAnimatedBackground(for: view)
         title = "Поиск Продукта"
@@ -97,7 +96,6 @@ class NutritionViewController: UIViewController {
         productListVC.onProductSelected = { [weak self] selectedProduct in
             self?.showProductDetails(selectedProduct)
         }
-
         navigationController?.pushViewController(productListVC, animated: true)
     }
 

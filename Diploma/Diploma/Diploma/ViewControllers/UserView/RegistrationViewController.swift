@@ -9,7 +9,6 @@ import UIKit
 import CoreData
 
 class RegistrationViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-//    private let appImageView = UIImageView()
     private let avatarImageView = UIImageView()
     private let nameTextField = UITextField()
     private let passTextField = UITextField()
@@ -19,23 +18,17 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     private let registerButton = CustomButton()
     private let viewModel = RegistrationViewModel()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupKeyboardHandling()
         setupUI()
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
            super.viewWillDisappear(animated)
-           
-           // Возвращаемся на главный экран при нажатии "Назад"
            if self.isMovingFromParent {
                navigationController?.popToRootViewController(animated: true)
            }
        }
-    
-   
     private func setupUI() {
         title = "Регистрация"
         view.backgroundColor = .white
@@ -46,10 +39,6 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         avatarImageView.layer.masksToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         avatarImageView.isUserInteractionEnabled = true
-     
-//        appImageView.image = UIImage(named: "Logo")
-//        appImageView.contentMode = .scaleAspectFit
-//        appImageView.translatesAutoresizingMaskIntoConstraints = false
     
         nameTextField.placeholder = "Имя"
         nameTextField.borderStyle = .roundedRect
@@ -95,15 +84,13 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.minusWelcomeViewBetweenElements),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
-//            appImageView.heightAnchor.constraint(equalToConstant: 100),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.stackSafeArea),
             registerButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: LayoutConstants.buttonForRegisterConstant),
             registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             avatarImageView.widthAnchor.constraint(equalToConstant: LayoutConstants.avatarSize),
                avatarImageView.heightAnchor.constraint(equalToConstant: LayoutConstants.avatarSize)
-           
         ])
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectAvatar))
@@ -147,7 +134,6 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
             showAlert(message: "Введите корректные значения роста и веса")
             return
         }
-        
        let user = CoreDataManager.shared.createUser(
             name: name,
             password: password,

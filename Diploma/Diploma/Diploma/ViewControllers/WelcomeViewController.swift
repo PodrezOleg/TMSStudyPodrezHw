@@ -63,7 +63,7 @@ class WelcomeViewController: UIViewController {
         
         registrationButton.setTitle("Sign Up", for: .normal)
         registrationButton.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
-        
+    
         loginButton.setTitle("Log in", for: .normal)
         loginButton.addTarget(self, action: #selector(logInButtonTapped), for: .touchUpInside)
         
@@ -97,7 +97,7 @@ class WelcomeViewController: UIViewController {
             featuresCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.leadingLayoutConstant),
             featuresCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.trailingLayoutConstant),
             featuresCollectionView.heightAnchor.constraint(equalToConstant: 250),
-            registrationButton.topAnchor.constraint(equalTo: featuresCollectionView.bottomAnchor, constant: 20),
+            registrationButton.topAnchor.constraint(equalTo: featuresCollectionView.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             registrationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.topAnchor.constraint(equalTo: registrationButton.bottomAnchor, constant: LayoutConstants.welcomeViewBetweenElements),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -110,16 +110,13 @@ class WelcomeViewController: UIViewController {
         navigationController?.delegate = self
         navigationController?.pushViewController(registrationViewController, animated: true)
     }
-    
     @objc private func logInButtonTapped() {
         let userListVC = UserListViewController()
         navigationController?.delegate = self
         navigationController?.pushViewController(userListVC, animated: true)
     }
-    }
+}
     
-
-
 //MARK:  Своя анимации перехода ( под вопросом)
 extension WelcomeViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController,
@@ -132,8 +129,6 @@ extension WelcomeViewController: UINavigationControllerDelegate {
         return nil
     }
 }
-
-
 extension WelcomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return features.count

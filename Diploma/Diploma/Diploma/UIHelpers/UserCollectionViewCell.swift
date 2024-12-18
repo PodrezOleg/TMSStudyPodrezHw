@@ -14,7 +14,6 @@ class UserCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-       
         setupUI()
     }
     
@@ -41,7 +40,6 @@ class UserCollectionViewCell: UICollectionViewCell {
             nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
-    
     func configure(with name: String) {
         nameLabel.text = name
     }

@@ -61,7 +61,6 @@ class CarouselCellColletionView: UICollectionViewCell {
             centerTextLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10)
         ])
         
-        // AutoLayout для bottomTextLabel (внизу изображения)
         NSLayoutConstraint.activate([
             bottomTextLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
             bottomTextLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
@@ -69,7 +68,6 @@ class CarouselCellColletionView: UICollectionViewCell {
             bottomTextLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10)
         ])
     }
-    
     func configureCell(with feature: (centerText: String, bottomText: String, imageName: String)) {
         imageView.image = UIImage(named: feature.imageName)
         centerTextLabel.text = feature.centerText

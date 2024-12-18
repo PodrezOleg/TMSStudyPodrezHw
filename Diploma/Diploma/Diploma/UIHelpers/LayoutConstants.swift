@@ -53,5 +53,10 @@ struct LayoutConstants {
     
     //avatar
     static let avatarSize: CGFloat = 150
+    static let stackSafeArea: CGFloat = 150
     
+    
+    //browser
+    static let browserConstraint: CGFloat = 8
+    static let minusBrowserConstraint: CGFloat = -8
 }
